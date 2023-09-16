@@ -37,6 +37,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
     font-size: 1vw;
+    background: #0000001a;
 }
 ol, ul {
 	list-style: none;
@@ -137,34 +138,48 @@ h1 {
     margin-right:auto;
     margin-left:auto
   }
-
+  .hero {
+    position: absolute;
+    width: 100%;
+    height: 70vh;
+    z-index: 100;
+  }
   .container.is-hero {
-    position: relative;
+     position: relative; 
+   /* position: absolute;*/
     left: 0%;
     top: 0%;
     right: 0%;
     bottom: auto;
     z-index: 3;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
+    /* border-bottom: 5px solid #333333e3; */
     display: flex;
-    min-height: 100vh;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
+    min-height: 100%;
     flex-direction: column;
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
     justify-content: center;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
     align-items: center;
     background-color: #fff;
     text-align: center;
+    gap: 5px;
+  }
+  .smaile_wrap {
+    position: absolute;
+    left: 3%;
+    bottom: 1.5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:5px;
+  }
+  .smaile_wrap .smaile {
+    font-size: 1.2em;
+  }
+  .smaile_img {
+    width:30px;
+    height:30px;
+  }
+  .smaile_img img {
+    width:100%;
   }
   .hero_sub {
     margin-bottom: 0.6em;
