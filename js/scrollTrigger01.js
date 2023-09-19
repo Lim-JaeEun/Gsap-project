@@ -10,7 +10,7 @@ let tlMain = gsap
   })
   .to('.is-hero',{
     yPercent:-50,
-    ease:"power.in"
+    ease:"power.out"
   },0)
   .to(".track", {
     xPercent: -100,
@@ -57,7 +57,7 @@ gsap
       markers:true
     }
   })
-  .to(".thanks-panel", { xPercent: 100, ease: "none", duration:2 })
+  .to(".thanks-panel", { xPercent: 0, ease: "none", duration:2 })
   .to(".thanks-panel_photo", { scale: 1,duration:2 }, 0)
   .fromTo(
     ".thanks-panel_contain.is-2",
