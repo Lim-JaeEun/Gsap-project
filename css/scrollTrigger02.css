@@ -63,7 +63,7 @@ h1 {
 .section.is--nav {
     position: sticky;
     top:0px;
-    z-index:1000;
+    z-index:100;
     margin-top: -1px;
     background-color: #2e2a27;
 }
@@ -110,6 +110,7 @@ h1 {
     width: 100%;
     text-align: center;
     font-size: 3em;
+    line-height: 1;
 }
 .nav_side {
     position: relative;
@@ -172,7 +173,15 @@ h1 {
     align-items: center;
     border-radius: 35em;
 }
-
+.sticky-circle_element img {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    max-width: none;
+    min-height: 100vh;
+    min-width: 100vw;
+    object-fit: cover;
+}
 .section.is--categoris{
     position: relative;
     z-index: 2;
@@ -204,7 +213,7 @@ h1 {
     bottom:0%;
     right:0%;
     z-index: 1;
-    border:1px solid var(--main-light-color);
+    border:1px solid var(--main-dark-color);
     opacity: .35;
     border-radius: 100vw;
 }
