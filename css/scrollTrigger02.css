@@ -311,3 +311,23 @@ h1 {
 .grid_wrapper.is--alt {
     padding-bottom: 23.7em;
 }
+
+.spreadText {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 7em;
+    /*padding-bottom:50vh;*/
+    box-sizing: unset;
+}
+.spText_warpper {
+    padding: 0 20px;
+}
+.spreadText span {
+    /*position: absolute;*/
+    display: inline-block;
+
+}

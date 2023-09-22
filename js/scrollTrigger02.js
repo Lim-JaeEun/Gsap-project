@@ -151,10 +151,10 @@ image_move01.forEach(el=>{
     duration:1,
     scrollTrigger:{
       trigger:el,
-      scrub:1,
+      scrub:1.5,
       start:'top bottom',
       end:'bottom top',
-      markers:true
+      //markers:true
     }
   })
 })
@@ -167,7 +167,7 @@ image_move02.forEach(el=>{
     duration:1,
     scrollTrigger:{
       trigger:el,
-      scrub:1,
+      scrub:2,
       start:'top bottom',
       end:'bottom top',
     }
@@ -182,9 +182,43 @@ image_move03.forEach(el=>{
     duration:1,
     scrollTrigger:{
       trigger:el,
-      scrub:1,
+      scrub:2.5,
       start:'top bottom',
       end:'bottom top',
     }
   })
 })
+
+
+
+/*텍스트 쪼개기*/
+let ori_Text = document.querySelector('.spText_warpper');
+let newText = '';
+const ori_text_split = ori_Text  .innerText.split('');
+for(let i =0; i<ori_text_split.length; i++){
+  ori_text_split[i] === ' ' ? newText+='&nbsp' : newText+=`<span>${ori_text_split[i]}</span>` 
+}
+ori_Text.innerHTML = newText;
+ori_Text.setAttribute("aira-label",ori_Text.innerText);
+
+const spread_text = document.querySelectorAll('.spText_warpper span');
+const tl03 = gsap.timeline({
+  scrollTrigger:{
+    trigger:'.spreadText',
+    start:'top top',
+    end:'bottom top',
+    scrub:1,
+    pin:true,
+    aniticipatePin:1,
+    //markers:true
+  }
+})
+spread_text.forEach((el,idx)=>{
+  tl03.from(el,{
+    y:idx%2 === 0? Math.random() * -500 : Math.random() * 500,
+    x:idx%3 === 0? Math.random() * -500 : Math.random() * 500,
+    opacity:0.1,
+    duration:2
+  },'text')
+})
+
