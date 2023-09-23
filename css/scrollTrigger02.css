@@ -320,14 +320,74 @@ h1 {
     justify-content: center;
     align-items: center;
     font-size: 7em;
-    /*padding-bottom:50vh;*/
+    overflow-x: clip;
     box-sizing: unset;
 }
 .spText_warpper {
-    padding: 0 20px;
+    padding: 0 50px 0 20px;
 }
 .spreadText span {
     /*position: absolute;*/
     display: inline-block;
 
 }
+
+.interview_section {
+    position: absolute;
+    width:100%;
+    /*height: 100vh;*/
+    height: 0;
+    overflow: hidden;
+    /* background-color: var(--main-dark-color);
+    color: var(--main-light-color); 
+   display: none; */
+
+}
+
+.interview_title {
+    font-size:.5em;
+    text-align: center;
+}
+
+.interview_items {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 0.3em;
+    gap: 0.2em;
+}
+.items_wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: .5vw;
+}
+.items_wrap .img {
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: .3s;
+}
+.items_wrap.one .img {
+    background-image: url(../images/interview_1.webp);
+    width: 500px;
+    height: 700px;
+
+}
+.items_wrap.one :hover .img {
+    background-image: url(../images/interview_1_hover.webp);
+}
+.items_wrap > div{
+}
+.infoWrap span {
+    font-size: 0.3em;
+    font-family: serif;
+}
+.infoWrap .content {
+    font-size: .2em;
+    font-family: initial;
+    letter-spacing: -.7px;
+}
+

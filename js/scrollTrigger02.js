@@ -206,19 +206,22 @@ const tl03 = gsap.timeline({
   scrollTrigger:{
     trigger:'.spreadText',
     start:'top top',
-    end:'bottom top',
+    end:'+=3000',
     scrub:1,
     pin:true,
     aniticipatePin:1,
-    //markers:true
+    markers:true
   }
 })
 spread_text.forEach((el,idx)=>{
-  tl03.from(el,{
+  tl03.to(el,{
     y:idx%2 === 0? Math.random() * -500 : Math.random() * 500,
     x:idx%3 === 0? Math.random() * -500 : Math.random() * 500,
     opacity:0.1,
     duration:2
   },'text')
 })
-
+tl03.to('.interview_section',{
+  height:'200vh',
+  duration:2
+})
