@@ -201,12 +201,17 @@ for(let i =0; i<ori_text_split.length; i++){
 ori_Text.innerHTML = newText;
 ori_Text.setAttribute("aira-label",ori_Text.innerText);
 
+
+const height = document.querySelector('.spreadText').clientHeight;
+const interview_section = document.querySelector('.interview_section').clientHeight;
+console.log(height, interview_section);
+
 const spread_text = document.querySelectorAll('.spText_warpper span');
 const tl03 = gsap.timeline({
   scrollTrigger:{
     trigger:'.spreadText',
-    start:'top top',
-    end:'+=3000',
+    start:'top 20%',
+    end:'bottom top',
     scrub:1,
     pin:true,
     aniticipatePin:1,
@@ -221,7 +226,9 @@ spread_text.forEach((el,idx)=>{
     duration:2
   },'text')
 })
-tl03.to('.interview_section',{
-  height:'200vh',
+const interview_Items_hg = document.querySelector('.interview_items').clientHeight;
+tl03.from('.interview_section',{
+  height:0,
+  //height:'calc(100vh + 80px)',
   duration:2
-})
+},'>-.5')

@@ -314,7 +314,7 @@ h1 {
 
 .spreadText {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     position: relative;
     display: flex;
     justify-content: center;
@@ -335,10 +335,12 @@ h1 {
 .interview_section {
     position: absolute;
     width:100%;
-    /*height: 100vh;*/
-    height: 0;
+    border-radius: 4vw 4vw 0 0;
+    background: #d4cec5cc;
     overflow: hidden;
-    /* background-color: var(--main-dark-color);
+   /* height: 1700px;
+    height: 0;*/
+     /* background-color: var(--main-dark-color);
     color: var(--main-light-color); 
    display: none; */
 
@@ -347,6 +349,7 @@ h1 {
 .interview_title {
     font-size:.5em;
     text-align: center;
+    margin: 0;
 }
 
 .interview_items {
@@ -355,7 +358,7 @@ h1 {
     flex-wrap: nowrap;
     justify-content: space-between;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     padding: 0 0.3em;
     gap: 0.2em;
 }
@@ -364,30 +367,82 @@ h1 {
     flex-direction: column;
     justify-content: space-around;
     gap: .5vw;
+
+    /*말줄임표를 위해 white-space:no-wrap 을 할때 flex가 죽어버린다 이때 min-width값을 무너져내린 flex에 적용시킨다.*/
+    min-width: 0;
 }
+.items_wrap img {
+    width:100%;
+}
+
+.items_wrap .item-children .item .img {
+    overflow: hidden;
+}
+.items_wrap .item-children .item .img img{
+    transition: .5s;
+}
+.items_wrap .item-children .item:hover .img img{
+    transform: scale(1.05);
+
+}
+/*
 .items_wrap .img {
     background-size: cover;
     background-repeat: no-repeat;
     transition: .3s;
 }
+
 .items_wrap.one .img {
     background-image: url(../images/interview_1.webp);
     width: 500px;
-    height: 700px;
+    height: 600px;
 
 }
+
 .items_wrap.one :hover .img {
     background-image: url(../images/interview_1_hover.webp);
 }
-.items_wrap > div{
+.items_wrap.two div:first-child .img {
+    background-image: url(../images/interview_2.webp);
+    width: 250px;
+    height: 300px;
+
+}
+*/
+/*.items_wrap > div{
+}*/
+
+.items_wrap.one{
+    flex: calc(20%);
+}
+
+.items_wrap .subject {
+    display: block;
+    padding: 0.4em 0;
+    width: 90%;
+    height: 2em;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.items_wrap.two ,.items_wrap.three {
+    flex:1 1 0%;
 }
 .infoWrap span {
-    font-size: 0.3em;
+    font-size: 0.2em;
     font-family: serif;
+    line-height: 1.1;
+    font-weight: bold;
 }
 .infoWrap .content {
-    font-size: .2em;
+    font-size: .15em;
     font-family: initial;
     letter-spacing: -.7px;
+}
+
+.footer {
+    width: 100%;
+    height: 100vh;
 }
 
