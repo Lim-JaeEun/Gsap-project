@@ -6,6 +6,7 @@
     box-sizing: border-box;
 }
 body {
+    position: relative;
     display: block;
     font-family: 'Kanit', sans-serif;
     color: #e8e2da;
@@ -111,6 +112,10 @@ h1 {
     text-align: center;
     font-size: 3em;
     line-height: 1;
+}
+.nav_logo-img span {
+    display: inline-block;
+    transition: .2s;
 }
 .nav_side {
     position: relative;
@@ -336,7 +341,9 @@ h1 {
     position: absolute;
     width:100%;
     border-radius: 4vw 4vw 0 0;
-    background: #d4cec5cc;
+    background: linear-gradient(180deg, rgba(255,255,255,0.3981967787114846) 0%, rgba(212,206,197,1) 50%, rgba(251,251,251,0.11808473389355745) 100%);
+    
+    /*background: #d4cec5cc;*/
     overflow: hidden;
    /* height: 1700px;
     height: 0;*/
@@ -446,3 +453,17 @@ h1 {
     height: 100vh;
 }
 
+
+
+.cursor {
+    position: absolute;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    background: #000;
+    width:25px;
+    height: 25px;
+    border-radius: 50%;
+    z-index: 10000;
+}

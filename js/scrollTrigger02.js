@@ -1,3 +1,44 @@
+
+/*const main = document.querySelector('.is--hero');
+main.style.cursor = 'none';
+
+
+let mouseCursor = document.querySelector('.cursor');
+main.addEventListener("scroll", cursor);
+main.addEventListener("mousemove", cursor);
+function cursor(e) {
+  mouseCursor.style.top = e.pageY + "px";
+  mouseCursor.style.left = e.pageX + "px";
+}*/
+/*텍스트 쪼개기*/
+
+function text_splice(text){
+  let ori_Text = document.querySelector(text);
+  let newText = '';
+  const ori_text_split = ori_Text.innerText.split('');
+  for(let i =0; i<ori_text_split.length; i++){
+    ori_text_split[i] === ' ' ? newText+='&nbsp' : newText+=`<span>${ori_text_split[i]}</span>` 
+  }
+  ori_Text.innerHTML = newText;
+  ori_Text.setAttribute("aira-label",ori_Text.innerText);
+}
+
+
+
+/*text_splice('.nav_logo-img');
+let logo_span = document.querySelectorAll('.nav_logo-img span');
+logo_span.forEach((el,idx)=>{
+  el.addEventListener('mouseenter',()=>{
+    logo_span[idx].style.transform = `translateY(-20px)`
+  }),
+  el.addEventListener('mouseleave',()=>{
+    logo_span[idx].style.transform = `translateY(0px)`
+  })
+})*/
+
+
+
+
 //Logo Text 
 gsap.from('.nav_logo',{
   y:'-90%',
@@ -191,17 +232,10 @@ image_move03.forEach(el=>{
 
 
 
-/*텍스트 쪼개기*/
-let ori_Text = document.querySelector('.spText_warpper');
-let newText = '';
-const ori_text_split = ori_Text  .innerText.split('');
-for(let i =0; i<ori_text_split.length; i++){
-  ori_text_split[i] === ' ' ? newText+='&nbsp' : newText+=`<span>${ori_text_split[i]}</span>` 
-}
-ori_Text.innerHTML = newText;
-ori_Text.setAttribute("aira-label",ori_Text.innerText);
 
 
+
+text_splice('.spText_warpper');
 const height = document.querySelector('.spreadText').clientHeight;
 const interview_section = document.querySelector('.interview_section').clientHeight;
 console.log(height, interview_section);
@@ -215,7 +249,7 @@ const tl03 = gsap.timeline({
     scrub:1,
     pin:true,
     aniticipatePin:1,
-    markers:true
+    //markers:true
   }
 })
 spread_text.forEach((el,idx)=>{
@@ -232,3 +266,4 @@ tl03.from('.interview_section',{
   //height:'calc(100vh + 80px)',
   duration:2
 },'>-.5')
+
