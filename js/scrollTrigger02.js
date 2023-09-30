@@ -238,14 +238,16 @@ image_move03.forEach(el=>{
 text_splice('.spText_warpper');
 const height = document.querySelector('.spreadText').clientHeight;
 const interview_section = document.querySelector('.interview_section').clientHeight;
-console.log(height, interview_section);
 
 const spread_text = document.querySelectorAll('.spText_warpper span');
+
+const interview_Items_hg = document.querySelector('.interview_items').clientHeight;
 const tl03 = gsap.timeline({
   scrollTrigger:{
     trigger:'.spreadText',
-    start:'top 20%',
-    end:'bottom top',
+    start:'20% 20%',
+    end: '+=2500',
+    //end:'bottom top',
     scrub:1,
     pin:true,
     aniticipatePin:1,
@@ -260,9 +262,9 @@ spread_text.forEach((el,idx)=>{
     duration:2
   },'text')
 })
-const interview_Items_hg = document.querySelector('.interview_items').clientHeight;
-tl03.from('.interview_section',{
-  height:0,
+
+tl03.to('.interview_section',{
+  height:`70vw`,
   //height:'calc(100vh + 80px)',
   duration:2
 },'>-.5')

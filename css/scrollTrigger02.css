@@ -232,6 +232,7 @@ h1 {
 .section.is--grid {
     position: relative;
     z-index: 1;
+    margin-bottom: 200px;
 }
 .container.is--grid {
     padding-bottom:0em;
@@ -319,14 +320,13 @@ h1 {
 
 .spreadText {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 7em;
     overflow-x: clip;
-    box-sizing: unset;
 }
 .spText_warpper {
     padding: 0 50px 0 20px;
@@ -339,17 +339,20 @@ h1 {
 
 .interview_section {
     position: absolute;
-    width:100%;
+    width: 95%;
+    background-color:#ffffff8f;
+   /* margin-bottom:200px;*/
     border-radius: 4vw 4vw 0 0;
-    background: linear-gradient(180deg, rgba(255,255,255,0.3981967787114846) 0%, rgba(212,206,197,1) 50%, rgba(251,251,251,0.11808473389355745) 100%);
+    /*background: linear-gradient(180deg, rgba(255,255,255,0.3981967787114846) 0%, rgba(212,206,197,1) 50%, rgba(251,251,251,0.11808473389355745) 100%);
     
-    /*background: #d4cec5cc;*/
+    background: #d4cec5cc;*/
     overflow: hidden;
-   /* height: 1700px;
-    height: 0;*/
+   /* height: 1700px;*/
+    height: 0;
      /* background-color: var(--main-dark-color);
     color: var(--main-light-color); 
    display: none; */
+
 
 }
 
@@ -466,4 +469,144 @@ h1 {
     height: 25px;
     border-radius: 50%;
     z-index: 10000;
+}
+.section.overlap--img {
+    position: relative;
+    overflow: hidden;
+}
+
+.overlap--img_wrap{
+    position: relative;
+    width: 100%;
+    padding: 1.4em 1.4em 0.5em;
+    display: flex;
+    height: 90vh;
+    margin-top: 10em;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+
+}
+
+.title-wrap {
+    position: relative;
+    z-index: 1;
+    width: 25.5em;
+    max-width: 100%;
+    margin-left: auto;
+    text-align: right;
+}
+.title-wrap .tit {
+    font-size: 4em;
+    line-height: .9;
+    letter-spacing: 0.01em;
+    width: 100%;
+}
+.hover--div{
+    max-width: 100%;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    font-size: 5em;
+    line-height: 1;
+    text-transform: uppercase;
+    margin-top: 0.1em;
+    padding: 0.1em 0.27em;
+    border: 0.08em solid #000;
+    border-radius: 100vw;
+    text-align: left;
+}
+
+.middle--text {
+    font-weight: 100;
+    line-height: 1.2;
+}
+.bottom--text {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    overflow: hidden;
+}
+
+.link--arrowTop {
+    width: 13%;
+    position: absolute;
+    top: -50%;
+    transform: rotateZ(90deg);
+}
+.txt--left {
+    position: relative;
+}
+.link--top-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.link--arrowLeft {
+    width: 15%;
+}
+.txt--hover--area {
+    font-size: 4em;
+    font-weight: 100;
+}
+
+.txt--left > a {
+    line-height: .8;
+}
+.link--bottom-wrap {
+    font-size: 4em;
+    font-weight: 100;
+}
+
+.txt--right {
+    display: flex;
+    align-items: flex-end;
+    font-weight: 100;
+    font-size: 1.3em;
+    font-family: initial;
+}
+.other_nations ul {
+    margin: 0;
+    display: flex;
+    gap: 1vw;
+    margin-left: 5em;
+}
+.other_nations li {
+    list-style: none;
+}
+
+.hidden--images {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0%;
+    left:0%;
+    bottom:0%;
+    right:0%;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden--images .overlap--img {
+    position: relative;
+    width:38%;
+}
+
+.overlap_image {
+    position: absolute;
+    left:0%;
+    top:0%;
+    bottom:0%;
+    right:0%;
+    width:100%;
+    height:100%;
+    object-fit: cover;
+    transform: translate(0vw, 0vh) rotate(0deg);
+}
+
+.img--height {
+    padding-top: 58%;
 }
