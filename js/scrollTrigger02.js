@@ -231,10 +231,6 @@ image_move03.forEach(el=>{
 })
 
 
-
-
-
-
 text_splice('.spText_warpper');
 const height = document.querySelector('.spreadText').clientHeight;
 const interview_section = document.querySelector('.interview_section').clientHeight;
@@ -267,5 +263,49 @@ tl03.to('.interview_section',{
   height:`70vw`,
   //height:'calc(100vh + 80px)',
   duration:2
-},'>-.5')
+},'>-.5');
 
+
+const now_btn = gsap.timeline({
+  paused:true
+})
+now_btn.to('.hover--div',{
+  width:'100%;'
+})
+
+
+
+
+
+const txt__left = gsap.timeline({
+  paused:true
+});
+txt__left.to('.txt--hover--area',{
+  x:'3.83em',
+  ease:'power1.out',
+  duration:0.4
+})
+txt__left.to('.link--arrowLeft',{
+  x:'100%',
+  ease:'power1.out',
+  duration:0.4
+},0)
+
+txt__left.to('.link--arrowTop',{
+  y:'0',
+  ease:'power1.out',
+  duration:0.4
+},0)
+
+
+
+document.querySelector('.txt--left').addEventListener('mouseenter',()=>{
+  txt__left.restart();
+})
+document.querySelector('.txt--left').addEventListener('mouseleave',()=>{
+  txt__left.reverse();
+})
+
+
+
+ 
