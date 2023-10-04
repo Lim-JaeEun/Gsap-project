@@ -263,5 +263,120 @@ tl03.to('.interview_section',{
   height:`70vw`,
   //height:'calc(100vh + 80px)',
   duration:2
-},'>-.5')
+},'>-.5');
+/*overlap_image*/
+function clearStyles(){
+  for(let i = 0; i<this.targets().length; i++){
+    gsap.set(this.targets()[i], {clearProps:'all'})
+  }
+}
+const now_btn = gsap.timeline({
+  paused:true
+})
 
+now_btn.to('.hover--div',{
+    width:'100%',
+    duration:.4,
+    ease:'power1.out',
+    onReverseComplete: clearStyles,
+  })
+  
+  function progress(){
+    //document.querySelector('.hover--div').style.opacity = this.progress();
+    document.querySelector('.hover--div').style.backgroundColor = `rgba(243 139 0 /${this.progress()*100}%)`;
+    document.querySelector('.hover--div').style.width = `${this.progress()*100}%`;
+  }
+  const imageoverlap = gsap.timeline({
+    paused:true,
+    onUpdate: progress
+  })
+  
+  imageoverlap.to('.overlap_image',{
+    x:'0vw',
+    y:'0vh',
+    duration:.5,
+    invalidateOnRefresh:true,
+    ease:'power1.out',
+    onReverseComplete: clearStyles,
+    stagger:{
+      each:.25,
+      from:"start"
+    }
+  
+  })
+  
+  /*
+  let images = document.querySelectorAll('.overlap_image');
+  images.forEach(el=>{
+    imageoverlap.to(el,{
+      x:'0vw',
+      y:'0vh',
+      duration:.5,
+      invalidateOnRefresh:true,
+      ease:'power1.out',
+      onReverseComplete: clearStyles,
+      stagger:{
+        each:.25,
+        from:"start"
+      }
+  
+    })
+  })
+  
+  */
+
+const txt__left = gsap.timeline({
+  paused:true
+});
+txt__left.to('.txt--hover--area',{
+  x:'3.83em',
+  ease:'power1.out',
+  duration:0.4
+})
+txt__left.to('.link--arrowLeft',{
+  x:'100%',
+  ease:'power1.out',
+  duration:0.4
+},0)
+
+txt__left.to('.link--arrowTop',{
+  y:'0',
+  ease:'power1.out',
+  duration:0.4
+},0)
+
+
+
+document.querySelector('.txt--left').addEventListener('mouseenter',()=>{
+  txt__left.restart();
+  
+})
+document.querySelector('.txt--left').addEventListener('mouseleave',()=>{
+  txt__left.reverse();
+})
+
+
+document.querySelector('.hover--div').addEventListener('mouseenter',()=>{
+  //now_btn.restart();
+  imageoverlap.timeScale(2);
+  imageoverlap.restart();
+  console.log(imageoverlap.progress());
+  
+ 
+})
+
+document.querySelector('.hover--div').addEventListener('mouseleave',()=>{
+  imageoverlap.timeScale(1.5);
+  if(imageoverlap.progress() === 1){
+    setTimeout(()=>{
+      imageoverlap.timeScale(2);
+      imageoverlap.reverse();
+    },300)
+  }else {
+    imageoverlap.reverse();
+  }
+  //now_btn.reverse();
+  //imageoverlap.reverse();
+})
+
+ 
