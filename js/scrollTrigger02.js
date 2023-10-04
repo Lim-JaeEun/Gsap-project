@@ -264,13 +264,18 @@ tl03.to('.interview_section',{
   //height:'calc(100vh + 80px)',
   duration:2
 },'>-.5');
+
+
+
+
+
 /*overlap_image*/
-function clearStyles(){
+function clearStyles(){ // 적용되어있던 스타일 지우기.
   for(let i = 0; i<this.targets().length; i++){
     gsap.set(this.targets()[i], {clearProps:'all'})
   }
 }
-const now_btn = gsap.timeline({
+/*const now_btn = gsap.timeline({
   paused:true
 })
 
@@ -279,22 +284,22 @@ now_btn.to('.hover--div',{
     duration:.4,
     ease:'power1.out',
     onReverseComplete: clearStyles,
-  })
+  })*/
   
   function progress(){
     //document.querySelector('.hover--div').style.opacity = this.progress();
-    document.querySelector('.hover--div').style.backgroundColor = `rgba(243 139 0 /${this.progress()*100}%)`;
-    document.querySelector('.hover--div').style.width = `${this.progress()*100}%`;
+    document.querySelector('.progress').style.backgroundColor = `rgba(243 139 0 /${this.progress()*100}%)`;
+    document.querySelector('.progress').style.width = `${this.progress()*100}%`;
   }
   const imageoverlap = gsap.timeline({
     paused:true,
-    onUpdate: progress
+    onUpdate:progress
   })
   
   imageoverlap.to('.overlap_image',{
     x:'0vw',
     y:'0vh',
-    duration:.5,
+    duration:.8,
     invalidateOnRefresh:true,
     ease:'power1.out',
     onReverseComplete: clearStyles,
@@ -303,7 +308,28 @@ now_btn.to('.hover--div',{
       from:"start"
     }
   
+  }) 
+
+
+  
+  document.querySelector('.hover--div').addEventListener('mouseenter',()=>{
+    imageoverlap.timeScale(1);
+    imageoverlap.restart();
   })
+
+  document.querySelector('.hover--div').addEventListener('mouseleave',()=>{
+    imageoverlap.timeScale(1.5);
+    if(imageoverlap.progress() === 1){
+     setTimeout(()=>{
+        imageoverlap.timeScale(2.4);
+        imageoverlap.reverse();
+     },300)
+    }else {
+      // imageoverlap.timeScale(1.5); 여기다 적용해도됨
+      imageoverlap.reverse();
+    }
+  })
+
   
   /*
   let images = document.querySelectorAll('.overlap_image');
@@ -324,6 +350,15 @@ now_btn.to('.hover--div',{
   })
   
   */
+
+
+  let images = document.querySelectorAll('.overlap_image');
+  let zIndexNum = 1;
+  images.forEach(el=>{
+    el.addEventListener('click',(e)=>{
+      e.target.style.zIndex = zIndexNum++;
+    })
+  })
 
 const txt__left = gsap.timeline({
   paused:true
@@ -355,28 +390,5 @@ document.querySelector('.txt--left').addEventListener('mouseleave',()=>{
   txt__left.reverse();
 })
 
-
-document.querySelector('.hover--div').addEventListener('mouseenter',()=>{
-  //now_btn.restart();
-  imageoverlap.timeScale(2);
-  imageoverlap.restart();
-  console.log(imageoverlap.progress());
-  
- 
-})
-
-document.querySelector('.hover--div').addEventListener('mouseleave',()=>{
-  imageoverlap.timeScale(1.5);
-  if(imageoverlap.progress() === 1){
-    setTimeout(()=>{
-      imageoverlap.timeScale(2);
-      imageoverlap.reverse();
-    },300)
-  }else {
-    imageoverlap.reverse();
-  }
-  //now_btn.reverse();
-  //imageoverlap.reverse();
-})
 
  

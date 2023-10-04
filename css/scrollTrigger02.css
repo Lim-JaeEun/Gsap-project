@@ -452,7 +452,7 @@ h1 {
 }
 
 
-
+/*
 .cursor {
     position: absolute;
     left:0;
@@ -464,7 +464,7 @@ h1 {
     height: 25px;
     border-radius: 50%;
     z-index: 10000;
-}
+}*/
 .section.overlap--img {
     position: relative;
     overflow: hidden;
@@ -498,7 +498,7 @@ h1 {
     width: 100%;
 }
 .hover--div{
-    width:0%;
+    width:100%;
     display: inline-block;
     position: relative;
     overflow: hidden;
@@ -506,11 +506,14 @@ h1 {
     line-height: 1;
     text-transform: uppercase;
     margin-top: 0.1em;
-    padding: 0.1em 0.27em .1em .7em; 
+   /* padding: 0.1em 0.27em .1em .7em; */
+    padding: 0.1em 0.27em .1em; 
     border: 0.08em solid #000;
     border-radius: 100vw;
     text-align: left;
+    cursor: pointer;
 }
+/*
 .hover--div::before{
     content: '';
     display: inline-block;
@@ -523,6 +526,17 @@ h1 {
     left: 0;
     top: 50%;
     transform: translateY(-50%);
+}*/
+
+.progress {
+    width: 0%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    background: #fff;
+    right: 0;
+    border-radius: 100vw;
+    z-index: -1;
 }
 .middle--text {
     font-weight: 100;
