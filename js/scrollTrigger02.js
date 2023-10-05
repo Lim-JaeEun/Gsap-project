@@ -285,32 +285,32 @@ now_btn.to('.hover--div',{
     ease:'power1.out',
     onReverseComplete: clearStyles,
   })*/
-  
   function progress(){
-    //document.querySelector('.hover--div').style.opacity = this.progress();
     document.querySelector('.progress').style.backgroundColor = `rgba(243 139 0 /${this.progress()*100}%)`;
     document.querySelector('.progress').style.width = `${this.progress()*100}%`;
+    
   }
   const imageoverlap = gsap.timeline({
     paused:true,
-    onUpdate:progress
+    onUpdate:progress,
+    ease:"none"
+    
   })
-  
   imageoverlap.to('.overlap_image',{
     x:'0vw',
     y:'0vh',
     duration:.8,
     invalidateOnRefresh:true,
-    ease:'power1.out',
+    ease: "back.out(2)",
+    //ease:test === true?"back.inOut(2)":"power1.out",
+
     onReverseComplete: clearStyles,
     stagger:{
-      each:.25,
+      each:.3,
       from:"start"
     }
   
   }) 
-
-
   
   document.querySelector('.hover--div').addEventListener('mouseenter',()=>{
     imageoverlap.timeScale(1);
@@ -318,38 +318,48 @@ now_btn.to('.hover--div',{
   })
 
   document.querySelector('.hover--div').addEventListener('mouseleave',()=>{
+
     imageoverlap.timeScale(1.5);
     if(imageoverlap.progress() === 1){
+      
      setTimeout(()=>{
-        imageoverlap.timeScale(2.4);
+        imageoverlap.timeScale(2);
+        
         imageoverlap.reverse();
      },300)
     }else {
       // imageoverlap.timeScale(1.5); 여기다 적용해도됨
       imageoverlap.reverse();
     }
+    
+    /*imageoverlap.from('.overlap_image',{
+      x:'0vw',
+      y:'0vh',
+      duration:.8,
+      invalidateOnRefresh:true,
+      //ease: "back.out(2)",
+      //ease:test === true?"back.inOut(2)":"power1.out",
+  
+      onReverseComplete: clearStyles,
+      stagger:{
+        each:.3,
+        from:"start"
+      }
+    
+    }) */
+    /*
+       document.querySelectorAll('.overlap_image').forEach((el,idx)=>{
+      console.log(el);
+      imageoverlap.from(el,{
+        
+      })
+    })*/
   })
 
   
-  /*
-  let images = document.querySelectorAll('.overlap_image');
-  images.forEach(el=>{
-    imageoverlap.to(el,{
-      x:'0vw',
-      y:'0vh',
-      duration:.5,
-      invalidateOnRefresh:true,
-      ease:'power1.out',
-      onReverseComplete: clearStyles,
-      stagger:{
-        each:.25,
-        from:"start"
-      }
+ 
   
-    })
-  })
-  
-  */
+ 
 
 
   let images = document.querySelectorAll('.overlap_image');
