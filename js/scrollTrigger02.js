@@ -288,18 +288,20 @@ now_btn.to('.hover--div',{
   function progress(){
     document.querySelector('.progress').style.backgroundColor = `rgba(243 139 0 /${this.progress()*100}%)`;
     document.querySelector('.progress').style.width = `${this.progress()*100}%`;
+
     
   }
   const imageoverlap = gsap.timeline({
     paused:true,
     onUpdate:progress,
-    ease:"none"
+    ease:"none",
+
     
   })
   imageoverlap.to('.overlap_image',{
     x:'0vw',
     y:'0vh',
-    duration:.8,
+    duration:1.5,
     invalidateOnRefresh:true,
     ease: "back.out(2)",
     //ease:test === true?"back.inOut(2)":"power1.out",
@@ -308,7 +310,7 @@ now_btn.to('.hover--div',{
     stagger:{
       each:.3,
       from:"start"
-    }
+    },
   
   }) 
   
