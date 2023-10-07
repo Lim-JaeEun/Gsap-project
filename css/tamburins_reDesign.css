@@ -1,0 +1,147 @@
+/*reset css*/
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+*{
+    box-sizing:border-box;
+}
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+    position: relative;
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+a {
+    font-family: 'Hahmlet', sans-serif;
+    font-weight: 400;
+}
+/*reset css END*/
+
+
+.header {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1em;
+}
+.line {
+    width: 1em;
+    display: block;
+    height: 1px;
+    background: #aaa;
+}
+.hamburger-lines {
+    cursor:pointer;
+    position: relative;
+    display: flex;
+    background: #ededed;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 100vw;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4em;
+    z-index: 2;
+
+}
+.left_side {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5em;
+}
+.left_menu {
+    height: 3.5em;
+    line-height: 3.5;
+    background: #ededed;
+    padding: 0 1.8em 0 3.5em;
+    position: absolute;
+    left: 11em;
+    z-index: 1;
+    border-radius: 100vw;
+    width: 0;
+    overflow: hidden;
+    opacity: 0;
+    display: none;
+}
+.left_menu > ul {
+    display: flex;
+    width: 100%;
+    gap: 1em;
+}
+
+.left_menu > ul li a::after {
+    content: '';
+    display: block;
+    width: 0%;
+    height: 11px;
+    background: #00000026;
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    transition: .3s;
+}
+.left_menu > ul li:hover a::after {
+    width:100%;
+}
+.menu_link {
+    position: relative;
+    color: #000;
+    text-decoration: none;
+    font-weight: 500;
+}
+.right_menu > ul{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+.cartBtn {
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+}
+#canvas {
+    width:100%;
+}
