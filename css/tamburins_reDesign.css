@@ -68,19 +68,20 @@ a {
     width: 100%;
     padding: 1em;
     z-index: 3;
-    background: #ffffff4d
+    background: #ffffff4d;
+    pointer-events: none;
 }
 .line {
     width: 1em;
     display: block;
     height: 1px;
-    background: #595959
+    background: #aaa;
 }
 .hamburger-lines {
     cursor:pointer;
     position: relative;
     display: flex;
-    background: #edededba;
+    background: #ededed;
     width: 3.5rem;
     height: 3.5rem;
     border-radius: 100vw;
@@ -148,13 +149,14 @@ a {
     display: inline-block;
 }
 
-
 #main {
     position: relative;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 .main_warp {
-    background-image: url('../images/temburins_main_02.jpg');
+    background-image: url('../images/temburins_main_01.jpg');
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
