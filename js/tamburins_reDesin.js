@@ -19,7 +19,8 @@ function resize(){
     canvas.style.width = canvasWidth+'px';
     canvas.style.height = canvasHeight+'px';
 
-    drawImage()
+    drawImage();
+    circle_infinite();
 }
 
 function drawImage(){
@@ -80,17 +81,37 @@ function remove_Percent(){
         }
         percent = Math.round(count/totalLength * 100);
         if(percent > 70) {
-            
-            gsap.to(canvas,{opacity:0, duration:1, onComplete:()=>{
-                canvas.style.opacity = 1;
-                const image = new Image();
-                image.src = imageSrc;
-                image.onload=()=>{
-                    ctx.drawImage(image,0,0,canvasWidth,canvasHeight)
+            gsap.to(canvas,{
+                opacity:0, 
+                duration:.8, 
+                onComplete:()=>{
+                    canvas.style.opacity = 1;
+                    const image = new Image();
+                    image.src = imageSrc;
+                    image.onload=()=>{
+                        ctx.drawImage(image,0,0,canvasWidth,canvasHeight)
+                    }
                 }
-            }})
+            })
+            gsap.to('.arrow',{
+                opacity:1,
+                duration:1,
+                top:'70%',
+                ease:'power2.out'
+            },'>+=.1')
         }
     },500)
+    
+}
+function circle_infinite(){
+    let circle = document.querySelector('.arrow');
+    circle.innerHTML = circle.innerText.split("")
+    .map((char,i)=> `<span style="transform:rotate(${i * 2}deg)">${char}</span>`)
+    .join("");
+    let circle_inner_span = document.querySelectorAll('.arrow span');
+    circle_inner_span.forEach(el=>{
+        el.style.transformOrigin = `0 ${circle.clientWidth/2}px`
+    })
     
 }
 

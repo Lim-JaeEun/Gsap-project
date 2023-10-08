@@ -69,13 +69,13 @@ a {
     padding: 1em;
     z-index: 3;
     background: #ffffff4d;
-    pointer-events: none;
+    /* pointer-events: none; */
 }
 .line {
     width: 1em;
     display: block;
     height: 1px;
-    background: #aaa;
+    background: #595959;
 }
 .hamburger-lines {
     cursor:pointer;
@@ -154,6 +154,7 @@ a {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 .main_warp {
     background-image: url('../images/temburins_main_01.jpg');
@@ -163,4 +164,48 @@ a {
     display: flex;
     width: 100%;
     height: 100%;
+}
+.arrow {
+    position: absolute;
+    top: 100%;
+    width: 100vw;
+    height: 100vw;
+    border-radius: 100vh;
+    padding: 0.5em;
+    text-align: center;
+    left: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    animation: bounce 1s infinite;
+    background: #ffffffde;
+}
+#canvas {
+    overflow: hidden;
+}/*
+@keyframes textRotation {
+	to {
+		transform: rotate(360deg);
+	}
+}*/
+.arrow {
+    animation: textRotation 50s ease-out infinite;
+}
+.arrow > p {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 1em;
+    border-radius: 100vw;
+}
+
+.arrow span {
+	position: absolute;
+    top: 0;
+	left: 50%;
+	font-size: 1.2em;
 }
