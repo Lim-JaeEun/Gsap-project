@@ -32,6 +32,9 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
+    max-width: 1920px;
+    margin: 0 auto;
+    width: 100%;
     position: relative;
 	line-height: 1;
 }
@@ -64,18 +67,20 @@ a {
     align-items: center;
     width: 100%;
     padding: 1em;
+    z-index: 3;
+    background: #ffffff4d
 }
 .line {
     width: 1em;
     display: block;
     height: 1px;
-    background: #aaa;
+    background: #595959
 }
 .hamburger-lines {
     cursor:pointer;
     position: relative;
     display: flex;
-    background: #ededed;
+    background: #edededba;
     width: 3.5rem;
     height: 3.5rem;
     border-radius: 100vw;
@@ -142,6 +147,18 @@ a {
     height: 1em;
     display: inline-block;
 }
-#canvas {
-    width:100%;
+
+
+#main {
+    position: relative;
+    height: 100vh;
+}
+.main_warp {
+    background-image: url('../images/temburins_main_02.jpg');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    width: 100%;
+    height: 100%;
 }
