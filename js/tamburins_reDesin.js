@@ -21,6 +21,7 @@ function resize(){
 
     drawImage();
     circle_infinite();
+
 }
 
 function drawImage(){
@@ -80,7 +81,7 @@ function remove_Percent(){
             if(pixels.data[i+3] == 0) count ++;
         }
         percent = Math.round(count/totalLength * 100);
-        if(percent > 70) {
+        if(percent > 60) {
             gsap.to(canvas,{
                 opacity:0, 
                 duration:.8, 
@@ -103,15 +104,18 @@ function remove_Percent(){
     },500)
     
 }
+let circle = document.querySelector('.arrow');
+circle.innerHTML = circle.innerText.split("")
+.map((char,i)=> `<span style="transform:rotate(${i * 2}deg)">${char}</span>`)
+.join("");
 function circle_infinite(){
-    let circle = document.querySelector('.arrow');
-    circle.innerHTML = circle.innerText.split("")
-    .map((char,i)=> `<span style="transform:rotate(${i * 2}deg)">${char}</span>`)
-    .join("");
-    let circle_inner_span = document.querySelectorAll('.arrow span');
-    circle_inner_span.forEach(el=>{
+    const circle_inner_span = document.querySelectorAll('.arrow span');
+
+    circle_inner_span.forEach((el)=>{
         el.style.transformOrigin = `0 ${circle.clientWidth/2}px`
     })
+
+
     
 }
 
@@ -129,10 +133,52 @@ function onMouseMove(e){
     drawCircles(e);
 }
 
+
 canvas.addEventListener('mousedown',onMouseDown)
 canvas.addEventListener('mouseup',onMouseUp)
 canvas.addEventListener('mousemove',onMouseMove)
-
 resize();
 window.addEventListener('resize',resize)
+
+
+
+/*nav_Btn click*/
+const timeline01 = gsap.timeline({
+    paused:true
+});
+timeline01.to('.line',{
+    opacity:0,
+    duration:.3
+},0)
+timeline01.to('.hamburger-lines',{
+    width:'379px',
+    ease:'power1.out',
+    duration:.5,
+        //opacity:1,
+})
+timeline01.to('.left_menu',{
+    opacity:1,
+    zIndex:5,
+    duration:.3,
+
+},'>')
+timeline01.to('.left_menu .menu_item',{
+    opacity:1,
+    ease:'power1.out',
+    y:0,
+    stagger:{
+        each:.2,
+        from:"start"
+    },
+},'>')
+
+
+document.querySelector('.hamburger-lines').addEventListener('click',()=>{
+    timeline01.restart();
+})
+window.addEventListener('scroll',()=>{
+    timeline01.timeScale(1.5);
+    timeline01.reverse();
+})
+
 
