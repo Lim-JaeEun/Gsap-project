@@ -35,7 +35,27 @@ function drawImage(){
     const image = new Image();
     image.src = imageSrc;
     image.onload=()=>{
-        ctx.drawImage(image,0,0,canvasWidth,canvasHeight)
+        let sw, sh;
+        const cw = canvas.width;
+        const ch = canvas.height;
+        const iw = image.width;
+        const ih = image.height;
+        
+        const cr = ch / cw;
+        const ir = ih / iw;
+       
+        if(ir>=cr) {
+           sw = iw;
+           sh = sw * (ch/cw);
+            
+        }else {
+            sh = ih;
+            sw = sh * (cw/ch);
+        }
+
+        let sx = (iw/2) - (sw/2);
+        let sy = (ih/2) - (sh/2);
+        ctx.drawImage(image,sx,sy,sw,sh,0,0,cw,ch);
     }
 }
 function getDistance(p1,p2){
@@ -94,37 +114,82 @@ function remove_Percent(){
                 onComplete:()=>{
                     canvas.style.opacity = 1;
                     drawImage();
-                   /* const image = new Image();
-                    image.src = imageSrc;
-                    image.onload=()=>{
-                        ctx.drawImage(image,0,0,canvasWidth,canvasHeight)
-                    }*/
                 }
             })
             gsap.to('.arrow',{
                 opacity:1,
                 duration:1,
-                top:'70%',
-                ease:'power2.out'
-            },'>+=.1')
+                top:'-20%',
+                ease:'power2.out',
+                onComplete:()=>{
+                    document.querySelector('#main').style.overflow = 'inherit';
+                }
+            })
         }
     },500)
     
 }
-let circle = document.querySelector('.arrow');
-circle.innerHTML = circle.innerText.split("")
+
+const circle = document.querySelector('.arrow');
+const circle_innerText = document.querySelector('.circle_text');
+
+circle_innerText.innerHTML = circle_innerText.innerText.split("")
 .map((char,i)=> `<span style="transform:rotate(${i * 2}deg)">${char}</span>`)
 .join("");
 function circle_infinite(){
-    const circle_inner_span = document.querySelectorAll('.arrow span');
-
+    const circle_inner_span = document.querySelectorAll('.circle_text span');
     circle_inner_span.forEach((el)=>{
         el.style.transformOrigin = `0 ${circle.clientWidth/2}px`
     })
-
-
-    
 }
+const next_section_Btn = document.querySelector(".next_section_btn > a");
+
+const elem = document.querySelector(next_section_Btn.getAttribute("href"));
+let circle_wrap_width = '50vw';
+const regex = /[^0-9]/g;
+const vw_to_px = parseInt(circle_wrap_width.replace(regex,''));
+let circle_innerTxt_width = vw_to_px*(canvasParents.clientWidth/100);
+const linkST = ScrollTrigger.create({
+    trigger:elem,
+    start:'top top'
+})
+ScrollTrigger.create({
+    trigger:elem,
+    start:'top top',
+    end: 'bottom center'
+})
+circle.addEventListener('click',(e)=>{
+    e.preventDefault();
+    gsap.to(window,{
+        //duration:.7,
+        scrollTo:linkST.start,
+        overwrite:"auto"
+    })  
+    gsap.to('.arrow',{
+        top:'0%',
+        left:'0%',
+        width:circle_wrap_width,
+        height:circle_wrap_width,
+        zIndex:1,
+        duration:.8,
+        ease:'power1.out',
+    })
+    document.querySelectorAll('.circle_text span').forEach(el=>{
+        gsap.to(el,{
+            duration:.8,
+            ease:'power1.out',
+            transformOrigin : `0 ${circle_innerTxt_width/2}px`
+        })
+    })
+    gsap.to('.next_section_btn',{
+        opacity:0,
+        display:'none'
+    })
+
+
+
+})
+
 
 function onMouseDown(e){
     if(isMouseDown) return;
@@ -174,7 +239,7 @@ timeline01.to('.left_menu .menu_item',{
     ease:'power1.out',
     y:0,
     stagger:{
-        each:.2,
+        each:.15,
         from:"start"
     },
 },'>')
@@ -187,5 +252,4 @@ window.addEventListener('scroll',()=>{
     timeline01.timeScale(1.5);
     timeline01.reverse();
 })
-
 
