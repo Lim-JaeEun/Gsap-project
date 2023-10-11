@@ -95,7 +95,7 @@ function throttle(callbackFn, timeout) {
             callbackFn();
         }, timeout);
     }
-}
+} 
 function remove_Percent(){
     throttle(()=>{
         const pixels = ctx.getImageData(0,0,canvasWidth,canvasHeight);
@@ -119,10 +119,11 @@ function remove_Percent(){
             gsap.to('.arrow',{
                 opacity:1,
                 duration:1,
-                top:'-20%',
+                top:'-25 %',
                 ease:'power2.out',
                 onComplete:()=>{
                     document.querySelector('#main').style.overflow = 'inherit';
+                    canvas.removeEventListener('mousemove',onMouseMove)
                 }
             })
         }

@@ -179,8 +179,8 @@ a {
 .arrow {
     position: absolute;
     top: 100%;
-    width: 100vw;
-    height: 100vw;
+    width: 95vw;
+    height: 95vw;
     border-radius: 100vh;
     padding: 0.5em;
     text-align: center;
