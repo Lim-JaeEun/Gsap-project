@@ -129,67 +129,17 @@ function remove_Percent(){
     },500)
     
 }
-
-const circle = document.querySelector('.arrow');
-const circle_innerText = document.querySelector('.circle_text');
-
-circle_innerText.innerHTML = circle_innerText.innerText.split("")
-.map((char,i)=> `<span style="transform:rotate(${i * 2}deg)">${char}</span>`)
-.join("");
 function circle_infinite(){
-    const circle_inner_span = document.querySelectorAll('.circle_text span');
-    circle_inner_span.forEach((el)=>{
+    let circle = document.querySelector('.arrow');
+    circle.innerHTML = circle.innerText.split("")
+    .map((char,i)=> `<span style="transform:rotate(${i * 2}deg)">${char}</span>`)
+    .join("");
+    let circle_inner_span = document.querySelectorAll('.arrow span');
+    circle_inner_span.forEach(el=>{
         el.style.transformOrigin = `0 ${circle.clientWidth/2}px`
     })
+    
 }
-const next_section_Btn = document.querySelector(".next_section_btn > a");
-
-const elem = document.querySelector(next_section_Btn.getAttribute("href"));
-let circle_wrap_width = '50vw';
-const regex = /[^0-9]/g;
-const vw_to_px = parseInt(circle_wrap_width.replace(regex,''));
-let circle_innerTxt_width = vw_to_px*(canvasParents.clientWidth/100);
-const linkST = ScrollTrigger.create({
-    trigger:elem,
-    start:'top top'
-})
-ScrollTrigger.create({
-    trigger:elem,
-    start:'top top',
-    end: 'bottom center'
-})
-circle.addEventListener('click',(e)=>{
-    e.preventDefault();
-    gsap.to(window,{
-        //duration:.7,
-        scrollTo:linkST.start,
-        overwrite:"auto"
-    })  
-    gsap.to('.arrow',{
-        top:'0%',
-        left:'0%',
-        width:circle_wrap_width,
-        height:circle_wrap_width,
-        zIndex:1,
-        duration:.8,
-        ease:'power1.out',
-    })
-    document.querySelectorAll('.circle_text span').forEach(el=>{
-        gsap.to(el,{
-            duration:.8,
-            ease:'power1.out',
-            transformOrigin : `0 ${circle_innerTxt_width/2}px`
-        })
-    })
-    gsap.to('.next_section_btn',{
-        opacity:0,
-        display:'none'
-    })
-
-
-
-})
-
 
 function onMouseDown(e){
     if(isMouseDown) return;
@@ -211,45 +161,4 @@ canvas.addEventListener('mouseup',onMouseUp)
 canvas.addEventListener('mousemove',onMouseMove)
 resize();
 window.addEventListener('resize',resize)
-
-
-
-/*nav_Btn click*/
-const timeline01 = gsap.timeline({
-    paused:true
-});
-timeline01.to('.line',{
-    opacity:0,
-    duration:.3
-},0)
-timeline01.to('.hamburger-lines',{
-    width:'379px',
-    ease:'power1.out',
-    duration:.5,
-        //opacity:1,
-})
-timeline01.to('.left_menu',{
-    opacity:1,
-    zIndex:5,
-    duration:.3,
-
-},'>')
-timeline01.to('.left_menu .menu_item',{
-    opacity:1,
-    ease:'power1.out',
-    y:0,
-    stagger:{
-        each:.15,
-        from:"start"
-    },
-},'>')
-
-
-document.querySelector('.hamburger-lines').addEventListener('click',()=>{
-    timeline01.restart();
-})
-window.addEventListener('scroll',()=>{
-    timeline01.timeScale(1.5);
-    timeline01.reverse();
-})
 
