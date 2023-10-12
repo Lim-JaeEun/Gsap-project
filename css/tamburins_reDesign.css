@@ -27,7 +27,7 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	font: inherit;
+	font-family: 'Hahmlet', sans-serif;
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -72,9 +72,9 @@ a {
     align-items: center;
     width: 100%;
     padding: 1em;
-    z-index: 3;
-    background: #ffffff4d;
-    /* pointer-events: none; */
+    z-index: 99;
+   /* background: #ffffff4d;
+     pointer-events: none; */
 }
 .line {
     width: 1em;
@@ -204,6 +204,11 @@ a {
     animation: bounce 1s infinite;*/
     
 }
+
+.arrow_height {
+    position: absolute;
+    height: 100vh;
+}
 .arrow_wrap {
     position: relative;
     width: 100%;
@@ -266,5 +271,76 @@ a {
 /*새상품*/
 #new_product {
     position: relative;
-    height: 100vh;
+    /*height: 100vh;*/
+    height: 500vh;
+}
+
+
+.new_item_wrap {
+    position: relative;
+    z-index: 10;
+    padding: 0 2.5em;
+}
+.new_item_wrap h1 {
+    font-size: 2.5em;
+    text-align: center;
+    padding: 1.2em 0;
+    font-weight: 400;
+}
+.prd_item_wrap {
+    display: flex;
+    width: 100%;
+    min-width: 1400px;
+    gap: 1.3em;
+    height: 100%;
+    align-items: center;
+}
+.prd_item_img {
+    flex: 2;
+    position: relative;
+    width: 80%;
+    /*padding-top: 113%;*/
+}
+.item_img {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    opacity: 0;
+}
+.item_height {
+    padding-bottom:77%
+}
+.item_img img {
+    width:100%;
+}
+
+.prd_item_txt {
+    position: relative;
+    flex: 1;
+    padding-bottom: 51%;
+}
+.item_txt {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+}
+.active {
+    opacity: 1;
+}
+.prd_tit {
+    font-size: 1.5em;
+    font-weight: 500;
+    padding: 0.5em 0;
+}
+.smell {
+    font-size: 1.1em;
+    padding-bottom: 0.5em;
+    font-style: italic;
+}
+.info {
+    line-height: 1.5;
+    font-size: 1em;
 }

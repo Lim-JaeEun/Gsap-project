@@ -156,7 +156,7 @@ const next_section_Btn = document.querySelector(".next_section_btn > a");
 
 const elem = document.querySelector(next_section_Btn.getAttribute("href"));
 //let circle_wrap_width = '80%';
-let circle_wrap_width = document.querySelector('#new_product').clientHeight;
+let circle_wrap_width = document.querySelector('.arrow_height').clientHeight;
 const regex = /[^0-9]/g;
 //const vw_to_px = parseInt(circle_wrap_width.replace(regex,''));
 //let circle_innerTxt_width = vw_to_px*(canvasParents.clientWidth/100);
