@@ -11,6 +11,10 @@ let prevPos = {x:0, y:0};
 
 let percent = 0;
 
+let isEnd = false;
+
+let mainChk = document.querySelector('body').classList.contains('main_complete');
+
 function resize(){
     canvasWidth = canvasParents.clientWidth;
     canvasHeight = canvasParents.clientHeight;
@@ -18,15 +22,19 @@ function resize(){
     canvas.height = canvasHeight;
     canvas.style.width = canvasWidth+'px';
     canvas.style.height = canvasHeight+'px';
-
-    drawImage();
-    gsap.to('.arrow',{
+    
+    //mainChk == true ? canvas.removeEventListener('mousemove',onMouseMove) : drawImage();
+   /* gsap.to('.arrow',{
         opacity:0,
         duration:1,
         top:'100%',
         ease:'power2.out'
-    },0)
+    },0)*/
+    
+    
     circle_infinite();
+    if(isEnd) return;
+    drawImage();
 
 }
 
@@ -116,22 +124,23 @@ function remove_Percent(){
                     drawImage();
                 }
             })
-            gsap.to('.arrow',{
+            gsap.to('.arrow_bottom',{
                 opacity:1,
                 duration:1,
-                top:'-25 %',
+                top:'-25%',
                 ease:'power2.out',
                 onComplete:()=>{
-                    document.querySelector('#main').style.overflow = 'inherit';
-                    canvas.removeEventListener('mousemove',onMouseMove)
+                    //document.querySelector('body').classList.add('main_complete');
+                    isEnd = true
                 }
             })
+            console.log('end');
         }
     },500)
     
 }
 
-const circle = document.querySelector('.arrow');
+const circle = document.querySelector('.arrow_bottom');
 const circle_innerText = document.querySelector('.circle_text');
 
 circle_innerText.innerHTML = circle_innerText.innerText.split("")
@@ -146,10 +155,11 @@ function circle_infinite(){
 const next_section_Btn = document.querySelector(".next_section_btn > a");
 
 const elem = document.querySelector(next_section_Btn.getAttribute("href"));
-let circle_wrap_width = '50vw';
+//let circle_wrap_width = '80%';
+let circle_wrap_width = document.querySelector('#new_product').clientHeight;
 const regex = /[^0-9]/g;
-const vw_to_px = parseInt(circle_wrap_width.replace(regex,''));
-let circle_innerTxt_width = vw_to_px*(canvasParents.clientWidth/100);
+//const vw_to_px = parseInt(circle_wrap_width.replace(regex,''));
+//let circle_innerTxt_width = vw_to_px*(canvasParents.clientWidth/100);
 const linkST = ScrollTrigger.create({
     trigger:elem,
     start:'top top'
@@ -166,7 +176,7 @@ circle.addEventListener('click',(e)=>{
         scrollTo:linkST.start,
         overwrite:"auto"
     })  
-    gsap.to('.arrow',{
+    gsap.to('.arrow_bottom',{
         top:'0%',
         left:'0%',
         width:circle_wrap_width,
@@ -179,7 +189,7 @@ circle.addEventListener('click',(e)=>{
         gsap.to(el,{
             duration:.8,
             ease:'power1.out',
-            transformOrigin : `0 ${circle_innerTxt_width/2}px`
+            transformOrigin : `0 ${circle_wrap_width/2}px`
         })
     })
     gsap.to('.next_section_btn',{
@@ -202,7 +212,7 @@ function onMouseUp(){
 
 }
 function onMouseMove(e){
-    if(!isMouseDown) return;
+    if(!isMouseDown || isEnd) return;
     drawCircles(e);
 }
 
