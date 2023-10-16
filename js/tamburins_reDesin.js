@@ -12,9 +12,21 @@ let prevPos = {x:0, y:0};
 let percent = 0;
 
 let isEnd = false;
-
+let circle_wrap_width = document.querySelector('canvas').clientHeight;
 let mainChk = document.querySelector('body').classList.contains('main_complete');
+window.onload=()=>{
+    
+    if(!document.querySelector('body').classList.contains('main_complete')) {
+        setTimeout(()=>{
+            window.scrollTo({
+                top:0,
+                left:0,
+                behavior:'smooth'
+            })
+        },500)
 
+    }
+}
 function resize(){
     canvasWidth = canvasParents.clientWidth;
     canvasHeight = canvasParents.clientHeight;
@@ -125,16 +137,17 @@ function remove_Percent(){
                 }
             })
             gsap.to('.arrow_bottom',{
+                //position:'absolute',
                 opacity:1,
                 duration:1,
                 top:'-25%',
                 ease:'power2.out',
                 onComplete:()=>{
-                    //document.querySelector('body').classList.add('main_complete');
+                    document.querySelector('body').classList.add('main_complete');
+                    
                     isEnd = true
                 }
             })
-            console.log('end');
         }
     },500)
     
@@ -156,7 +169,7 @@ const next_section_Btn = document.querySelector(".next_section_btn > a");
 
 const elem = document.querySelector(next_section_Btn.getAttribute("href"));
 //let circle_wrap_width = '80%';
-let circle_wrap_width = document.querySelector('.arrow_height').clientHeight;
+
 const regex = /[^0-9]/g;
 //const vw_to_px = parseInt(circle_wrap_width.replace(regex,''));
 //let circle_innerTxt_width = vw_to_px*(canvasParents.clientWidth/100);
@@ -172,11 +185,12 @@ ScrollTrigger.create({
 circle.addEventListener('click',(e)=>{
     e.preventDefault();
     gsap.to(window,{
-        //duration:.7,
+        duration:1,
         scrollTo:linkST.start,
         overwrite:"auto"
     })  
     gsap.to('.arrow_bottom',{
+       // position:'sticky',
         top:'0%',
         left:'0%',
         width:circle_wrap_width,
@@ -237,7 +251,7 @@ timeline01.to('.hamburger-lines',{
     width:'379px',
     ease:'power1.out',
     duration:.5,
-        //opacity:1,
+    //opacity:1,
 })
 timeline01.to('.left_menu',{
     opacity:1,
@@ -254,6 +268,34 @@ timeline01.to('.left_menu .menu_item',{
         from:"start"
     },
 },'>')
+
+
+const perfumeTL = gsap.timeline({
+    scrollTrigger:{
+        trigger:'.new_item_wrap',
+        start:'top top',
+        end:'+=2000',
+        scrub:true,
+        pin:true,
+        anticipatePin:1, 
+        markers:true
+    }
+
+})
+
+perfumeTL.to('.item_txt',{
+    opacity:1,
+    stagger:1,
+},0)
+perfumeTL.to('.item_img',{
+    opacity:1,
+    stagger:1,
+   //onEnter:()=>{console.log("onEnter");}
+},0)
+
+
+
+
 
 
 document.querySelector('.hamburger-lines').addEventListener('click',()=>{
