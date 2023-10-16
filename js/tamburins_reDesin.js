@@ -278,17 +278,17 @@ const perfumeTL = gsap.timeline({
         scrub:true,
         pin:true,
         anticipatePin:1, 
-        markers:true
+        //markers:true
     }
 
 })
 
 perfumeTL.to('.item_txt',{
-    opacity:1,
+    display:'block',
     stagger:1,
 },0)
 perfumeTL.to('.item_img',{
-    opacity:1,
+    display:'block',
     stagger:1,
    //onEnter:()=>{console.log("onEnter");}
 },0)
