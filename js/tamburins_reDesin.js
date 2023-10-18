@@ -294,8 +294,36 @@ perfumeTL.to('.item_img',{
 },0)
 
 
+/*Best seller 마우스커서변형*/
 
+const bestSeller_slider = document.querySelector('.products_ul');
+const bestSeller_cursor = document.querySelector('.products_wrap .cursor');
 
+bestSeller_slider.addEventListener('mouseenter',(e)=>{
+    gsap.to(bestSeller_cursor,{
+        display:'block',
+        scale:1.2,
+        duration:1.5,
+        ease:'power1.out'
+    })
+})
+
+bestSeller_slider.addEventListener('mousemove',(e)=>{
+    gsap.to(bestSeller_cursor,{
+        x:e.layerX,
+        y:e.layerY,
+        ease:'power1.out',
+        duration:1
+    })
+})
+bestSeller_slider.addEventListener('mouseleave',(e)=>{
+    gsap.to(bestSeller_cursor,{
+        display:'none',
+        scale:'0.1',
+        duration:.5,
+        ease:'power1.out',
+    })
+})
 
 
 document.querySelector('.hamburger-lines').addEventListener('click',()=>{
