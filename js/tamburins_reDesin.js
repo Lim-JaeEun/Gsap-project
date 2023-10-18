@@ -21,7 +21,7 @@ window.onload=()=>{
             window.scrollTo({
                 top:0,
                 left:0,
-                behavior:'smooth'
+                //behavior:'smooth'
             })
         },500)
 
