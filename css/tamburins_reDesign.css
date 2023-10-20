@@ -465,5 +465,6 @@ a {
     border-radius: 50%;
     padding: 0.5em;
     box-sizing: unset;
-    display: none;
+    opacity: 0;
+    transform: translate(-50%,-50%);
 }

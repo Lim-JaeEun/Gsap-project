@@ -296,12 +296,12 @@ perfumeTL.to('.item_img',{
 
 /*Best seller 마우스커서변형*/
 
-const bestSeller_slider = document.querySelector('.products_ul');
+const bestSeller_slider = document.querySelector('.products_wrap>div');
 const bestSeller_cursor = document.querySelector('.products_wrap .cursor');
 
 bestSeller_slider.addEventListener('mouseenter',(e)=>{
     gsap.to(bestSeller_cursor,{
-        display:'block',
+        opacity:1,
         scale:1.2,
         duration:1.5,
         ease:'power1.out'
@@ -318,11 +318,15 @@ bestSeller_slider.addEventListener('mousemove',(e)=>{
 })
 bestSeller_slider.addEventListener('mouseleave',(e)=>{
     gsap.to(bestSeller_cursor,{
-        display:'none',
-        scale:'0.1',
-        duration:.5,
+        opacity:0,
+        scale:1,
+        duration:1,
         ease:'power1.out',
     })
+})
+const bestItem_swiper = new Swiper(".bestItem_swiper",{
+    slidesPerView:3,
+    loop:true,
 })
 
 
