@@ -409,7 +409,7 @@ a {
     height: calc(100% - 3em);
     display: flex;
     position: relative;
-    align-items: baseline;
+    align-items: flex-end;
     justify-content: space-between;
 }
 .products_wrap > div {
@@ -463,6 +463,8 @@ a {
     text-align: center;
     line-height: 3.2;
     border-radius: 50%;
+    z-index: 100;
+    pointer-events: none;
     padding: 0.5em;
     box-sizing: unset;
     opacity: 0;

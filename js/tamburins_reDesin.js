@@ -295,39 +295,64 @@ perfumeTL.to('.item_img',{
 
 
 /*Best seller 마우스커서변형*/
-
-const bestSeller_slider = document.querySelector('.products_wrap>div');
-const bestSeller_cursor = document.querySelector('.products_wrap .cursor');
-
-bestSeller_slider.addEventListener('mouseenter',(e)=>{
-    gsap.to(bestSeller_cursor,{
-        opacity:1,
-        scale:1.2,
-        duration:1.5,
-        ease:'power1.out'
-    })
-})
-
-bestSeller_slider.addEventListener('mousemove',(e)=>{
-    gsap.to(bestSeller_cursor,{
-        x:e.layerX,
-        y:e.layerY,
-        ease:'power1.out',
-        duration:1
-    })
-})
-bestSeller_slider.addEventListener('mouseleave',(e)=>{
-    gsap.to(bestSeller_cursor,{
-        opacity:0,
-        scale:1,
-        duration:1,
-        ease:'power1.out',
-    })
-})
 const bestItem_swiper = new Swiper(".bestItem_swiper",{
-    slidesPerView:3,
-    loop:true,
+    slidesPerView: 'auto',
+    loop: true,
 })
+//(function () {
+    const bestSeller_slider = document.querySelector('.products_wrap>div');
+    const bestSeller_cursor = document.querySelector('.cursor');
+    
+    bestSeller_slider.addEventListener('mouseenter',(e)=>{
+        gsap.set(bestSeller_cursor,{
+            x:e.clientX,
+            y:e.clientY,
+            opacity:1,
+            scale:1.2,
+            duration:1.5,
+            ease:'power1.out',
+        })
+    
+    })
+    
+    bestSeller_slider.addEventListener('pointermove',movecursor);
+    function movecursor(e){
+        gsap.to(bestSeller_cursor, {
+            duration: 0.5,
+            x: e.clientX,
+            y: e.clientY,
+        });
+    }
+  /*  bestSeller_slider.addEventListener('mouseenter',(e)=>{
+        gsap.set(bestSeller_cursor,{
+            opacity:1,
+            scale:1.2,
+            duration:1.5,
+            ease:'power1.out',
+            xPercent:-50,
+            yPercent:-50
+        })
+    
+    })
+    
+    bestSeller_slider.addEventListener('pointermove',(e)=>{
+        gsap.to(bestSeller_cursor,{
+            x:e.layerX,
+            y:e.layerY,
+            ease:'power1.out',
+            duration:1
+        })
+    })
+    bestSeller_slider.addEventListener('mouseleave',(e)=>{
+        gsap.to(bestSeller_cursor,{
+            opacity:0,
+            scale:1,
+            duration:1,
+            ease:'power1.out',
+        })
+    })*/
+//})(); 
+
 
 
 document.querySelector('.hamburger-lines').addEventListener('click',()=>{
