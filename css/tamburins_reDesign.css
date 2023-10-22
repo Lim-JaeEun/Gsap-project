@@ -419,14 +419,16 @@ a {
 }
 .products_ul {
     width:3000px;
+    transition-timing-function: linear !important;
 }
 .product {
     width:296px;
     display: inline-block;
 }
+/*
 .product:nth-child(2n) {
     padding: 1.3em 1.3em 0 1.3em;
-}
+}*/
 .product a {
     color:#000;
 }
@@ -455,7 +457,9 @@ a {
 }
 
 .products_wrap .cursor {
-    position: absolute;
+    position: fixed;
+    top:0;
+    left:0;
     width: 3.5em;
     height: 3.5em;
     background: #000000a1;

@@ -14,6 +14,9 @@ let percent = 0;
 let isEnd = false;
 let circle_wrap_width = document.querySelector('canvas').clientHeight;
 let mainChk = document.querySelector('body').classList.contains('main_complete');
+
+const bestSeller_slider = document.querySelector('.products_wrap>div');
+const bestSeller_cursor = document.querySelector('.cursor');
 window.onload=()=>{
     
     if(!document.querySelector('body').classList.contains('main_complete')) {
@@ -47,6 +50,8 @@ function resize(){
     circle_infinite();
     if(isEnd) return;
     drawImage();
+
+
 
 }
 
@@ -296,25 +301,40 @@ perfumeTL.to('.item_img',{
 
 /*Best seller 마우스커서변형*/
 const bestItem_swiper = new Swiper(".bestItem_swiper",{
-    slidesPerView: 'auto',
-    loop: true,
+	slidesPerView: 'auto',
+	/*loopedSlides: 2,
+	autoplay: {
+		delay: 0,
+		disableOnInteraction: false,
+	},*/
+	speed: 3000,
+	loop: true,
+	//touchRatio: .3,
+	spaceBetween: 7,
+	//effect: 'slide',
+    //reverseDirection:false,
+	/**/simulateTouch: true,
+	freeMode: {
+		enabled: true
+	},
+	mousewheel: {
+		sensitivity: .5,
+	}
+
 })
 //(function () {
-    const bestSeller_slider = document.querySelector('.products_wrap>div');
-    const bestSeller_cursor = document.querySelector('.cursor');
-    
-    bestSeller_slider.addEventListener('mouseenter',(e)=>{
-        gsap.set(bestSeller_cursor,{
-            x:e.clientX,
-            y:e.clientY,
-            opacity:1,
-            scale:1.2,
-            duration:1.5,
-            ease:'power1.out',
-        })
-    
+
+   
+   bestSeller_slider.addEventListener('mouseenter',(e)=>{
+    gsap.to(bestSeller_cursor,{
+        opacity:1,
+        scale:1.2,
+        //ease:'power1.out',
+        x:e.clientX,
+        y:e.clientY,
     })
     
+    })
     bestSeller_slider.addEventListener('pointermove',movecursor);
     function movecursor(e){
         gsap.to(bestSeller_cursor, {
@@ -323,6 +343,18 @@ const bestItem_swiper = new Swiper(".bestItem_swiper",{
             y: e.clientY,
         });
     }
+    bestSeller_slider.addEventListener('mouseleave',()=>{
+        setTimeout(() => {
+            gsap.to(bestSeller_cursor,{
+                opacity:0,
+                scale:1,
+                duration:1,
+                ease:'power1.out',
+            })
+        }, 200);
+
+    })
+
   /*  bestSeller_slider.addEventListener('mouseenter',(e)=>{
         gsap.set(bestSeller_cursor,{
             opacity:1,
