@@ -48,6 +48,7 @@ function resize(){
     
     
     circle_infinite();
+
     if(isEnd) return;
     drawImage();
 
@@ -142,14 +143,12 @@ function remove_Percent(){
                 }
             })
             gsap.to('.arrow_bottom',{
-                //position:'absolute',
                 opacity:1,
                 duration:1,
                 top:'-25%',
                 ease:'power2.out',
                 onComplete:()=>{
                     document.querySelector('body').classList.add('main_complete');
-                    
                     isEnd = true
                 }
             })
@@ -167,7 +166,7 @@ circle_innerText.innerHTML = circle_innerText.innerText.split("")
 function circle_infinite(){
     const circle_inner_span = document.querySelectorAll('.circle_text span');
     circle_inner_span.forEach((el)=>{
-        el.style.transformOrigin = `0 ${circle.clientWidth/2}px`
+        el.style.transformOrigin = `0 ${canvasHeight/2}px`
     })
 }
 const next_section_Btn = document.querySelector(".next_section_btn > a");
@@ -307,13 +306,12 @@ const bestItem_swiper = new Swiper(".bestItem_swiper",{
 		delay: 0,
 		disableOnInteraction: false,
 	},*/
-	speed: 3000,
 	loop: true,
-	//touchRatio: .3,
+	touchRatio: 1.2,
 	spaceBetween: 7,
-	//effect: 'slide',
+	effect: 'slide',
     //reverseDirection:false,
-	/**/simulateTouch: true,
+	/**/
 	freeMode: {
 		enabled: true
 	},
@@ -326,13 +324,16 @@ const bestItem_swiper = new Swiper(".bestItem_swiper",{
 
    
    bestSeller_slider.addEventListener('mouseenter',(e)=>{
-    gsap.to(bestSeller_cursor,{
-        opacity:1,
-        scale:1.2,
-        //ease:'power1.out',
-        x:e.clientX,
-        y:e.clientY,
-    })
+    setTimeout(() => {
+        gsap.to(bestSeller_cursor,{
+            
+            opacity:1,
+            scale:1.2,
+            //ease:'power1.out',
+            x:e.clientX,
+            y:e.clientY,
+        })
+    }, 200);
     
     })
     bestSeller_slider.addEventListener('pointermove',movecursor);
@@ -344,14 +345,13 @@ const bestItem_swiper = new Swiper(".bestItem_swiper",{
         });
     }
     bestSeller_slider.addEventListener('mouseleave',()=>{
-        setTimeout(() => {
+        
             gsap.to(bestSeller_cursor,{
                 opacity:0,
                 scale:1,
                 duration:1,
                 ease:'power1.out',
             })
-        }, 200);
 
     })
 
@@ -384,6 +384,35 @@ const bestItem_swiper = new Swiper(".bestItem_swiper",{
         })
     })*/
 //})(); 
+const best_img = document.querySelector('.best_img');
+const hide_img = document.querySelector('.hide');
+document.querySelector('.best_img').addEventListener('drag',(e)=>{
+    let ratio = Math.round((e.offsetY/best_img.clientHeight)*100);
+    let ratio2;
+    let hide_img_height = hide_img.style.height;
+    //hide_img.classList.contains('test')==false && 
+    if(ratio > 0) {
+        ratio2 = ratio;
+    } 
+    if(ratio2>50) {
+        gsap.to(hide_img,{
+            duration:.5,
+            ease:'power1.out',
+            height:'100%'
+        })
+        hide_img.classList.add('test');
+    }
+    if(ratio2 < 90) return;
+    if(hide_img.classList.contains('test')){
+        console.log('gg');
+        gsap.to(hide_img,{
+            duration:1,
+            ease:'power1.out',
+            height:`0%`
+        })
+    }
+    
+})
 
 
 
