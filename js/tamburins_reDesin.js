@@ -148,7 +148,7 @@ function remove_Percent(){
                 top:'-25%',
                 ease:'power2.out',
                 onComplete:()=>{
-                    document.querySelector('body').classList.add('main_complete');
+                    //document.querySelector('body').classList.add('main_complete');
                     isEnd = true
                 }
             },'>+.07')
@@ -191,7 +191,10 @@ circle.addEventListener('click',(e)=>{
     gsap.to(window,{
         duration:1,
         scrollTo:linkST.start,
-        overwrite:"auto"
+        overwrite:"auto",
+        onComplete:()=>{
+            document.querySelector('body').classList.add('main_complete');
+        }
     })  
     gsap.to('.arrow_bottom',{
        // position:'sticky',
@@ -273,7 +276,7 @@ timeline01.to('.left_menu .menu_item',{
     },
 },'>')
 
-ScrollTrigger.config({syncInterval: 100 });
+ScrollTrigger.config({syncInterval: 500 });
 const perfumeTL = gsap.timeline({
     delay:1,
     scrollTrigger:{
@@ -309,16 +312,16 @@ const bestItem_swiper = new Swiper(".bestItem_swiper",{
 	},*/
 	loop: true,
 	touchRatio: 1.2,
-	spaceBetween: 7,
+	spaceBetween: 10,
 	effect: 'slide',
     //reverseDirection:false,
-	/**/
+	/*
 	freeMode: {
 		enabled: true
 	},
 	mousewheel: {
 		sensitivity: .5,
-	}
+	}*/
 
 })
 //(function () {
@@ -400,7 +403,7 @@ document.querySelector('.best_img').addEventListener('drag',(e)=>{
         //duration:.5,
         height:`${ratio2}%`
     })
-    if(ratio2>50) {
+    if(ratio2>30) {
         gsap.to(hide_img,{
             //duration:.5,
             height:`100%`,
