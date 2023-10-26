@@ -144,14 +144,14 @@ function remove_Percent(){
             })
             gsap.to('.arrow_bottom',{
                 opacity:1,
-                duration:1,
+                //duration:1,
                 top:'-25%',
                 ease:'power2.out',
                 onComplete:()=>{
                     document.querySelector('body').classList.add('main_complete');
                     isEnd = true
                 }
-            })
+            },'>+.07')
         }
     },500)
     
@@ -273,15 +273,16 @@ timeline01.to('.left_menu .menu_item',{
     },
 },'>')
 
-
+ScrollTrigger.config({syncInterval: 100 });
 const perfumeTL = gsap.timeline({
+    delay:1,
     scrollTrigger:{
         trigger:'.new_item_wrap',
         start:'top top',
         end:'+=2000',
         scrub:true,
         pin:true,
-        anticipatePin:1, 
+        //anticipatePin:true, 
         //markers:true
     }
 
@@ -386,6 +387,7 @@ const bestItem_swiper = new Swiper(".bestItem_swiper",{
 //})(); 
 const best_img = document.querySelector('.best_img');
 const hide_img = document.querySelector('.hide');
+
 document.querySelector('.best_img').addEventListener('drag',(e)=>{
     let ratio = Math.round((e.offsetY/best_img.clientHeight)*100);
     let ratio2;
@@ -394,24 +396,20 @@ document.querySelector('.best_img').addEventListener('drag',(e)=>{
     if(ratio > 0) {
         ratio2 = ratio;
     } 
+    gsap.to(hide_img,{
+        //duration:.5,
+        height:`${ratio2}%`
+    })
     if(ratio2>50) {
         gsap.to(hide_img,{
-            duration:.5,
-            ease:'power1.out',
-            height:'100%'
-        })
-        hide_img.classList.add('test');
+            //duration:.5,
+            height:`100%`,
+            onComplete:()=>{
+                hide_img.classList.add('more');
+            }
+        },'>-=.5')
     }
-    if(ratio2 < 90) return;
-    if(hide_img.classList.contains('test')){
-        console.log('gg');
-        gsap.to(hide_img,{
-            duration:1,
-            ease:'power1.out',
-            height:`0%`
-        })
-    }
-    
+
 })
 
 

@@ -282,7 +282,7 @@ a {
 
 
 .new_item_wrap {
-    position: sticky;
+    position: relative;
     z-index: 10;
     top: 0px;
     height: 100vh;
@@ -390,15 +390,17 @@ a {
 
 #best_product {
     position: relative;
-    padding: 6em 5em 0 6em;
+    padding: 4em 1em 0;
     width:100%;
     height:100vh;
+    margin-top: 10em;
     /*background-color: #ebd658;*/
 
 }
 #best_product h1 {
-    position: absolute;
-    font-size: 4.5em;
+    font-size: 3.5em;
+    text-align: center;
+    font-weight: 400;
 }
 
 .prd_info .subject {
@@ -407,16 +409,21 @@ a {
 
 .products_wrap {
     width: 100%;
-    height: calc(100% - 3em);
+    height: calc(100% - 4.5em);
     display: flex;
     position: relative;
     align-items: flex-end;
     justify-content: space-between;
 }
-.products_wrap > div {
+.products_wrap .bestItem_swiper {
     position: relative;
     overflow: hidden;
     width: 68%;
+    padding: 2em 1em 0;
+    background: #fff;
+    border-radius: 10px;
+    border-right: 0.5em solid #fff;
+    border-left: 0.5em solid #fff;
 }
 .products_ul {
     width:3000px;
@@ -460,8 +467,23 @@ a {
     top: 0;
     left: 0;
     height: 0;
-    object-fit: none;
-    object-position: center;
+    width: 100%;
+    background: #000;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../images/PLP_PC_hero_shwry_edit.jpg);
+}
+.best_img .hide.more {
+    height:100% !important;
+}
+.best_img .hide a {
+    color:#fff;
+    opacity: 0;
+}
+.best_img .hide.more a {
+    opacity: 1;
 }
 .best_img img {
     width: 100%;
