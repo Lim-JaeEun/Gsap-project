@@ -52,8 +52,6 @@ function resize(){
     if(isEnd) return;
     drawImage();
 
-
-
 }
 
 function drawImage(){
@@ -144,14 +142,14 @@ function remove_Percent(){
             })
             gsap.to('.arrow_bottom',{
                 opacity:1,
-                //duration:1,
+                duration:1,
                 top:'-25%',
                 ease:'power2.out',
                 onComplete:()=>{
                     //document.querySelector('body').classList.add('main_complete');
                     isEnd = true
                 }
-            },'>+.07')
+            },'>+=.2')
         }
     },500)
     
@@ -285,7 +283,7 @@ const perfumeTL = gsap.timeline({
         end:'+=2000',
         scrub:true,
         pin:true,
-        //anticipatePin:true, 
+        anticipatePin:.3, 
         //markers:true
     }
 
@@ -330,14 +328,13 @@ const bestItem_swiper = new Swiper(".bestItem_swiper",{
    bestSeller_slider.addEventListener('mouseenter',(e)=>{
     setTimeout(() => {
         gsap.to(bestSeller_cursor,{
-            
             opacity:1,
             scale:1.2,
             //ease:'power1.out',
             x:e.clientX,
             y:e.clientY,
         })
-    }, 200);
+    }, 10);
     
     })
     bestSeller_slider.addEventListener('pointermove',movecursor);
@@ -349,11 +346,10 @@ const bestItem_swiper = new Swiper(".bestItem_swiper",{
         });
     }
     bestSeller_slider.addEventListener('mouseleave',()=>{
-        
             gsap.to(bestSeller_cursor,{
                 opacity:0,
                 scale:1,
-                duration:1,
+                //duration:1,
                 ease:'power1.out',
             })
 
@@ -394,7 +390,7 @@ const hide_img = document.querySelector('.hide');
 document.querySelector('.best_img').addEventListener('drag',(e)=>{
     let ratio = Math.round((e.offsetY/best_img.clientHeight)*100);
     let ratio2;
-    let hide_img_height = hide_img.style.height;
+    //let hide_img_height = hide_img.style.height;
     //hide_img.classList.contains('test')==false && 
     if(ratio > 0) {
         ratio2 = ratio;
@@ -414,8 +410,34 @@ document.querySelector('.best_img').addEventListener('drag',(e)=>{
     }
 
 })
+/*전시 텍스트*/
+const collection = gsap.timeline({
+    scrollTrigger: {
+        trigger:'#collection',
+        start:'top 60%',
+        end:'top bottom',
+        //scrub:1,
+        toggleActions: "play none reverse none", // 진입, 떠났을때, 다시돌아와서엔터에 들어왔을때, 떠났을때
+        markers:true
+    }
+});
 
+//gsap.utils.toArray('.explain_wrap span').forEach(el =>{
+    collection.to('.explain_wrap span',{
+        y:'0%',
+        //duration:1,
+      
+    })
+//})
 
+/*전시 비디오*/
+collection.to('.video_wrap > video',{
+    //height:'100%',
+    y:'0%',
+    duration:1,
+    ease:'power1.out'
+
+},'>+.1')
 
 document.querySelector('.hamburger-lines').addEventListener('click',()=>{
     timeline01.restart();

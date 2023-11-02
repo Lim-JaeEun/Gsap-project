@@ -71,6 +71,7 @@ a {
     font-family: 'Hahmlet', sans-serif;
     font-weight: 400;
     text-decoration: none;
+    color: #000
 }
 /*reset css END*/
 
@@ -83,6 +84,7 @@ a {
     width: 100%;
     padding: 1em;
     z-index: 99;
+    background-color: #ffffff47;;
    /* background: #ffffff4d;
      pointer-events: none; */
 }
@@ -427,7 +429,7 @@ a {
     transition-timing-function: linear !important;
 }
 .product {
-    width: 500px;
+    width: 430px;
     height: 100%;
     display: inline-block;
     padding: 0.3em;
@@ -472,7 +474,7 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url(../images/PLP_PC_hero_shwry_edit.jpg);
+    background-image: url('../images/PLP_PC_hero_shwry_edit.jpg');
 }
 .best_img .hide.more {
     height:100% !important;
@@ -528,10 +530,78 @@ a {
     gap: 0.5em;
 }
 .explain_wrap .title {
+    position: relative;
     font-size: 5em;
     font-weight: 500;
+    overflow: hidden;
+    margin-bottom:.3em;
+}
+.explain_wrap span {
+    transform: translateY(100%);
+    display: block;
 }
 .explain_wrap .sub_title {
+    position: relative;
     font-size: 3.5em;
     color: #474747;
+    height: 1.2em;
+    overflow: hidden;
+}
+.video_wrap {
+    position: relative;
+    width: 50%;
+    height:532px;
+    overflow: hidden;
+}
+.video_wrap video {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateY(100%);
+    object-fit: cover;
+}
+
+.schedule_warp { 
+    background: #fff;
+    width: 90%;
+    padding: 3em 2em;
+    border-radius: 0px 30px 0 0;
+}
+.schedule_warp > .title {
+    font-size: 2.2em;
+    font-weight: 400;
+    margin-bottom: 1.5vw;
+}
+
+.list {
+    width: 100%;
+    border-top:1px solid #b0b0b0;
+    padding: 0.5vw 0 1.7vw
+}
+.info_warp {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.info_warp .place {
+    flex-basis: 250px;
+    letter-spacing: -.5px;
+}
+.info_warp .title {
+    position: relative;
+    flex-basis: 400px;
+    font-weight: 500;
+    font-size: 1.4em;
+    line-height: 1.3;
+
+}
+.info_warp .title .artist {
+    font-size: .65em;
+    display: block;
+    color: #686868;
+    padding-bottom: .5em;
+}
+.info_warp .date {
+    font-size: .95em;
 }
