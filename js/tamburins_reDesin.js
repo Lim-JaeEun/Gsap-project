@@ -26,7 +26,7 @@ window.onload=()=>{
                 left:0,
                 //behavior:'smooth'
             })
-        },500)
+        },50)
 
     }
 }
@@ -186,24 +186,28 @@ ScrollTrigger.create({
 })
 circle.addEventListener('click',(e)=>{
     e.preventDefault();
-    gsap.to(window,{
-        duration:1,
-        scrollTo:linkST.start,
-        overwrite:"auto",
-        onComplete:()=>{
-            document.querySelector('body').classList.add('main_complete');
-        }
-    })  
-    gsap.to('.arrow_bottom',{
-       // position:'sticky',
-        top:'0%',
-        left:'0%',
-        width:circle_wrap_width,
-        height:circle_wrap_width,
-        zIndex:1,
-        duration:.8,
-        ease:'power1.out',
-    })
+    //setTimeout(() => {
+        gsap.to(window,{
+            duration:1,
+            scrollTo:linkST.start,
+            overwrite:"auto",
+            //delay:.2,
+            onComplete:()=>{
+                document.querySelector('body').classList.add('main_complete');
+            }
+        })  
+        gsap.to('.arrow_bottom',{
+           // position:'sticky',
+            left:'0%',
+            top:'0%',
+            width:circle_wrap_width,
+            height:circle_wrap_width,
+            zIndex:1,
+            delay:.5,
+            ease:'power1.out',
+        })
+    //},10)
+  
     document.querySelectorAll('.circle_text span').forEach(el=>{
         gsap.to(el,{
             duration:.8,
@@ -330,11 +334,12 @@ const bestItem_swiper = new Swiper(".bestItem_swiper",{
         gsap.to(bestSeller_cursor,{
             opacity:1,
             scale:1.2,
+            duration:1,
             //ease:'power1.out',
             x:e.clientX,
             y:e.clientY,
         })
-    }, 10);
+    }, 100);
     
     })
     bestSeller_slider.addEventListener('pointermove',movecursor);
@@ -349,7 +354,7 @@ const bestItem_swiper = new Swiper(".bestItem_swiper",{
             gsap.to(bestSeller_cursor,{
                 opacity:0,
                 scale:1,
-                //duration:1,
+                duration:1,
                 ease:'power1.out',
             })
 
@@ -414,7 +419,7 @@ document.querySelector('.best_img').addEventListener('drag',(e)=>{
 const collection = gsap.timeline({
     scrollTrigger: {
         trigger:'#collection',
-        start:'top 60%',
+        start:'10% 80%',
         end:'top bottom',
         //scrub:1,
         toggleActions: "play none reverse none", // 진입, 떠났을때, 다시돌아와서엔터에 들어왔을때, 떠났을때
@@ -423,21 +428,43 @@ const collection = gsap.timeline({
 });
 
 //gsap.utils.toArray('.explain_wrap span').forEach(el =>{
-    collection.to('.explain_wrap span',{
-        y:'0%',
-        //duration:1,
-      
-    })
+collection.to('.explain_wrap span',{
+    y:'0%',
+    duration:1,
+},0)
 //})
 
 /*전시 비디오*/
 collection.to('.video_wrap > video',{
     //height:'100%',
     y:'0%',
-    duration:1,
+    duration:2,  
     ease:'power1.out'
 
-},'>+.1')
+},0)
+
+const list_img = document.querySelectorAll('.schedule .list');
+list_img.forEach((el,idx) =>{
+    //let index = el.children('.list_img')
+    //console.log(el.childNodes[1]);
+    el.addEventListener('mousemove',(e)=>{
+            gsap.to(el.childNodes[1],{
+                x:e.x,
+                y:e.offsetY,
+                autoAlpha: 1,
+                //ease: 'power2.in'
+                //paused: true,
+            })
+
+    })
+    el.addEventListener('mouseleave',()=>{
+        gsap.to(el.childNodes[1],{
+            autoAlpha:0,
+        })
+    })
+})
+
+
 
 document.querySelector('.hamburger-lines').addEventListener('click',()=>{
     timeline01.restart();

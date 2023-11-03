@@ -571,13 +571,23 @@ a {
 .schedule_warp > .title {
     font-size: 2.2em;
     font-weight: 400;
-    margin-bottom: 1.5vw;
+    margin-bottom: 2vw;
 }
 
 .list {
+    position: relative;
     width: 100%;
     border-top:1px solid #b0b0b0;
-    padding: 0.5vw 0 1.7vw
+    padding: 0.5vw 0 1.7vw;
+}
+.list_img {
+    position: absolute;
+    width: 250px;
+    top:-50%;
+    opacity: 0;
+}
+.list_img img {
+    width:100%;
 }
 .info_warp {
     display: flex;
