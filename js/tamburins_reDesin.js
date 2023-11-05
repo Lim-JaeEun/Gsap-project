@@ -15,7 +15,7 @@ let isEnd = false;
 let circle_wrap_width = document.querySelector('canvas').clientHeight;
 let mainChk = document.querySelector('body').classList.contains('main_complete');
 
-const bestSeller_slider = document.querySelector('.products_wrap>div');
+const bestSeller_slider = document.querySelector('.bestItem_swiper');
 const bestSeller_cursor = document.querySelector('.cursor');
 window.onload=()=>{
     
@@ -149,7 +149,7 @@ function remove_Percent(){
                     //document.querySelector('body').classList.add('main_complete');
                     isEnd = true
                 }
-            },'>+=.2')
+            })
         }
     },500)
     
@@ -170,7 +170,6 @@ function circle_infinite(){
 const next_section_Btn = document.querySelector(".next_section_btn > a");
 
 const elem = document.querySelector(next_section_Btn.getAttribute("href"));
-//let circle_wrap_width = '80%';
 
 const regex = /[^0-9]/g;
 //const vw_to_px = parseInt(circle_wrap_width.replace(regex,''));
@@ -187,15 +186,7 @@ ScrollTrigger.create({
 circle.addEventListener('click',(e)=>{
     e.preventDefault();
     //setTimeout(() => {
-        gsap.to(window,{
-            duration:1,
-            scrollTo:linkST.start,
-            overwrite:"auto",
-            //delay:.2,
-            onComplete:()=>{
-                document.querySelector('body').classList.add('main_complete');
-            }
-        })  
+
         gsap.to('.arrow_bottom',{
            // position:'sticky',
             left:'0%',
@@ -203,9 +194,19 @@ circle.addEventListener('click',(e)=>{
             width:circle_wrap_width,
             height:circle_wrap_width,
             zIndex:1,
-            delay:.5,
+            //delay:.5,
             ease:'power1.out',
+            duration:1,
         })
+        gsap.to(window,{
+            duration:1.3,
+            scrollTo:linkST.start,
+            overwrite:"auto",
+            //delay:.2,
+            onComplete:()=>{
+                document.querySelector('body').classList.add('main_complete');
+            }
+        })  
     //},10)
   
     document.querySelectorAll('.circle_text span').forEach(el=>{
@@ -307,11 +308,6 @@ perfumeTL.to('.item_img',{
 /*Best seller 마우스커서변형*/
 const bestItem_swiper = new Swiper(".bestItem_swiper",{
 	slidesPerView: 'auto',
-	/*loopedSlides: 2,
-	autoplay: {
-		delay: 0,
-		disableOnInteraction: false,
-	},*/
 	loop: true,
 	touchRatio: 1.2,
 	spaceBetween: 10,
@@ -332,6 +328,7 @@ const bestItem_swiper = new Swiper(".bestItem_swiper",{
    bestSeller_slider.addEventListener('mouseenter',(e)=>{
     setTimeout(() => {
         gsap.to(bestSeller_cursor,{
+            display:'block',
             opacity:1,
             scale:1.2,
             duration:1,
@@ -354,8 +351,8 @@ const bestItem_swiper = new Swiper(".bestItem_swiper",{
             gsap.to(bestSeller_cursor,{
                 opacity:0,
                 scale:1,
-                duration:1,
-                ease:'power1.out',
+                display:'none'
+                //ease:'power1.out',
             })
 
     })
@@ -444,27 +441,51 @@ collection.to('.video_wrap > video',{
 },0)
 
 const list_img = document.querySelectorAll('.schedule .list');
+
 list_img.forEach((el,idx) =>{
+    
     //let index = el.children('.list_img')
     //console.log(el.childNodes[1]);
+    //gsap.set(".list_img", {xPercent: -50, yPercent: -50});
+    const xSet = gsap.quickSetter(el.childNodes[1], 'x', 'px');
     el.addEventListener('mousemove',(e)=>{
             gsap.to(el.childNodes[1],{
-                x:e.x,
-                y:e.offsetY,
-                autoAlpha: 1,
-                //ease: 'power2.in'
-                //paused: true,
+                xPercent:xSet(e.x),
+                yPercent:e.offsetY,
+                opacity: 1,
             })
 
     })
     el.addEventListener('mouseleave',()=>{
         gsap.to(el.childNodes[1],{
-            autoAlpha:0,
+            opacity:0,
         })
     })
 })
+const elHarf = .5;
+const banner_wrap = document.querySelector('.banner');
+const banner_btn = document.querySelector('.info_btn')
+banner_wrap.addEventListener('mousemove',(e)=>{
+    let Nx = (e.offsetX/banner_wrap.clientWidth - elHarf) * 200;
+    let Ny = (e.offsetY/banner_wrap.clientHeight - elHarf) * 200;
 
+    gsap.to(banner_btn,{
+        duration: 2,
+        x:Nx,
+        y:Ny,
+        ease: "slow(0.15, 0.9)"
+    })
 
+})
+banner_wrap.addEventListener('mouseout',()=>{
+
+    gsap.to(banner_btn,{
+        duration:2,
+        ease: "slow(0.15, 0.9)",
+        x:0,
+        y:0
+    })
+})
 
 document.querySelector('.hamburger-lines').addEventListener('click',()=>{
     timeline01.restart();
