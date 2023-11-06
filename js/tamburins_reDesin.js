@@ -324,7 +324,23 @@ const bestItem_swiper = new Swiper(".bestItem_swiper",{
 })
 //(function () {
 
-   
+const bestSeller_cursor_x = gsap.quickSetter(bestSeller_cursor, 'x', 'px');
+const bestSeller_cursor_y = gsap.quickSetter(bestSeller_cursor, 'y', 'px');
+bestSeller_slider.addEventListener('pointermove',(e)=>{
+    gsap.to(bestSeller_cursor,{
+        x:bestSeller_cursor_x(e.x),
+        y:bestSeller_cursor_y(e.y),
+        opacity: 1,
+        scale:1.2,
+    })
+
+})
+bestSeller_slider.addEventListener('mouseleave',()=>{
+    gsap.to(bestSeller_cursor,{
+        opacity:0,
+    })
+})
+   /*
    bestSeller_slider.addEventListener('mouseenter',(e)=>{
     setTimeout(() => {
         gsap.to(bestSeller_cursor,{
@@ -356,6 +372,10 @@ const bestItem_swiper = new Swiper(".bestItem_swiper",{
             })
 
     })
+*/
+
+
+
 
   /*  bestSeller_slider.addEventListener('mouseenter',(e)=>{
         gsap.set(bestSeller_cursor,{
@@ -486,6 +506,9 @@ banner_wrap.addEventListener('mouseout',()=>{
         y:0
     })
 })
+
+
+
 
 document.querySelector('.hamburger-lines').addEventListener('click',()=>{
     timeline01.restart();

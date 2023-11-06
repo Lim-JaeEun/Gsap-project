@@ -447,6 +447,7 @@ a {
 }*/
 .product a {
     color:#000;
+    cursor: none;
 }
 .prd_img {
     width:100%;
