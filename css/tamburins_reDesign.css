@@ -22,7 +22,7 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, 
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+time, mark, audio, video, button {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -631,9 +631,10 @@ a {
     position: relative;
     width: 100%;
     height: 0;
-    padding-bottom: 56.26%;
+    padding-bottom: 50%;
     overflow: hidden;
     border-radius: 30px;
+   
 }
 .banner img {
     position: absolute;
@@ -642,6 +643,7 @@ a {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: .5s;
 }
 
 .info_btn {
@@ -649,10 +651,61 @@ a {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #fff;
+    background: #ffffffb8;
     color: #000;
+    font-weight: bold;
     border: 0;
     padding: 10px 20px;
-    font-size: 1.2em;
+    font-size: 1.7em;
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    cursor: pointer;
+}
+
+.banner:hover img {
+    transform: scale(1.05);
+  
+}
+footer{
+    position: relative;
+    width:100%;
+    padding: 0 .5em;
+}
+.footer_top{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    align-items: flex-end;
+    border-bottom: 1px solid #5d5d5d;
+    padding-bottom: 0.5em;
+}
+
+.sns > li {
+    float:left;
+    margin-left: .8em;
+    transition: .3s;
+}
+.sns > li:hover {
+    transform: translateY(-5px);
+
+}
+.policy_btn {
+    position: absolute;
+    width: 2.5em;
+    left: 50%;
+    transform: translate(50%,-50%) rotate(270deg);
+    border-radius: 50%;
+    cursor: pointer;
+}
+.policy_btn img {
+    width:100%;
+}
+.policy_wrap {
+    text-align: center;
+    /*padding: 4em 5em 1em;*/
+    font-size: .95em;
+    height: 0;
+    overflow: hidden;
+}
+.company-info {
+    margin: 4em 5em 1em;
 }

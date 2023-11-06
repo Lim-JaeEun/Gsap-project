@@ -440,7 +440,7 @@ const collection = gsap.timeline({
         end:'top bottom',
         //scrub:1,
         toggleActions: "play none reverse none", // 진입, 떠났을때, 다시돌아와서엔터에 들어왔을때, 떠났을때
-        markers:true
+        //markers:true
     }
 });
 
@@ -482,15 +482,17 @@ list_img.forEach((el,idx) =>{
         })
     })
 })
+
+/*banner 이동버튼*/
 const elHarf = .5;
 const banner_wrap = document.querySelector('.banner');
-const banner_btn = document.querySelector('.info_btn')
+const banner_btn = document.querySelector('.info_btn');
+
 banner_wrap.addEventListener('mousemove',(e)=>{
     let Nx = (e.offsetX/banner_wrap.clientWidth - elHarf) * 200;
     let Ny = (e.offsetY/banner_wrap.clientHeight - elHarf) * 200;
-
     gsap.to(banner_btn,{
-        duration: 2,
+        duration: 1,
         x:Nx,
         y:Ny,
         ease: "slow(0.15, 0.9)"
@@ -498,16 +500,13 @@ banner_wrap.addEventListener('mousemove',(e)=>{
 
 })
 banner_wrap.addEventListener('mouseout',()=>{
-
     gsap.to(banner_btn,{
-        duration:2,
+        duration:1,
         ease: "slow(0.15, 0.9)",
         x:0,
-        y:0
+        y:0,
     })
 })
-
-
 
 
 document.querySelector('.hamburger-lines').addEventListener('click',()=>{
@@ -517,4 +516,24 @@ window.addEventListener('scroll',()=>{
     timeline01.timeScale(1.5);
     timeline01.reverse();
 })
+
+
+const policy_btn = document.querySelector('.policy_btn');
+policy_btn.addEventListener('click',()=>{
+    if(policy_btn.classList.contains('open') === false) {
+        policy_btn.classList.add('open') 
+        gsap.to('.policy_wrap',{
+            ease:'power1.out',
+            height:'auto'
+        })
+
+    } else {
+        policy_btn.classList.remove('open');
+        gsap.to('.policy_wrap',{
+            height:0
+        })
+    }
+
+})
+
 
