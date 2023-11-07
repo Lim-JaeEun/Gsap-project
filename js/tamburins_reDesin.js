@@ -408,30 +408,37 @@ bestSeller_slider.addEventListener('mouseleave',()=>{
 //})(); 
 const best_img = document.querySelector('.best_img');
 const hide_img = document.querySelector('.hide');
-
+let ratio;
+let ratio2;
 document.querySelector('.best_img').addEventListener('drag',(e)=>{
-    let ratio = Math.round((e.offsetY/best_img.clientHeight)*100);
-    let ratio2;
-    //let hide_img_height = hide_img.style.height;
-    //hide_img.classList.contains('test')==false && 
+    ratio = Math.round((e.offsetY/best_img.clientHeight)*100);
     if(ratio > 0) {
         ratio2 = ratio;
     } 
     gsap.to(hide_img,{
         //duration:.5,
+        ease:'power1.out',
         height:`${ratio2}%`
     })
-    if(ratio2>30) {
-        gsap.to(hide_img,{
-            //duration:.5,
-            height:`100%`,
-            onComplete:()=>{
-                hide_img.classList.add('more');
-            }
-        },'>-=.5')
-    }
 
 })
+
+document.querySelector('.best_img').addEventListener('dragleave',(e)=>{
+    if(ratio2 < 50) {
+        gsap.to(hide_img,{
+            //duration:.5,
+            ease:'power1.out',
+            height:0
+        })
+    }else {
+        gsap.to(hide_img,{
+            //duration:.5,
+            ease:'power1.out',
+            height:'100%'
+        }) 
+    }
+})
+
 /*전시 텍스트*/
 const collection = gsap.timeline({
     scrollTrigger: {
@@ -517,23 +524,15 @@ window.addEventListener('scroll',()=>{
     timeline01.reverse();
 })
 
-
+/*
+const bottom = document.querySelector('#bottom')
 const policy_btn = document.querySelector('.policy_btn');
 policy_btn.addEventListener('click',()=>{
-    if(policy_btn.classList.contains('open') === false) {
-        policy_btn.classList.add('open') 
-        gsap.to('.policy_wrap',{
-            ease:'power1.out',
-            height:'auto'
-        })
-
-    } else {
-        policy_btn.classList.remove('open');
-        gsap.to('.policy_wrap',{
-            height:0
-        })
-    }
-
+    gsap.to('.policy_wrap',{
+        ease:'power1.out',
+        height:'auto',
+        scrollTo:bottom.start,
+    })
 })
-
+*/
 

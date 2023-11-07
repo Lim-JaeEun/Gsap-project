@@ -201,6 +201,7 @@ a {
     /*top: 100%;
     width: 95vw;
     height: 95vw;*/
+    user-select:none;
     border-radius: 100%;
     padding: 0.5em;
     text-align: center;
@@ -253,6 +254,7 @@ a {
     left: 0;
     padding: 1em;
     border-radius: 100vw;
+   
 }
 
 .arrow span {
@@ -300,7 +302,7 @@ a {
     position: relative;
     z-index: 3;
     width: 100%;
-    min-width: 1400px;
+    /*min-width: 1400px;*/
     gap: 1.3em;
     height: 100%;
     align-items: center;
@@ -482,7 +484,6 @@ a {
 }
 .best_img .hide a {
     color:#fff;
-    opacity: 0;
 }
 .best_img .hide.more a {
     opacity: 1;
@@ -653,7 +654,6 @@ a {
     transform: translate(-50%, -50%);
     background: #ffffffb8;
     color: #000;
-    font-weight: bold;
     border: 0;
     padding: 10px 20px;
     font-size: 1.7em;
@@ -702,10 +702,9 @@ footer{
 .policy_wrap {
     text-align: center;
     /*padding: 4em 5em 1em;*/
-    font-size: .95em;
-    height: 0;
+    font-size: .85em;
     overflow: hidden;
 }
 .company-info {
-    margin: 4em 5em 1em;
+    padding: 4em 5em 1em;
 }
