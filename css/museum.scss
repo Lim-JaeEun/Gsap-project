@@ -1,0 +1,45 @@
+body {
+    position: relative;
+}
+.blind {
+    position: absolute;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    clip: rect(0,0,0,0);
+    margin: -1px;
+}
+header {
+    position: fixed;
+    top: 0px;
+    z-index: 100;
+    width: 100%;
+    padding: 1em 2em;
+    .logo{
+        width:80px; 
+    }
+    .nav_btn {
+        position: absolute;
+        left:50%;
+        top:50%;
+        display: flex;
+        transform: translate(-50%,-50%);
+        flex-direction: column;  
+        align-items: center;
+        padding: 1.2em; 
+        .line {
+            height: .5px;
+            background-color: #000;
+            &:first-child {
+                width:20px;
+            }
+            &:last-child{
+                width:17px;
+                margin-top: 7px;
+            }
+        }
+    }
+    .menu_wrap {
+        display: none;
+    }
+} 

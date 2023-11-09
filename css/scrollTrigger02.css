@@ -342,13 +342,13 @@ h1 {
     width: 95%;
     background-color:#ffffff8f;
    /* margin-bottom:200px;*/
-    border-radius: 4vw 4vw 0 0;
     /*background: linear-gradient(180deg, rgba(255,255,255,0.3981967787114846) 0%, rgba(212,206,197,1) 50%, rgba(251,251,251,0.11808473389355745) 100%);
     
     background: #d4cec5cc;*/
     overflow: hidden;
    /* height: 1700px;*/
     height: 0;
+    border-radius: 30px;
      /* background-color: var(--main-dark-color);
     color: var(--main-light-color); 
    display: none; */
@@ -357,9 +357,10 @@ h1 {
 }
 
 .interview_title {
-    font-size:.5em;
+    font-size:.45em;
     text-align: center;
     margin: 0;
+    font-weight: 100;
 }
 
 .interview_items {
@@ -369,7 +370,7 @@ h1 {
     justify-content: space-between;
     flex-direction: row;
     align-items: flex-start;
-    padding: 0 0.3em;
+    padding: 0 0.7em;
     gap: 0.2em;
 }
 .items_wrap {
@@ -647,8 +648,8 @@ h1 {
     width:38%;
 }
 .img--height {
-    height: 450px;
-    /*padding-top: 58%;*/
+     /*height: 450px;*/
+   padding-top: 58%;
 }
 
 .overlap_image {
