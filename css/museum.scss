@@ -40,6 +40,135 @@ header {
         }
     }
     .menu_wrap {
-        display: none;
+        width: 100%;
+        /*height: 100vh;*/
+        height: 0;
+        position: absolute;
+        top: -6.5rem;
+        left: 0;
+        background: #fff;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding: 4rem 2.5em 2.5em;
+        border-radius: 0 0 50% 50%;
+        overflow: hidden;
+        .menu_banner {
+            width: 40%;
+            height: 45%;
+            align-self: flex-start;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        ul {
+            line-height: 1.3;
+            .menu_list {
+                position: relative;
+                overflow: hidden;
+                font-size: 3rem;
+                font-weight: bold;
+                a {
+                    display: inline-block;
+                    &::after {
+                        content: "/";
+                        display: inline-block;
+                        padding-left: 0.1em;
+                        font-weight: 400;
+                        color: #a7a7a7;
+                    }
+                }
+                &:hover {
+                    a {
+                        &::after{
+                            transform: rotate(343deg);
+                        }
+                    }
+                }
+
+            }
+        }
+        .nav_close_btn {
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            top: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            .line {
+                width: 34px;
+                height: 1px;
+                background: #000;
+                transition: .3s;
+                &:first-child {
+                    transform: rotate(45deg);
+                }
+                &:last-child {
+                    transform: rotate(-45deg);
+                }
+
+            }
+            &:hover {
+                .line {
+                    transform:rotate(0deg);
+                }
+            }
+        }
     }
 } 
+
+.contents {
+    .sc_visual {
+        .visual_wrap {
+            background: #00000030;
+            position: relative;
+            height: 100vh;
+            .visual_text {
+                display: grid;
+                grid-template-columns: repeat(50,2%);
+                grid-template-rows: repeat(50,2%);
+                width: 100%;
+                height: 100%;
+                .ani_text_svg {
+                    position: relative;
+                    &:nth-child(1) {
+                        grid-area: 7 / 1 / 18 / 6;
+                    }
+                    &:nth-child(2) {
+                        grid-area: 12 / 9 / 23 / 14;
+
+                    }
+                    &:nth-child(3) {
+                        grid-area: 17 / 16 / 28 / 21;
+
+                    }
+                    &:nth-child(4) {
+                        grid-area: 24/24/35/29;
+
+                    }
+                    &:nth-child(5) {
+                        grid-area: 29 / 32 / 40 / 37;
+
+                    }
+                    &:nth-child(6) {
+                        grid-area: 34 / 39 / 45 / 44;
+
+                    }
+                    &:nth-child(7) {
+                        grid-area: 40 / 45 / 51 / 50;
+
+                    }
+                    
+                    img {
+                        width: 100%;
+                    }
+                }
+
+
+            }
+        }
+    }
+}
