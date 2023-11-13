@@ -17,21 +17,58 @@ nav_tl.to('.menu_wrap',{
     height:'100vh',
     duration:.8,
     top:0,
-})
-nav_tl.to('.menu_wrap',{ 
+    ease: "power2.out",
+},'a')
+/*nav_tl.to('.menu_wrap',{ 
     borderRadius:0,
     duration:1,
-},'a-=.5')
+},'a-=.5')*/
 nav_tl.fromTo('.menu_list',
     { opacity: 0, y:'100%'}, 
     { opacity: 1, stagger:.5, y:0}
-,'a')
+,'a+=.7')
 document.querySelector('.nav_btn').addEventListener('click',()=>{
     nav_tl.timeScale(1);
     nav_tl.restart();
 })
 document.querySelector('.nav_close_btn').addEventListener('click',()=>{
 
-    nav_tl.timeScale(2.5);
+    nav_tl.timeScale(2);
     nav_tl.reverse();
 })
+
+
+/*loreal_leader_img*/
+
+const intro_tl = gsap.timeline({
+    scrollTrigger: {
+        trigger:'.sc_intro',
+        start:'top top',
+        pin: true,
+        pinSpacing:true,
+        toggleActions: "restart pause reverse pause"// 진입, 떠났을때, 다시돌아와서엔터에 들어왔을때, 떠났을때
+    }
+})
+intro_tl.to('.loreal_leader_img',
+    {
+        y:'0%',
+        duration:1.5,
+        ease: "power1.in",
+    },'b')
+
+const intro_text = document.querySelector('.intro_text');
+const toText = intro_text.innerText;
+let newText = '';
+toText.split('.').forEach(el=>{
+    newText += `<span aria-hidden='true'>${el+'.'}</span>`; el+'.';
+    intro_text.innerHTML = newText;
+})
+
+intro_tl.to('.intro_text span',{
+    opacity:1,
+    y:'25px',
+    stagger:.5,
+    ease: "power1.out",
+    //duration:1.5
+},'b+=.5')
+

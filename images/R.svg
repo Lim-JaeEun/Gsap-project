@@ -1,0 +1,12 @@
+<svg width="500" height="530" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <title id="header-logo-title">L&#x27;Oréal Groupe</title>
+ <defs>
+  <clipPath id="clip0">
+   <rect fill="white" height="36" id="svg_1" width="137"/>
+  </clipPath>
+ </defs>
+ <g class="layer">
+  <title>Layer 1</title>
+  <path d="m349.41,304.22c108.83,-29.55 119.4,-112.19 118.92,-141.74c-6.49,-86.49 -63.66,-140.06 -166.49,-140.06l-299.34,0l0,484.33l68.23,0l0,-203.25l194.84,0l143.43,203.25l86.01,0c0,0 -103.06,-136.7 -145.59,-202.53l0,0zm-56.94,-57.9l-221.75,0l0,-166.49l229.43,0c52.85,0 82.64,25.23 93.45,57.18c3.12,11.53 3.84,23.78 2.4,36.04c-1.68,12.01 -5.53,23.54 -11.77,34.11c-18.98,32.43 -55.5,39.16 -91.77,39.16" fill="#ffffff" id="svg_8"/>
+ </g>
+</svg>
