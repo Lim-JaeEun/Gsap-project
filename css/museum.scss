@@ -52,8 +52,8 @@ header {
         justify-content: space-between;
         align-items: flex-end;
         padding: 4rem 2.5em 2.5em;
-        border-bottom: 10px solid #cdc4ba;
-        /*border-radius: 0 0 50% 50%;*/
+        /*border-bottom: 10px solid #cdc4ba;
+        border-radius: 0 0 50% 50%;*/
         overflow: hidden;
         .menu_banner {
             width: 40%;
@@ -122,6 +122,19 @@ header {
 } 
 
 .contents {
+    position: relative;
+    .blackout {
+        background: #000;
+        pointer-events: none;
+        position: relative;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        opacity: 1;
+    }
+
     .sc_visual {
         width:100%;
         
@@ -189,6 +202,11 @@ header {
     }
     .sc_intro {
         width: 100%;
+        // position: relative;
+        position: sticky;
+        top: 0;
+        z-index: 3;
+        background: #fff;
         .intro_wrap {
             position: relative;
             display: flex;
@@ -223,7 +241,7 @@ header {
                 width: 430px;
                 position: absolute;
                 right: 7%; 
-                top: 6rem;
+                top: 6%;
                 .height_img {
                     position: relative;
                     padding-bottom: 132%;
@@ -242,6 +260,50 @@ header {
                     }
                 } 
             }
+        }
+    }
+    .sc_story {
+        height: 200vh;
+        background: #fff;
+        position: relative;
+        /*top: 0;*/
+        width: 100%;
+        font-size: 10rem;
+        text-align: center;
+
+
+
+        .hori_div {
+            display: flex;
+            height: 100vh;
+            width: 100%;
+            justify-content: space-between;
+            
+            .text {
+                writing-mode: vertical-lr;
+                text-orientation: upright;
+                font-size: 8rem;
+                font-weight: bold;
+                letter-spacing: -3rem;
+                text-transform: uppercase;
+                width: 25%;
+                text-align: center;
+            }
+            .hori_zone {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                width: 65%;
+                align-items: center;
+                background: #000;
+                .subject {
+                    font-size: 1.5rem;
+                    text-align: left;
+                    color: #fff;
+                    width: 50%;
+                }
+            }
+
         }
     }
 } 

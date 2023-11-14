@@ -44,17 +44,28 @@ const intro_tl = gsap.timeline({
     scrollTrigger: {
         trigger:'.sc_intro',
         start:'top top',
-        pin: true,
-        pinSpacing:true,
-        toggleActions: "restart pause reverse pause"// 진입, 떠났을때, 다시돌아와서엔터에 들어왔을때, 떠났을때
-    }
+        end:'bottom top',
+        //pin:true,
+        //pinSpacing:true,
+        scrub:2,
+        //markers:true,
+        //toggleActions: "restart pause reverse pause"// 진입, 떠났을때, 다시돌아와서엔터에 들어왔을때, 떠났을때
+    },
 })
-intro_tl.to('.loreal_leader_img',
-    {
-        y:'0%',
-        duration:1.5,
-        ease: "power1.in",
-    },'b')
+/*
+intro_tl.to('.sc_intro',{
+    y:'-100%'
+},'b')
+intro_tl.to('.blackout',{
+    opacity:'0'
+},'b')
+*/
+
+intro_tl.to('.loreal_leader_img',{
+    y:'0%',
+    duration:3,
+    ease: "power1.in",
+},'b')
 
 const intro_text = document.querySelector('.intro_text');
 const toText = intro_text.innerText;
@@ -67,8 +78,33 @@ toText.split('.').forEach(el=>{
 intro_tl.to('.intro_text span',{
     opacity:1,
     y:'25px',
-    stagger:.5,
+    stagger:1,
     ease: "power1.out",
     //duration:1.5
+    onComplete:()=>{
+        document.querySelector('.blackout').style.position = 'absolute';
+
+    }
 },'b+=.5')
+intro_tl.to('.sc_intro',{
+    y:'-100%',
+    duration:5
+},'c')
+intro_tl.to('.blackout',{
+    opacity:0,
+    duration:5,
+},'c')
+
+let serviceslide = document.querySelectorAll('.pos_absolute');
+gsap.to('.sc_story',{
+    scrollTrigger: {
+        trigger:'.sc_story',
+        start:'top top',
+        end:'500%',
+        pin:true,
+        //pinSpacing:true,
+        scrub:2,
+        markers:true,
+    },
+})
 
