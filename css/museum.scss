@@ -270,41 +270,62 @@ header {
         width: 100%;
         font-size: 10rem;
         text-align: center;
-
-
-
-        .hori_div {
+        .hori_wrap {
+            position: relative;
             display: flex;
-            height: 100vh;
-            width: 100%;
             justify-content: space-between;
-            
-            .text {
-                writing-mode: vertical-lr;
-                text-orientation: upright;
-                font-size: 8rem;
-                font-weight: bold;
-                letter-spacing: -3rem;
-                text-transform: uppercase;
-                width: 25%;
-                text-align: center;
-            }
-            .hori_zone {
+            .left_text_wrap {
                 display: flex;
-                flex-direction: column;
-                justify-content: space-evenly;
-                width: 65%;
                 align-items: center;
-                background: #000;
-                .subject {
-                    font-size: 1.5rem;
-                    text-align: left;
-                    color: #fff;
-                    width: 50%;
+                padding-right: 1.5rem;
+                .big_txt {
+                    font-size: 8rem;
+                    font-weight: bold;
+                    writing-mode: vertical-lr;
+                    /* text-orientation: upright; */
+                    /* letter-spacing: -3rem; */
+                    /* width: 16%; */
+                    align-self: flex-end;
+                    text-transform: uppercase;
+                    transform: rotate(180deg);
                 }
-            }
+                .small_txt {
+                    font-size: 1rem;
+                    width: 14rem;
+                    font-weight: 300;
+                    line-height: 1.6;
+                }
 
+            }
+    
+            .hori_div {
+                position: relative;
+                display: flex;
+                height: 100vh;
+                justify-content: flex-end;
+                width: 100%;
+                .hori_zone {
+                    position: absolute;
+                    top:0;
+                    left:0;
+                    height:100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-evenly;
+                    width: 100%;
+                    align-items: center;
+                    background: #f3f3f3;
+                    .subject {
+                        font-size: 1.5rem;
+                        text-align: left;
+                        color: #aaa;
+                        width: 50%;
+                    }
+                }
+    
+            }
         }
+
     }
 } 
 

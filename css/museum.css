@@ -255,33 +255,55 @@ header .menu_wrap .nav_close_btn:hover .line {
   font-size: 10rem;
   text-align: center;
 }
-.contents .sc_story .hori_div {
+.contents .sc_story .hori_wrap {
+  position: relative;
   display: flex;
-  height: 100vh;
-  width: 100%;
   justify-content: space-between;
 }
-.contents .sc_story .hori_div .text {
-  writing-mode: vertical-lr;
-  text-orientation: upright;
+.contents .sc_story .hori_wrap .left_text_wrap {
+  display: flex;
+  align-items: center;
+  padding-right: 1.5rem;
+}
+.contents .sc_story .hori_wrap .left_text_wrap .big_txt {
   font-size: 8rem;
   font-weight: bold;
-  letter-spacing: -3rem;
+  writing-mode: vertical-lr;
+  /* text-orientation: upright; */
+  /* letter-spacing: -3rem; */
+  /* width: 16%; */
+  align-self: flex-end;
   text-transform: uppercase;
-  width: 25%;
-  text-align: center;
+  transform: rotate(180deg);
 }
-.contents .sc_story .hori_div .hori_zone {
+.contents .sc_story .hori_wrap .left_text_wrap .small_txt {
+  font-size: 1rem;
+  width: 14rem;
+  font-weight: 300;
+  line-height: 1.6;
+}
+.contents .sc_story .hori_wrap .hori_div {
+  position: relative;
+  display: flex;
+  height: 100vh;
+  justify-content: flex-end;
+  width: 100%;
+}
+.contents .sc_story .hori_wrap .hori_div .hori_zone {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  width: 65%;
+  width: 100%;
   align-items: center;
-  background: #000;
+  background: #f3f3f3;
 }
-.contents .sc_story .hori_div .hori_zone .subject {
+.contents .sc_story .hori_wrap .hori_div .hori_zone .subject {
   font-size: 1.5rem;
   text-align: left;
-  color: #fff;
+  color: #aaa;
   width: 50%;
 }/*# sourceMappingURL=museum.css.map */

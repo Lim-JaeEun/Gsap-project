@@ -88,11 +88,13 @@ intro_tl.to('.intro_text span',{
 },'b+=.5')
 intro_tl.to('.sc_intro',{
     y:'-100%',
-    duration:5
+    duration:5,
+    delay:1
 },'c')
 intro_tl.to('.blackout',{
     opacity:0,
     duration:5,
+    delay:1
 },'c')
 
 let serviceslide = document.querySelectorAll('.pos_absolute');
