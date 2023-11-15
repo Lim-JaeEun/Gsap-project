@@ -1,3 +1,13 @@
+const lenis = new Lenis()
+
+lenis.on('scroll', ScrollTrigger.update)
+
+gsap.ticker.add((time)=>{
+  lenis.raf(time * 500)
+})
+
+gsap.ticker.lagSmoothing(0)
+
 //메인
 const main_texts = document.querySelectorAll('.ani_text_svg');
 gsap.from(main_texts,{
@@ -38,12 +48,11 @@ document.querySelector('.nav_close_btn').addEventListener('click',()=>{
 })
 
 
-/*loreal_leader_img*/
-
+/*intro*/
 const intro_tl = gsap.timeline({
     scrollTrigger: {
         trigger:'.sc_intro',
-        start:'top top',
+        start:'top 60%',
         end:'bottom top',
         //pin:true,
         //pinSpacing:true,
@@ -97,16 +106,41 @@ intro_tl.to('.blackout',{
     delay:1
 },'c')
 
-let serviceslide = document.querySelectorAll('.pos_absolute');
-gsap.to('.sc_story',{
-    scrollTrigger: {
+const hori_slide = document.querySelectorAll('.pos_absolute');
+const progress = document.querySelectorAll('.progress')
+
+const hori_slide_tl = gsap.timeline({
+    scrollTrigger:{
         trigger:'.sc_story',
         start:'top top',
-        end:'500%',
+        end:'+=500%',
         pin:true,
-        //pinSpacing:true,
-        scrub:2,
-        markers:true,
+        scrub:1,
     },
+
+
 })
+
+hori_slide_tl.to({},{duration:0.15, delay:.5})
+hori_slide.forEach((el,i)=>{
+    hori_slide_tl.from(el,{
+        xPercent:100,
+        duration:1,
+        stagger:1.15,
+        ease:'power1.in'
+        /*onUpdate: function() {
+            progress[i].style.height = `${Math.round(this.progress()*100)}%`;
+            //document.querySelector('.test').style.width = `${Math.round(this.progress()*100)}%`;
+          }*/
+    })
+
+})
+/*
+hori_slide_tl.from(serviceslide,{
+    xPercent:100,
+    duration:.5,
+    stagger:1.15,
+    
+
+})*/
 
