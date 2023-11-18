@@ -217,7 +217,7 @@ header {
             box-sizing: border-box;
             .tit {
                 font-size: 5rem;
-                font-weight: 500;
+                font-weight: bold;
                 padding: 0 1rem;
                 line-height: 1.3;
                 .sub_tit {
@@ -355,9 +355,55 @@ header {
 
     }
     .sc_banner {
+        position: relative;
         width:100%;
-        height:100vh;
-        background-color: black;
+        .tit {
+            position: sticky;
+            top:0;
+            display: flex;
+            height: 100vh;
+            margin-top: -80vh;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 0 0 3em 3em;
+            z-index: 5;
+
+            p{
+                line-height: .8;
+                font-size: 7.88em;
+                font-weight: bold;
+                letter-spacing: -0.04em;
+            }
+        }
+        .banner_wrap {
+            .list {
+                display: flex;
+                padding-top: 3.6em;
+                flex-direction: row;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                align-items: flex-start;
+                .listItem {
+                    width:31%;
+                    margin-right: 6.25%;
+                    .img_height {
+                        position: relative;
+                        width:100%;
+                        padding-top: 131%;
+                        img {
+                            position: absolute;
+                            top:0;
+                            left:0%;
+                            bottom:0%;
+                            object-fit: cover;
+                            width:100%;
+                            height:100%;
+                            object-position: 89% 50%;
+                        }
+                    }
+                }
+            }
+        }
     }
 } 
 
