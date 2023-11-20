@@ -297,11 +297,15 @@ header .menu_wrap .nav_close_btn:hover .line {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 3vw;
   width: 100%;
   align-items: center;
   background: linear-gradient(90deg, rgb(255, 255, 255) 0%, rgb(251, 251, 251) 30%, rgba(213, 213, 213, 0.6783088235) 100%);
   margin-left: 1px;
+  /*.img_height {
+      @include img_height(130%, )
+  }*/
   /*.progress_wrap {
       width:1px;
       height:50%;
@@ -333,11 +337,24 @@ header .menu_wrap .nav_close_btn:hover .line {
   color: #3b3b3b;
   width: 50%;
 }
+.contents .sc_story .hori_wrap .hori_div .hori_zone .img_height {
+  position: relative;
+  padding-top: 54%;
+  width: 100%;
+}
+.contents .sc_story .hori_wrap .hori_div .hori_zone .img_height img {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  bottom: 0;
+  height: 100%;
+  transform: translateX(-50%);
+}
 .contents .sc_banner {
   position: relative;
   width: 100%;
 }
-.contents .sc_banner .tit {
+.contents .sc_banner > .tit {
   position: sticky;
   top: 0;
   display: flex;
@@ -347,8 +364,10 @@ header .menu_wrap .nav_close_btn:hover .line {
   justify-content: flex-end;
   padding: 0 0 3em 3em;
   z-index: 5;
+  pointer-events: none;
+  mix-blend-mode: overlay;
 }
-.contents .sc_banner .tit p {
+.contents .sc_banner > .tit p {
   line-height: 0.8;
   font-size: 7.88em;
   font-weight: bold;
@@ -363,8 +382,66 @@ header .menu_wrap .nav_close_btn:hover .line {
   align-items: flex-start;
 }
 .contents .sc_banner .banner_wrap .list .listItem {
+  position: relative;
   width: 31%;
-  margin-right: 6.25%;
+  overflow: hidden;
+}
+.contents .sc_banner .banner_wrap .list .listItem:nth-child(2) {
+  width: 32%;
+  margin-top: 17%;
+}
+.contents .sc_banner .banner_wrap .list .listItem:nth-child(2) .img_height img {
+  object-position: 36% 50%;
+}
+.contents .sc_banner .banner_wrap .list .listItem:nth-child(3) {
+  width: 29%;
+  margin-top: 5%;
+}
+.contents .sc_banner .banner_wrap .list .listItem:nth-child(4) {
+  width: 29%;
+  margin-top: -10%;
+  margin-left: 3%;
+}
+.contents .sc_banner .banner_wrap .list .listItem:nth-child(4) .img_height img {
+  object-position: 44% center;
+}
+.contents .sc_banner .banner_wrap .list .listItem:nth-child(5) {
+  width: 50%;
+  margin-top: -4%;
+  margin-right: 3%;
+}
+.contents .sc_banner .banner_wrap .list .listItem:nth-child(5) .img_height {
+  padding-top: 56%;
+}
+.contents .sc_banner .banner_wrap .list .listItem:nth-child(5) .img_height img {
+  object-position: 44% center;
+}
+.contents .sc_banner .banner_wrap .list .listItem:nth-child(5) .list_info .tit {
+  width: 60%;
+  margin: 0 auto;
+}
+.contents .sc_banner .banner_wrap .list .listItem:nth-child(6) {
+  width: 60%;
+  margin-top: 2%;
+  margin-left: 1%;
+}
+.contents .sc_banner .banner_wrap .list .listItem:nth-child(6) .img_height {
+  padding-top: 62%;
+}
+.contents .sc_banner .banner_wrap .list .listItem:nth-child(6) .img_height img {
+  object-position: 42% center;
+}
+.contents .sc_banner .banner_wrap .list .listItem:nth-child(6) .list_info .tit {
+  width: 80%;
+  margin: 0 auto;
+}
+.contents .sc_banner .banner_wrap .list .listItem:nth-child(7) {
+  width: 31%;
+  margin-top: -2%;
+  margin-right: 5%;
+}
+.contents .sc_banner .banner_wrap .list .listItem:nth-child(7) .img_height {
+  padding-top: 126%;
 }
 .contents .sc_banner .banner_wrap .list .listItem .img_height {
   position: relative;
@@ -380,4 +457,31 @@ header .menu_wrap .nav_close_btn:hover .line {
   width: 100%;
   height: 100%;
   object-position: 89% 50%;
+}
+.contents .sc_banner .banner_wrap .list .listItem .list_info {
+  position: absolute;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.5098039216);
+  width: 100%;
+  padding-bottom: 0.5rem;
+  transition: 0.5s;
+  opacity: 0;
+  transform: translateY(100%);
+}
+.contents .sc_banner .banner_wrap .list .listItem .list_info .tit img {
+  width: 100%;
+}
+.contents .sc_banner .banner_wrap .list .listItem .list_info .support {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  width: 95%;
+  margin: 0 auto;
+  font-size: 0.9rem;
+  overflow: hidden;
+  white-space: normal;
+}
+.contents .sc_banner .banner_wrap .list .listItem:hover .list_info {
+  transform: translateY(0%);
+  opacity: 1;
 }/*# sourceMappingURL=museum.css.map */

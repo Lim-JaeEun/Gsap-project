@@ -107,7 +107,7 @@ intro_tl.to('.blackout',{
 },'c')
 
 const hori_slide = document.querySelectorAll('.pos_absolute');
-const progress = document.querySelectorAll('.progress')
+//const progress = document.querySelectorAll('.progress')
 
 const hori_slide_tl = gsap.timeline({
     scrollTrigger:{
@@ -144,3 +144,48 @@ hori_slide_tl.from(serviceslide,{
 
 })*/
 
+/* 글로벌 포트폴리오 배너 */
+/*
+const banner_tl = gsap.timeline({
+    scrollTrigger:{
+        trigger:'.sc_banner',
+        scrub:2,
+        start:'top bottom',
+        end:'bottom top',
+      }
+})
+banner_tl.to('.listItem:nth-child(2n+1)',{
+    y:'-30%',
+    duration:1,
+},0)
+banner_tl.to('.listItem:nth-child(2n)',{
+    y:'-50%',
+    duration:1,
+},1)
+*/
+const image_move01 = document.querySelectorAll('.listItem:nth-child(2n+1)');
+image_move01.forEach(el=>{
+  gsap.to(el,{
+    y:'-30%',
+    duration:1,
+    scrollTrigger:{
+      trigger:el,
+      scrub:2,
+      start:'top bottom',
+      end:'bottom top',
+    }
+  })
+})
+const image_move02 = document.querySelectorAll('.listItem:nth-child(2n)');
+image_move02.forEach(el=>{
+  gsap.to(el,{
+    y:'-50%',
+    duration:1,
+    scrollTrigger:{
+      trigger:el,
+      scrub:2,
+      start:'top bottom',
+      end:'bottom top',
+    }
+  })
+})
