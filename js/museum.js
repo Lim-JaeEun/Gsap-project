@@ -189,3 +189,4 @@ image_move02.forEach(el=>{
     }
   })
 })
+
