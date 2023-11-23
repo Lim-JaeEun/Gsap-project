@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>world_map</title>
+    <style>
+        body{
+            font-family: "Roboto", Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding:0;
+        }
+        #container {
+            margin: 0;
+            border: 1px solid #3a3f4f;
+            border-radius: 2px;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            background: #ebecf4;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .hidden { 
+            display: none; 
+        }
+        div.tooltip {
+            color: #fff; 
+            background: #000; 
+            padding: .5em; 
+            text-shadow: #f5f5f5 0 1px 0;
+            border-radius: 2px; 
+            box-shadow: 0px 0px 2px 0px #a6a6a6; 
+            transition: .3s;
+            opacity: 0.9; 
+            font-weight:100;
+            position: absolute;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="https://d3js.org/d3.geo.projection.v0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-json/2.6.0/jquery.json.min.js" integrity="sha512-QE2PMnVCunVgNeqNsmX6XX8mhHW+OnEhUhAWxlZT0o6GFBJfGRCfJ/Ut3HGnVKAxt8cArm7sEqhq2QdSF0R7VQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://d3js.org/topojson.v1.min.js"></script>
+
+
+    <script>
+        let throttleTimer;
+        function throttle() {
+            window.clearTimeout(throttleTimer);
+            throttleTimer = window.setTimeout(function() {
+               // redraw();
+            }, 200);
+        }
+
+        d3.select(window).on("resize",throttle);
+        let zoom = d3.behavior
+        .zoom()
+        .scaleExtent([1,9])
+        //.on("zoom",move);
+
+        let width = document.querySelector("#container").offsetWidth;
+        let height = width/2;
+
+        let topo, projection, path, svg, g;
+        let graticule = d3.geo.graticule(); // 격자선
+
+        let tooltip = d3.select("#container").append("div").attr("class","tooltip");
+
+   
+
+        const setup = (width,height)=>{
+            // 투영법 (projection) 설정
+            projection = d3.geo.mercator()//웹 지도에서 가장 많이 사용되는 메르카토르(Mercator)도법
+            .translate([(width/2),(height/2)]) 
+            .scale(width/4/Math.PI)
+            //.center([-309,724,725])// 프랑스를 중심으로 기준을 설정
+
+            path = d3.geo.path().projection(projection);
+
+            svg = d3.select("#container").append("svg")
+            .attr("width",width)
+            .attr("height",height)
+            .call(zoom)
+            //.on("click",click)
+            .append("g")
+
+            g = svg.append("g");
+        }
+
+        //json데이터 불러오기
+        d3.json('./js/json/loreal_info.json', (error, root) =>{
+            let world = root.files['world.json'].content
+            world = JSON.parse(world)
+            let countries = topojson.feature(world, world.objects.countries).features;
+
+            topo = countries;
+            draw(topo)
+        })
+        setup(width, height);
+                            
+        const draw=(topo)=>{
+            let country = g.selectAll(".country").data(topo);
+            country.enter().insert("path")
+            .attr("class","country")
+            .attr("d",path)
+            .style("fill","#fff")
+
+            let select_country_dot1 = topo.filter(el=>{
+                let nation_name = el.properties.name;
+                return nation_name==='France' ||nation_name==='Somalia' ||nation_name==='MoZambique' || nation_name==='Indonesia' ||  nation_name==='Japan' ||  nation_name==='United States' || nation_name ==='Mexico' || nation_name === 'Brazil' || nation_name ==='China'  || nation_name ==='Korea, Republic of'  || nation_name ==='India';
+            })
+
+            let dot1 = g.selectAll("circle").data(select_country_dot1)
+            .enter().append("circle")
+            .attr("transform",function(d) { return "translate(" + path.centroid(d) + ")"; })
+            .style("fill", '#6068b9')
+            .attr("r",3)
+
+            let select_country_dot2 = topo.filter(el=>{
+                let nation_name = el.properties.name;
+                console.log(nation_name);
+                return nation_name==='France' || nation_name === 'United States';
+            })
+
+            let dot2 = g.selectAll("circle1").data(select_country_dot2)
+            .enter().append("circle")
+            .attr("transform",function(d) { return "translate(" + path.centroid(d) + ")"; })
+            .style("fill", '#6068b9')
+            .attr("cx",7)
+            .attr("r",3)
+
+            tooltip.classed("hidden", false)
+        }
+
+
+    </script>
+</body>
+
+
+</html>

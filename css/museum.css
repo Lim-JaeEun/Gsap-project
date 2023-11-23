@@ -198,7 +198,7 @@ header .menu_wrap .nav_close_btn:hover .line {
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
-  padding-top: 5.5rem;
+  padding: 5.5rem 0 1rem 0;
   box-sizing: border-box;
 }
 .contents .sc_intro .intro_wrap .tit {
@@ -213,11 +213,10 @@ header .menu_wrap .nav_close_btn:hover .line {
   font-size: 2.5rem;
 }
 .contents .sc_intro .intro_wrap .intro_text {
-  width: 80%;
+  width: 100%;
   font-size: 2rem;
-  padding: 0 1rem;
+  padding: 0 0 1rem;
   font-weight: 300;
-  line-height: 1.2;
 }
 .contents .sc_intro .intro_wrap .intro_text span {
   display: inline-block;
@@ -359,7 +358,7 @@ header .menu_wrap .nav_close_btn:hover .line {
   top: 0;
   display: flex;
   height: 100vh;
-  margin-top: -35vh;
+  margin-top: -70vh;
   /*height: 100vh;
   margin-top: -80vh;*/
   flex-direction: column;
@@ -516,4 +515,49 @@ header .menu_wrap .nav_close_btn:hover .line {
   padding-top: 2rem;
   font-weight: 300;
   text-align: center;
+}
+.contents .sc_video {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contents .sc_video .video_wrap {
+  position: relative;
+  width: 100%;
+  height: 250vh;
+}
+.contents .sc_video .video_wrap .video_sticky {
+  /*.logo_icon {
+      position: absolute;
+      top: -47%;
+      right: -8%;
+      transform: translate(8%, 49%);
+      img {
+          width:100%;
+      }
+  }*/
+  position: sticky;
+  top: 0px;
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+.contents .sc_video .video_wrap .video_sticky .sticky-rect_element {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  width: 35em;
+  height: 35em;
+  justify-content: center;
+  align-items: center;
+  border-radius: 35vw;
+}
+.contents .sc_video .video_wrap .video_sticky .sticky-rect_element video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }/*# sourceMappingURL=museum.css.map */

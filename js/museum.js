@@ -80,7 +80,7 @@ const intro_text = document.querySelector('.intro_text');
 const toText = intro_text.innerText;
 let newText = '';
 toText.split('.').forEach(el=>{
-    newText += `<span aria-hidden='true'>${el+'.'}</span>`; el+'.';
+    newText += `<span aria-hidden='true'>${el+'.'}</span>`;
     intro_text.innerHTML = newText;
 })
 
@@ -179,7 +179,7 @@ image_move01.forEach(el=>{
 const image_move02 = document.querySelectorAll('.listItem:nth-child(2n)');
 image_move02.forEach(el=>{
   gsap.to(el,{
-    y:'-50%',
+    y:'-50%', 
     duration:1,
     scrollTrigger:{
       trigger:el,
@@ -190,3 +190,21 @@ image_move02.forEach(el=>{
   })
 })
 
+
+
+const tl01 = gsap.timeline({
+    scrollTrigger:{
+      trigger:'.sc_video',
+      start:'top top',
+      end:'bottom bottom',
+      scrub:1,
+      //markers:true
+    }
+  })
+  
+  tl01.to('.sticky-rect_element',{
+      width:'90vw',
+      height:'95vh',
+      borderRadius:'85px',
+    }
+  )
