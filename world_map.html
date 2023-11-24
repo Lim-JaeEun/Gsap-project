@@ -12,31 +12,27 @@
         }
         #container {
             margin: 0;
-            border: 1px solid #3a3f4f;
             border-radius: 2px;
-            height: 100vh;
-            width: 100%;
+            height: 100%;
+            width: 1000px;
             overflow: hidden;
             background: #ebecf4;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            margin: 0 auto;
         }
-        .hidden { 
+        /* .hidden { 
             display: none; 
-        }
+        } */
         div.tooltip {
-            color: #fff; 
-            background: #000; 
+            color: #000; 
+            background: #ffffff81; 
             padding: .5em; 
             text-shadow: #f5f5f5 0 1px 0;
             border-radius: 2px; 
             box-shadow: 0px 0px 2px 0px #a6a6a6; 
             transition: .3s;
-            opacity: 0.9; 
             font-weight:100;
             position: absolute;
+            pointer-events: none;
         }
 
     </style>
@@ -56,7 +52,7 @@
         function throttle() {
             window.clearTimeout(throttleTimer);
             throttleTimer = window.setTimeout(function() {
-               // redraw();
+               redraw();
             }, 200);
         }
 
@@ -72,15 +68,15 @@
         let topo, projection, path, svg, g;
         let graticule = d3.geo.graticule(); // 격자선
 
-        let tooltip = d3.select("#container").append("div").attr("class","tooltip");
+        
 
    
 
         const setup = (width,height)=>{
             // 투영법 (projection) 설정
             projection = d3.geo.mercator()//웹 지도에서 가장 많이 사용되는 메르카토르(Mercator)도법
-            .translate([(width/2),(height/2)]) 
-            .scale(width/4/Math.PI)
+            .translate([(width/2),(height/1.5)]) 
+            .scale(width/2/Math.PI)
             //.center([-309,724,725])// 프랑스를 중심으로 기준을 설정
 
             path = d3.geo.path().projection(projection);
@@ -91,7 +87,7 @@
             .call(zoom)
             //.on("click",click)
             .append("g")
-
+            //tooltip.classed("hidden",true)
             g = svg.append("g");
         }
 
@@ -115,31 +111,99 @@
 
             let select_country_dot1 = topo.filter(el=>{
                 let nation_name = el.properties.name;
-                return nation_name==='France' ||nation_name==='Somalia' ||nation_name==='MoZambique' || nation_name==='Indonesia' ||  nation_name==='Japan' ||  nation_name==='United States' || nation_name ==='Mexico' || nation_name === 'Brazil' || nation_name ==='China'  || nation_name ==='Korea, Republic of'  || nation_name ==='India';
+                return nation_name==='France' ||nation_name==='South Africa' ||nation_name==='Somalia' ||nation_name==='MoZambique' || nation_name==='Indonesia' ||  nation_name==='Japan' ||  nation_name==='United States' || nation_name ==='Mexico' || nation_name === 'Brazil' || nation_name ==='China'  || nation_name ==='Republic of Korea'  || nation_name ==='India';
             })
 
             let dot1 = g.selectAll("circle").data(select_country_dot1)
             .enter().append("circle")
             .attr("transform",function(d) { return "translate(" + path.centroid(d) + ")"; })
             .style("fill", '#6068b9')
-            .attr("r",3)
+            .attr("r",5)
+            .style("opacity", 0)
+            
+
+            dot1.transition()
+            .duration(2000)
+            .delay(function(d,i){ return i * 100 })
+            .style('opacity', 0.7)
+            
 
             let select_country_dot2 = topo.filter(el=>{
                 let nation_name = el.properties.name;
-                console.log(nation_name);
                 return nation_name==='France' || nation_name === 'United States';
             })
+
+           
 
             let dot2 = g.selectAll("circle1").data(select_country_dot2)
             .enter().append("circle")
             .attr("transform",function(d) { return "translate(" + path.centroid(d) + ")"; })
             .style("fill", '#6068b9')
-            .attr("cx",7)
-            .attr("r",3)
+            .attr("cx",13)
+            .attr("r",5)
+            .style("opacity", 0)
 
-            tooltip.classed("hidden", false)
+            dot2.transition()
+            .duration(2000)
+            .delay(function(d,i){ return i * 80 })
+            .style('opacity', 0.7);
+           
+            //툴팁 위치
+            var offsetL = document.getElementById('container').offsetLeft;
+            var offsetT = document.getElementById('container').offsetTop;
+            let tooltip = d3.select("#container").append("div").attr("class","tooltip").style("opacity", 0);
+            //툴팁
+            /*dot1.on("mouseenter",function(){
+                d3.select(this).style("fill","red");
+            })*/
+            function tooltip_enter(d){
+                tooltip.style("left",(d3.event.offsetX + offsetL) + 'px')
+                .style("top",(d3.event.offsetY+20) + 'px')
+                .style("display","block")
+                .style("opacity",1)
+                .html(d.properties.name);
+            }
+            dot1.on("mouseenter",function(d){
+                //tooltip.classed("hidden",false)
+                //dot_test[i].style.stroke = `#ff0000`
+                //dot_test[i].style = `stroke-width:3`
+                d3.select(this).attr("r",10);
+                tooltip_enter(d)
+            
+            })
+            .on("mouseout",function(d) {
+                d3.select(this).attr("r",5)
+                tooltip.style("opacity",0)
+                .style("display","none")
+                //tooltip.classed("hidden",true)
+            })
+
+
+            dot2.on("mouseenter",function(d){
+                //tooltip.classed("hidden",false)
+                //tooltip.attr("style", "left:"+d3.event.offsetX - offsetL +"px; top:"+d3.event.offsetY+"px")
+                /*.style("left",(d3.event.offsetX + 20) + 'px')
+                .style("top",(d3.event.offsetY+20) + 'px')*/
+                d3.select(this).attr("r",10);
+                tooltip_enter(d)
+            })
+            .on("mouseout",function(d){
+                d3.select(this).attr("r",5)
+                tooltip.style("opacity",0)
+                .style("display","none")
+                //ooltip.classed("hidden",true)
+            })
+            
+
         }
 
+        function redraw() {
+            width = document.getElementById('container').offsetWidth;
+            height = width / 2;
+            d3.select('svg').remove();
+            setup(width,height);
+            draw(topo);
+        }
 
     </script>
 </body>
