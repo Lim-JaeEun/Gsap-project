@@ -615,5 +615,73 @@ header {
          
         }
     }
+    .sc_chart{
+        padding: 8rem 0 3rem;
+        .tit_wrap {
+            width: 96%;
+            margin: 0 auto;
+            .tit {
+                line-height: 1;
+                font-size: 9em;
+                font-weight: bold;
+            }
+            .sub_tit {
+                font-size: 2.2rem;
+                font-weight: 300;
+            }
+            .explain {
+                line-height: 1.5;
+                font-size: 1.1rem;
+                padding-top: 0.5rem;
+                font-weight: 300;
+            }
+        }
+        .legend_wrap {
+            .legend_list {
+                padding: 3rem 0 1rem 0;
+                font-size: 1.1rem;
+                width: 100%;
+                text-align: center;
+
+                &::before {
+                    content: '';
+                    width:1.2rem;
+                    height: 1.2rem;
+                    background-color: #898fcb;
+                    display: inline-block;
+                }
+            }
+        }
+        #d3_chart {
+            margin: 0;
+            border-radius: 2px;
+            height: 100%;
+            width: 1000px;
+            overflow: hidden;
+            background: #ebecf4;
+            margin: 0 auto;
+
+            .tooltip {
+                color: #000;
+                background: #ffffff81;
+                padding: .3em 0.5em;
+                text-shadow: #f5f5f5 0 1px 0;
+                border-radius: 2px;
+                box-shadow: 0px 0px 2px 0px #a6a6a6;
+                transition: .3s;
+                font-weight: 300;
+                position: absolute;
+                pointer-events: none;
+                font-size: 1rem;
+            }
+        }
+    }
 } 
+
+footer {
+    height: 50vh;
+    width:100%;
+    position: relative;
+    background-color: #000;
+}
 

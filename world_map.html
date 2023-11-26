@@ -40,10 +40,10 @@
 <body>
     <div id="container"></div>
 
-    <script src="https://d3js.org/d3.v3.min.js"></script>
-    <script src="https://d3js.org/d3.geo.projection.v0.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-json/2.6.0/jquery.json.min.js" integrity="sha512-QE2PMnVCunVgNeqNsmX6XX8mhHW+OnEhUhAWxlZT0o6GFBJfGRCfJ/Ut3HGnVKAxt8cArm7sEqhq2QdSF0R7VQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-json/2.6.0/jquery.json.min.js""></script>
     <script src="https://d3js.org/topojson.v1.min.js"></script>
 
 
@@ -60,7 +60,7 @@
         let zoom = d3.behavior
         .zoom()
         .scaleExtent([1,9])
-        //.on("zoom",move);
+        .on("zoom",move);
 
         let width = document.querySelector("#container").offsetWidth;
         let height = width/2;
@@ -124,7 +124,7 @@
 
             dot1.transition()
             .duration(2000)
-            .delay(function(d,i){ return i * 100 })
+            .delay(function(d,i){ return i * 300 })
             .style('opacity', 0.7)
             
 
@@ -152,10 +152,9 @@
             var offsetL = document.getElementById('container').offsetLeft;
             var offsetT = document.getElementById('container').offsetTop;
             let tooltip = d3.select("#container").append("div").attr("class","tooltip").style("opacity", 0);
+            
+            
             //툴팁
-            /*dot1.on("mouseenter",function(){
-                d3.select(this).style("fill","red");
-            })*/
             function tooltip_enter(d){
                 tooltip.style("left",(d3.event.offsetX + offsetL) + 'px')
                 .style("top",(d3.event.offsetY+20) + 'px')
@@ -164,26 +163,19 @@
                 .html(d.properties.name);
             }
             dot1.on("mouseenter",function(d){
-                //tooltip.classed("hidden",false)
-                //dot_test[i].style.stroke = `#ff0000`
-                //dot_test[i].style = `stroke-width:3`
                 d3.select(this).attr("r",10);
                 tooltip_enter(d)
             
             })
             .on("mouseout",function(d) {
+                //circle hover
                 d3.select(this).attr("r",5)
                 tooltip.style("opacity",0)
                 .style("display","none")
-                //tooltip.classed("hidden",true)
             })
 
 
             dot2.on("mouseenter",function(d){
-                //tooltip.classed("hidden",false)
-                //tooltip.attr("style", "left:"+d3.event.offsetX - offsetL +"px; top:"+d3.event.offsetY+"px")
-                /*.style("left",(d3.event.offsetX + 20) + 'px')
-                .style("top",(d3.event.offsetY+20) + 'px')*/
                 d3.select(this).attr("r",10);
                 tooltip_enter(d)
             })
@@ -191,7 +183,6 @@
                 d3.select(this).attr("r",5)
                 tooltip.style("opacity",0)
                 .style("display","none")
-                //ooltip.classed("hidden",true)
             })
             
 
@@ -204,7 +195,27 @@
             setup(width,height);
             draw(topo);
         }
+        function move() {
 
+            var trans = d3.event.translate;
+            var scal = d3.event.scale; 
+            zscale = scal;
+            var h = height/4;
+
+            trans[0] = Math.min(
+            (width/height)  * (scal - 1), 
+            Math.max( width * (1 - scal), trans[0] )
+            );
+
+            trans[1] = Math.min(
+            h * (scal - 1) + h * scal, 
+            Math.max(height  * (1 - scal) - h * scal, trans[1])
+            );
+
+            zoom.translate(trans);
+            g.attr("transform", "translate(" + trans + ")scale(" + scal + ")");
+
+        }
     </script>
 </body>
 

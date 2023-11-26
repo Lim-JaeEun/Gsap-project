@@ -1,3 +1,5 @@
+import map from "./map.js";
+
 const lenis = new Lenis()
 
 lenis.on('scroll', ScrollTrigger.update)
@@ -208,3 +210,8 @@ const tl01 = gsap.timeline({
       borderRadius:'85px',
     }
   )
+
+
+document.querySelector('.sc_chart').addEventListener('load',()=>{
+    map
+})
