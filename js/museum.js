@@ -5,7 +5,7 @@ const lenis = new Lenis()
 lenis.on('scroll', ScrollTrigger.update)
 
 gsap.ticker.add((time)=>{
-  lenis.raf(time * 500)
+    lenis.raf(time * 500)
 })
 
 gsap.ticker.lagSmoothing(0)
@@ -197,21 +197,29 @@ image_move02.forEach(el=>{
 const tl01 = gsap.timeline({
     scrollTrigger:{
       trigger:'.sc_video',
-      start:'top top',
+      start:'-15% top',
       end:'bottom bottom',
       scrub:1,
-      //markers:true
+      markers:true
     }
   })
   
   tl01.to('.sticky-rect_element',{
-      width:'90vw',
-      height:'95vh',
-      borderRadius:'85px',
+      width:'100vw',
+      height:'100vh',
+      borderRadius:'0px',
     }
   )
-
-
 document.querySelector('.sc_chart').addEventListener('load',()=>{
     map
 })
+/*지도 안에서 스크롤 할때 lenis scroll 컨트롤*/
+document.querySelector('#d3_chart').addEventListener('mousewheel',(e)=>{
+    window.addEventListener('mousewheel', lenis.stop());
+})
+document.querySelector('#d3_chart').addEventListener('mouseout',(e)=>{
+    window.addEventListener('mousewheel', lenis.start());
+})
+
+
+

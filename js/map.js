@@ -44,7 +44,6 @@ function map(){
     
     //json데이터 불러오기
     d3.json('./js/json/loreal_info.json', (error, root) => {
-        console.log(root)
         let world = root.files['world.json'].content
         world = JSON.parse(world)
         let countries = topojson.feature(world, world.objects.countries).features;
