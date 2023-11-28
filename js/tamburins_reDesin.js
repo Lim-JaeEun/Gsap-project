@@ -466,7 +466,7 @@ collection.to('.video_wrap > video',{
     ease:'power1.out'
 
 },0)
-
+/*
 const list_img = document.querySelectorAll('.schedule .list');
 
 list_img.forEach((el,idx) =>{
@@ -487,6 +487,28 @@ list_img.forEach((el,idx) =>{
         gsap.to(el.childNodes[1],{
             opacity:0,
         })
+    })
+})
+*/
+const cursor_wrap = document.querySelector('.schedule_warp');
+const schedule_list = document.querySelectorAll(".schedule .list");
+let cursor_list = document.querySelector('.cursor_list_wrap');
+let cursor_move = document.querySelector('.cursor_move');
+
+const xSet = gsap.quickSetter(cursor_move, 'x', 'px');
+schedule_list.forEach((el,idx) =>{
+    el.addEventListener('mouseenter',(e)=>{
+        cursor_list.style.transform = `translateY(${idx * -100}%)`;
+        document.querySelector('.cusor_hover_wrap').style.opacity = 1;
+
+    })
+    el.addEventListener('mousemove',(e)=>{
+        console.log(e.offsetX);
+        gsap.to(cursor_move,{
+            //xPercent:xSet(e.x),
+            //yPercent:e.offsetY,
+        })
+        
     })
 })
 

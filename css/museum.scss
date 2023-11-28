@@ -683,11 +683,16 @@ header {
     }
 } 
 @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-30%); }
+    from { transform: translateZ(0); }
+    to { transform: translate3d(-50%,0,0); }
   } 
+
+  /*@keyframes marquee2 {
+    from { transform: translateZ(0); }
+    to { transform: translate3d(-50%,0,0); }
+  } */
 footer {
-    height: 50vh;
+    height: 80vh;
     width:100%;
     position: relative;
     background-color: #000;
@@ -701,8 +706,12 @@ footer {
         overflow-x: hidden; 
         overflow-y: hidden;
         .track {
-            position: absolute; white-space: nowrap;will-change: transform;animation: marquee 30s linear infinite; 
-        }
+            display: flex;
+            position: absolute; 
+            white-space: nowrap;
+            will-change: transform;
+            animation: marquee 60s linear infinite; 
+        } 
     }
 }
 

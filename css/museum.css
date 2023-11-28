@@ -626,14 +626,18 @@ header .menu_wrap .nav_close_btn:hover .line {
 
 @keyframes marquee {
   from {
-    transform: translateX(0);
+    transform: translateZ(0);
   }
   to {
-    transform: translateX(-30%);
+    transform: translate3d(-50%, 0, 0);
   }
 }
+/*@keyframes marquee2 {
+  from { transform: translateZ(0); }
+  to { transform: translate3d(-50%,0,0); }
+} */
 footer {
-  height: 50vh;
+  height: 80vh;
   width: 100%;
   position: relative;
   background-color: #000;
@@ -649,8 +653,9 @@ footer .animation_content_wrap {
   overflow-y: hidden;
 }
 footer .animation_content_wrap .track {
+  display: flex;
   position: absolute;
   white-space: nowrap;
   will-change: transform;
-  animation: marquee 30s linear infinite;
+  animation: marquee 60s linear infinite;
 }/*# sourceMappingURL=museum.css.map */
