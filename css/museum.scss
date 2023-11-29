@@ -710,7 +710,14 @@ footer {
             position: absolute; 
             white-space: nowrap;
             will-change: transform;
-            animation: marquee 60s linear infinite; 
+            animation: marquee 20s linear infinite; 
+            &:hover {
+                animation-play-state: paused;
+                .content {
+                    transform: skewX(20deg);
+                    transition: transform 0.3s linear;
+                }
+            }
         } 
     }
 }

@@ -495,21 +495,15 @@ const schedule_list = document.querySelectorAll(".schedule .list");
 let cursor_list = document.querySelector('.cursor_list_wrap');
 let cursor_move = document.querySelector('.cursor_move');
 
-const xSet = gsap.quickSetter(cursor_move, 'x', 'px');
 schedule_list.forEach((el,idx) =>{
-    el.addEventListener('mouseenter',(e)=>{
+    el.addEventListener('mouseenter',()=>{
         cursor_list.style.transform = `translateY(${idx * -100}%)`;
         document.querySelector('.cusor_hover_wrap').style.opacity = 1;
 
     })
-    el.addEventListener('mousemove',(e)=>{
-        console.log(e.offsetX);
-        gsap.to(cursor_move,{
-            //xPercent:xSet(e.x),
-            //yPercent:e.offsetY,
-        })
-        
-    })
+})
+document.querySelector('.schedule').addEventListener('mouseleave',()=>{
+    document.querySelector('.cusor_hover_wrap').style.opacity = 0;
 })
 
 /*banner 이동버튼*/

@@ -657,5 +657,12 @@ footer .animation_content_wrap .track {
   position: absolute;
   white-space: nowrap;
   will-change: transform;
-  animation: marquee 60s linear infinite;
+  animation: marquee 20s linear infinite;
+}
+footer .animation_content_wrap .track:hover {
+  animation-play-state: paused;
+}
+footer .animation_content_wrap .track:hover .content {
+  transform: skewX(20deg);
+  transition: transform 0.3s linear;
 }/*# sourceMappingURL=museum.css.map */
