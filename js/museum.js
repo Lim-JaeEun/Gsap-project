@@ -200,7 +200,6 @@ const tl01 = gsap.timeline({
       start:'-15% top',
       end:'bottom bottom',
       scrub:1,
-      markers:true
     }
   })
   

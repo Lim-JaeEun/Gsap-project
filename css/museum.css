@@ -14,7 +14,7 @@ body {
 header {
   position: fixed;
   top: 0px;
-  z-index: 100;
+  z-index: 500;
   width: 100%;
   padding: 1em 2em;
 }
@@ -117,6 +117,8 @@ header .menu_wrap .nav_close_btn:hover .line {
 
 .contents {
   position: relative;
+  z-index: 100;
+  background-color: #fff;
 }
 .contents .blackout {
   background: #000;
@@ -351,6 +353,7 @@ header .menu_wrap .nav_close_btn:hover .line {
 }
 .contents .sc_banner {
   position: relative;
+  z-index: 100;
   width: 100%;
 }
 .contents .sc_banner .tit.sticky {
@@ -637,20 +640,28 @@ header .menu_wrap .nav_close_btn:hover .line {
   to { transform: translate3d(-50%,0,0); }
 } */
 footer {
-  height: 80vh;
+  height: 100dvh;
   width: 100%;
-  position: relative;
-  background-color: #000;
+  position: sticky;
+  background-color: #efefef;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+  z-index: 1;
+  padding: 0.5rem 1.4rem 2rem;
 }
 footer .animation_content_wrap {
   position: relative;
   font-size: 8rem;
-  color: #fff;
+  color: #000000;
   width: 100%;
   max-width: 100%;
   height: 100%;
   overflow-x: hidden;
   overflow-y: hidden;
+  flex: 0.8;
 }
 footer .animation_content_wrap .track {
   display: flex;
@@ -659,10 +670,64 @@ footer .animation_content_wrap .track {
   will-change: transform;
   animation: marquee 20s linear infinite;
 }
+footer .animation_content_wrap .track .content {
+  transition: transform 0.3s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+}
 footer .animation_content_wrap .track:hover {
   animation-play-state: paused;
 }
 footer .animation_content_wrap .track:hover .content {
-  transform: skewX(20deg);
-  transition: transform 0.3s linear;
+  transform: skewX(-11deg);
+}
+footer .footer_flex {
+  flex: 3;
+  color: #000;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  gap: 0.5rem;
+  justify-content: space-between;
+}
+footer .footer_flex::after {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 90.8%;
+  background-color: #3c3c3c;
+  position: absolute;
+  top: 5%;
+}
+footer .footer_flex .sns {
+  position: relative;
+  flex: 1.5;
+}
+footer .footer_flex .sns > ul {
+  display: flex;
+  gap: 3rem;
+  position: relative;
+}
+footer .footer_flex .middle_container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  border-bottom: 1px solid #000;
+  padding-bottom: 1rem;
+  align-items: flex-end;
+}
+footer .footer_flex .middle_container .middel_left > ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-size: 1.5rem;
+}
+footer .footer_flex .middle_container .middle_right > ul {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 1.5rem;
+}
+footer .footer_flex .footer_bottom > ul {
+  display: flex;
+  gap: 2.3rem;
 }/*# sourceMappingURL=museum.css.map */
