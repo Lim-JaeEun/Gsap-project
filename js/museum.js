@@ -1,5 +1,6 @@
 import map from "./map.js";
 
+
 const lenis = new Lenis()
 
 lenis.on('scroll', ScrollTrigger.update)
@@ -219,6 +220,5 @@ document.querySelector('#d3_chart').addEventListener('mousewheel',(e)=>{
 document.querySelector('#d3_chart').addEventListener('mouseout',(e)=>{
     window.addEventListener('mousewheel', lenis.start());
 })
-
 
 

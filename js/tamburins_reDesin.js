@@ -310,7 +310,7 @@ const bestItem_swiper = new Swiper(".bestItem_swiper",{
 	slidesPerView: 'auto',
 	loop: true,
 	touchRatio: 1.2,
-	spaceBetween: 10,
+	spaceBetween: 15,
 	effect: 'slide',
     //reverseDirection:false,
 	/*
@@ -408,6 +408,7 @@ bestSeller_slider.addEventListener('mouseleave',()=>{
 //})(); 
 const best_img = document.querySelector('.best_img');
 const hide_img = document.querySelector('.hide');
+let ratio_chk = true;
 let ratio;
 let ratio2;
 document.querySelector('.best_img').addEventListener('drag',(e)=>{
@@ -420,7 +421,14 @@ document.querySelector('.best_img').addEventListener('drag',(e)=>{
         ease:'power1.out',
         height:`${ratio2}%`
     })
-
+    if(!ratio_chk) {
+        gsap.to(hide_img,{
+            //duration:.5,
+            ease:'power1.out',
+            height:0
+        })
+        ratio_chk = true
+    }
 })
 
 document.querySelector('.best_img').addEventListener('dragleave',(e)=>{
@@ -434,9 +442,14 @@ document.querySelector('.best_img').addEventListener('dragleave',(e)=>{
         gsap.to(hide_img,{
             //duration:.5,
             ease:'power1.out',
-            height:'100%'
+            height:'100%',
+            onComplete:()=>{
+                ratio_chk = false
+            }
         }) 
+
     }
+
 })
 
 /*전시 텍스트*/

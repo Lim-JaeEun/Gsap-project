@@ -431,10 +431,10 @@ a {
     transition-timing-function: linear !important;
 }
 .product {
-    width: 430px;
+    width: 420px;
     height: 100%;
     display: inline-block;
-    padding: 0.3em;
+    padding: 1.3em 1.3em 0.3em;
     background: #fff;
 }
 .product:hover {
@@ -478,15 +478,15 @@ a {
     justify-content: center;
     align-items: center;
     background-image: url('../images/PLP_PC_hero_shwry_edit.jpg');
+    pointer-events: none;
+    overflow: hidden;
 }
 .best_img .hide.more {
     height:100% !important;
 }
 .best_img .hide a {
     color:#fff;
-}
-.best_img .hide.more a {
-    opacity: 1;
+    pointer-events: auto;
 }
 .best_img img {
     width: 100%;

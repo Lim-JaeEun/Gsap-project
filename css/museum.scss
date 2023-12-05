@@ -705,7 +705,7 @@ footer {
     align-items: center;
     bottom: 0;
     z-index: 1;
-    padding: 0.5rem 1.4rem 2rem;
+    // padding: 0.5rem 1.4rem 0; 
     .animation_content_wrap {
         position: relative;
         font-size: 8rem;
@@ -745,15 +745,24 @@ footer {
         position: relative;
         gap: 0.5rem;
         justify-content: space-between;
-
+        /*
         &::after {
-            content: '';
+            content: "";
             display: block;
             width: 1px;
-            height: 90.8%;
+            height: calc(100% - 6.8rem);
             background-color: #3c3c3c;
             position: absolute;
-            top: 5%;
+            top: 3.8rem;
+        }
+        */
+        .verticla_line {
+            width: 1px;
+            background: #000;
+            position: absolute;
+            // height: calc(100% - 6.8rem);
+            height: 0%;
+            top: 3.8rem;
         }
         .sns {
             position: relative;
@@ -762,16 +771,48 @@ footer {
                 display: flex;
                 gap: 3rem;
                 position: relative;
+                .sns_list {
+                    position: relative;
+                    border-radius: 30px;
+                    background: rgba(147, 147, 147, 0.1882352941);
+                    transition: 0.3s;
+                    width: 3.5rem;
+                    height: 3.5rem;
+                    text-align: center;
+                    line-height: 3.5rem;
+                    a {
+                        font-size:1.5rem;
+                    }
+                    &:after {
+                        content: "";
+                        display: block;
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        top: 0;
+                        bottom: 0;
+                        background: #3d3d3d;
+                        border-radius: 30px;
+                        transform: scale3d(0,0,0);
+                        transition: transform .25s cubic-bezier(.63,.37,.55,.9),-webkit-transform .3s cubic-bezier(.63,.37,.55,.9);
+                    }
+
+                    &:hover {
+                        color: #efefef;
+                        &::after {
+                            transform: scaleX(1);
+                            z-index: -1;
+                        }
+                    }
+                }
             }
         }
         .middle_container {
             display: flex;
             width: 100%;
             justify-content: space-between;
-            border-bottom: 1px solid #000;
-            padding-bottom: 1rem;
             align-items: flex-end;
-
+            padding: 0 0.8rem;
             .middel_left {
                 >ul{
                     display: flex;
@@ -789,9 +830,14 @@ footer {
             }
         }
         .footer_bottom {
+            height: auto;
+            padding: 0.8rem 0;
+            width: 100%;
+            border-top: 1px solid #000;
             >ul {
                 display: flex;
                 gap: 2.3rem;
+                justify-content: center;
             }
         }
     }

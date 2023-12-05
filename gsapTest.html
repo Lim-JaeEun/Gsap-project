@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>언녕이화이팅 ~!~!~! ♥</title>
+    <style>
+        body {
+            margin:0;
+        }
+        .business {
+            background: #2078cd;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 5rem;
+            font-weight: bold;
+            color: #fff;
+            letter-spacing: -5px;
+        }
+
+        .tit_text .tt {
+            opacity: .3;
+        }
+    </style>
+</head>
+<body>
+    <div class="business">
+        <h2 class="tit_text">
+            Business Area Business Busin <br/>
+            최고의 디지털 경험을 성공적으로 
+        </h2>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/ScrollToPlugin.min.js"></script>
+<script>
+
+
+    const text = document.querySelector('.tit_text').innerText;
+    let new_text = ''
+    text.split('').forEach(el=>{
+        new_text +=`<span class="tt" aria-hidden='true'>${el}</span>`;
+    })
+    document.querySelector('.tit_text').innerHTML = new_text;
+
+
+    const tl = gsap.timeline({
+        scrollTrigger:{
+            trigger:'.business',
+            scrub:2,
+            pin:true,
+            markers:true,
+            start:'top top',
+            end: '+=3000'
+        }
+    })
+    tl.to('.tt',{
+        opacity:1,
+        stagger:.5
+    })
+
+</script>
+</html>
