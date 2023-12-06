@@ -705,6 +705,7 @@ footer {
     align-items: center;
     bottom: 0;
     z-index: 1;
+    overflow: hidden;
     // padding: 0.5rem 1.4rem 0; 
     .animation_content_wrap {
         position: relative;
@@ -782,6 +783,9 @@ footer {
                     line-height: 3.5rem;
                     a {
                         font-size:1.5rem;
+                        z-index: 3;
+                        display: block;
+                        position: relative;
                     }
                     &:after {
                         content: "";
@@ -801,7 +805,7 @@ footer {
                         color: #efefef;
                         &::after {
                             transform: scaleX(1);
-                            z-index: -1;
+                            // z-index: -1;
                         }
                     }
                 }
@@ -818,26 +822,37 @@ footer {
                     display: flex;
                     flex-direction: column;
                     gap: 1.5rem;
-                    font-size: 1.5rem;
+                    
+
                 }
             }
             .middle_right {
                 >ul {
                     display: flex;
                     gap: 1.5rem;
-                    font-size: 1.5rem;
                 }
+            }
+            a {
+                font-size: 1.5em;
             }
         }
         .footer_bottom {
+            position: relative;
             height: auto;
             padding: 0.8rem 0;
             width: 100%;
-            border-top: 1px solid #000;
+            background: #efefef;
             >ul {
                 display: flex;
                 gap: 2.3rem;
                 justify-content: center;
+            }
+            .horizontal_line {
+                position: absolute;
+                width: 0%;
+                height: 1px;
+                background: #000;
+                top: 0;
             }
         }
     }

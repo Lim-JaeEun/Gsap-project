@@ -221,4 +221,26 @@ document.querySelector('#d3_chart').addEventListener('mouseout',(e)=>{
     window.addEventListener('mousewheel', lenis.start());
 })
 
+document.querySelector('footer').addEventListener('mouseover',(e)=>{
+    const footer_tl = gsap.timeline({
+        scrollTrigger:{
+            trigger:'footer',
+            start:'top top',
+            end:'bottom top'
+        }
+    })
+
+    footer_tl.to('.verticla_line',{
+        height:'100%',
+        duration:1.5
+    }).to('.horizontal_line',{
+        width:`100%`,
+        duration:2
+    },'t').to('.footer_bottom',{
+        backgroundColor:'#fff',
+        duration:2,
+        ease: "power1.in",
+    },'t')
+})
+
 

@@ -650,6 +650,7 @@ footer {
   align-items: center;
   bottom: 0;
   z-index: 1;
+  overflow: hidden;
 }
 footer .animation_content_wrap {
   position: relative;
@@ -728,6 +729,9 @@ footer .footer_flex .sns > ul .sns_list {
 }
 footer .footer_flex .sns > ul .sns_list a {
   font-size: 1.5rem;
+  z-index: 3;
+  display: block;
+  position: relative;
 }
 footer .footer_flex .sns > ul .sns_list:after {
   content: "";
@@ -747,7 +751,6 @@ footer .footer_flex .sns > ul .sns_list:hover {
 }
 footer .footer_flex .sns > ul .sns_list:hover::after {
   transform: scaleX(1);
-  z-index: -1;
 }
 footer .footer_flex .middle_container {
   display: flex;
@@ -760,21 +763,30 @@ footer .footer_flex .middle_container .middel_left > ul {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  font-size: 1.5rem;
 }
 footer .footer_flex .middle_container .middle_right > ul {
   display: flex;
   gap: 1.5rem;
-  font-size: 1.5rem;
+}
+footer .footer_flex .middle_container a {
+  font-size: 1.5em;
 }
 footer .footer_flex .footer_bottom {
+  position: relative;
   height: auto;
   padding: 0.8rem 0;
   width: 100%;
-  border-top: 1px solid #000;
+  background: #efefef;
 }
 footer .footer_flex .footer_bottom > ul {
   display: flex;
   gap: 2.3rem;
   justify-content: center;
+}
+footer .footer_flex .footer_bottom .horizontal_line {
+  position: absolute;
+  width: 0%;
+  height: 1px;
+  background: #000;
+  top: 0;
 }/*# sourceMappingURL=museum.css.map */

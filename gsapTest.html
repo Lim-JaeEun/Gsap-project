@@ -8,6 +8,9 @@
         body {
             margin:0;
         }
+        p {
+            margin:0;
+        }
         .business {
             background: #2078cd;
             width: 100%;
@@ -15,7 +18,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 5rem;
+            font-size: 4.5rem;
             font-weight: bold;
             color: #fff;
             letter-spacing: -5px;
@@ -29,8 +32,9 @@
 <body>
     <div class="business">
         <h2 class="tit_text">
-            Business Area Business Busin <br/>
-            최고의 디지털 경험을 성공적으로 
+            <p class="opacity">Business Area Business Busin</p>
+            <p class="move_left">_left_최고의 디지털 경험을 성공적으로</p> 
+            <p class="move_right">_right_취직하기싫어잉 ~~~~~ 로또당첨시켜줘잉~~~~~</p> 
         </h2>
     </div>
 </body>
@@ -40,12 +44,12 @@
 <script>
 
 
-    const text = document.querySelector('.tit_text').innerText;
+    const text = document.querySelector('.opacity').innerText;
     let new_text = ''
     text.split('').forEach(el=>{
         new_text +=`<span class="tt" aria-hidden='true'>${el}</span>`;
     })
-    document.querySelector('.tit_text').innerHTML = new_text;
+    document.querySelector('.opacity').innerHTML = new_text;
 
 
     const tl = gsap.timeline({
@@ -61,6 +65,9 @@
     tl.to('.tt',{
         opacity:1,
         stagger:.5
+    })
+    tl.to('.opacity',{
+        x:'100%'
     })
 
 </script>
