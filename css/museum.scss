@@ -43,7 +43,6 @@ header {
         transform: translate(-50%,-50%);
         flex-direction: column;  
         align-items: center;
-        padding: 1.2em; 
         .line {
             height: .5px;
             background-color: #000;
@@ -61,19 +60,19 @@ header {
         /*height: 100vh;*/
         height: 0;
         position: absolute;
-        top: -7rem;
+        top: -8em;
         left: 0;
         background: #fff;
         display: flex;
         flex-direction: row-reverse;
         justify-content: space-between;
         align-items: flex-end;
-        padding: 4rem 2.5em 2.5em;
+        padding: 5.5em 2.5em 2.5em;
         /*border-bottom: 10px solid #cdc4ba;
         border-radius: 0 0 50% 50%;*/
         overflow: hidden;
         .menu_banner {
-            width: 40%;
+            width: 45%;
             height: 45%;
             align-self: flex-start;
             img {
@@ -87,23 +86,26 @@ header {
             .menu_list {
                 position: relative;
                 overflow: hidden;
-                font-size: 3rem;
+                font-size: 3em;
                 font-weight: bold;
                 a {
                     display: inline-block;
-                    &::after {
+                    /*&::after {
                         content: "/";
                         display: inline-block;
                         padding-left: 0.1em;
                         font-weight: 400;
                         color: #a7a7a7;
-                    }
+                    }*/
                 }
                 &:hover {
                     a {
-                        &::after{
+                        text-decoration: underline;
+                        transform: skewX(15deg);
+                        transition: all .3s ease;
+                        /*&::after{
                             transform: rotate(343deg);
-                        }
+                        }*/
                     }
                 }
 
@@ -235,7 +237,7 @@ header {
             padding: 5.5rem 0 1rem 0;
             box-sizing: border-box;
             .tit {
-                font-size: 5rem;
+                font-size: 5em;
                 font-weight: bold;
                 padding: 0 1rem;
                 line-height: 1.3;
@@ -247,7 +249,7 @@ header {
             }
             .intro_text {
                 width: 100%;
-                font-size: 2rem;
+                font-size: 2em;
                 padding: 0 0 1rem;
                 font-weight: 300;
                 // line-height: 1.2;
@@ -287,7 +289,7 @@ header {
         position: relative;
         /*top: 0;*/
         width: 100%;
-        font-size: 10rem;
+        // font-size: 10rem;
         text-align: center;
         overflow: hidden;
         .hori_wrap {
@@ -299,7 +301,7 @@ header {
                 align-items: center;
                 padding-right: 1.5rem;
                 .big_txt {
-                    font-size: 8rem;
+                    font-size: 8em;
                     font-weight: bold;
                     writing-mode: vertical-lr;
                     /* text-orientation: upright; */
@@ -310,7 +312,7 @@ header {
                     transform: rotate(180deg);
                 }
                 .small_txt {
-                    font-size: 1rem;
+                    font-size: 1em;
                     width: 14rem;
                     font-weight: 300;
                     line-height: 1.6;
@@ -349,7 +351,7 @@ header {
                         background: #aaa;
                     }
                     .subject {
-                        font-size: 1.5rem;
+                        font-size: 1.5em;
                         text-align: left;
                         color: #3b3b3b;
                         width: 50%;
@@ -629,12 +631,12 @@ header {
                 font-weight: bold;
             }
             .sub_tit {
-                font-size: 2.2rem;
+                font-size: 3em;
                 font-weight: 300;
             }
             .explain {
                 line-height: 1.5;
-                font-size: 1.1rem;
+                font-size: 2em;
                 padding-top: 0.5rem;
                 font-weight: 300;
             }
@@ -857,4 +859,10 @@ footer {
         }
     }
 }
+@media screen and (max-width:1023px) {
+    /* 타블렛 */
+}
 
+@media screen and (max-width:767px) {
+/* 모바일 */
+}

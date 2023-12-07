@@ -1,3 +1,4 @@
+@charset "UTF-8";
 body {
   position: relative;
 }
@@ -29,7 +30,6 @@ header .nav_btn {
   transform: translate(-50%, -50%);
   flex-direction: column;
   align-items: center;
-  padding: 1.2em;
 }
 header .nav_btn .line {
   height: 0.5px;
@@ -47,20 +47,20 @@ header .menu_wrap {
   /*height: 100vh;*/
   height: 0;
   position: absolute;
-  top: -7rem;
+  top: -8em;
   left: 0;
   background: #fff;
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
   align-items: flex-end;
-  padding: 4rem 2.5em 2.5em;
+  padding: 5.5em 2.5em 2.5em;
   /*border-bottom: 10px solid #cdc4ba;
   border-radius: 0 0 50% 50%;*/
   overflow: hidden;
 }
 header .menu_wrap .menu_banner {
-  width: 40%;
+  width: 45%;
   height: 45%;
   align-self: flex-start;
 }
@@ -75,21 +75,26 @@ header .menu_wrap ul {
 header .menu_wrap ul .menu_list {
   position: relative;
   overflow: hidden;
-  font-size: 3rem;
+  font-size: 3em;
   font-weight: bold;
 }
 header .menu_wrap ul .menu_list a {
   display: inline-block;
+  /*&::after {
+      content: "/";
+      display: inline-block;
+      padding-left: 0.1em;
+      font-weight: 400;
+      color: #a7a7a7;
+  }*/
 }
-header .menu_wrap ul .menu_list a::after {
-  content: "/";
-  display: inline-block;
-  padding-left: 0.1em;
-  font-weight: 400;
-  color: #a7a7a7;
-}
-header .menu_wrap ul .menu_list:hover a::after {
-  transform: rotate(343deg);
+header .menu_wrap ul .menu_list:hover a {
+  text-decoration: underline;
+  transform: skewX(15deg);
+  transition: all 0.3s ease;
+  /*&::after{
+      transform: rotate(343deg);
+  }*/
 }
 header .menu_wrap .nav_close_btn {
   position: absolute;
@@ -204,7 +209,7 @@ header .menu_wrap .nav_close_btn:hover .line {
   box-sizing: border-box;
 }
 .contents .sc_intro .intro_wrap .tit {
-  font-size: 5rem;
+  font-size: 5em;
   font-weight: bold;
   padding: 0 1rem;
   line-height: 1.3;
@@ -216,7 +221,7 @@ header .menu_wrap .nav_close_btn:hover .line {
 }
 .contents .sc_intro .intro_wrap .intro_text {
   width: 100%;
-  font-size: 2rem;
+  font-size: 2em;
   padding: 0 0 1rem;
   font-weight: 300;
 }
@@ -253,7 +258,6 @@ header .menu_wrap .nav_close_btn:hover .line {
   position: relative;
   /*top: 0;*/
   width: 100%;
-  font-size: 10rem;
   text-align: center;
   overflow: hidden;
 }
@@ -268,7 +272,7 @@ header .menu_wrap .nav_close_btn:hover .line {
   padding-right: 1.5rem;
 }
 .contents .sc_story .hori_wrap .left_text_wrap .big_txt {
-  font-size: 8rem;
+  font-size: 8em;
   font-weight: bold;
   writing-mode: vertical-lr;
   /* text-orientation: upright; */
@@ -279,7 +283,7 @@ header .menu_wrap .nav_close_btn:hover .line {
   transform: rotate(180deg);
 }
 .contents .sc_story .hori_wrap .left_text_wrap .small_txt {
-  font-size: 1rem;
+  font-size: 1em;
   width: 14rem;
   font-weight: 300;
   line-height: 1.6;
@@ -333,7 +337,7 @@ header .menu_wrap .nav_close_btn:hover .line {
   background: #aaa;
 }
 .contents .sc_story .hori_wrap .hori_div .hori_zone .subject {
-  font-size: 1.5rem;
+  font-size: 1.5em;
   text-align: left;
   color: #3b3b3b;
   width: 50%;
@@ -577,12 +581,12 @@ header .menu_wrap .nav_close_btn:hover .line {
   font-weight: bold;
 }
 .contents .sc_chart .tit_wrap .sub_tit {
-  font-size: 2.2rem;
+  font-size: 3em;
   font-weight: 300;
 }
 .contents .sc_chart .tit_wrap .explain {
   line-height: 1.5;
-  font-size: 1.1rem;
+  font-size: 2em;
   padding-top: 0.5rem;
   font-weight: 300;
 }
@@ -789,4 +793,11 @@ footer .footer_flex .footer_bottom .horizontal_line {
   height: 1px;
   background: #000;
   top: 0;
+}
+
+@media screen and (max-width: 1023px) {
+  /* 타블렛 */
+}
+@media screen and (max-width: 767px) {
+  /* 모바일 */
 }/*# sourceMappingURL=museum.css.map */
