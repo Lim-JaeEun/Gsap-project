@@ -55,15 +55,37 @@ document.querySelector('.nav_close_btn').addEventListener('click',()=>{
 const intro_tl = gsap.timeline({
     scrollTrigger: {
         trigger:'.sc_intro',
-        start:'top 60%',
-        end:'bottom top',
+        start:'10% top',
+        //end:'bottom top',
+        end:'+=2000',
         //pin:true,
         //pinSpacing:true,
-        scrub:2,
-        //markers:true,
+        scrub:1,
+        markers:true
         //toggleActions: "restart pause reverse pause"// 진입, 떠났을때, 다시돌아와서엔터에 들어왔을때, 떠났을때
-    },
+    }
 })
+
+intro_tl.to('.intro_text',{
+    x:'0%',
+    duration:3,
+    ease:'power1.in'
+},'a')
+intro_tl.to('.height_img_wrap',{
+    x:'0%',
+    duration:3,
+    ease:"power1.in",
+},'a')
+intro_tl.to('.intro_wrap .tit',{
+    scale:.5,
+    duration:3,
+    ease:"power1.out",
+},'a')
+intro_tl.to('.loreal_leader_img',{
+    y:'0%',
+    duration:3,
+    ease: "power1.in",
+},'b')
 /*
 intro_tl.to('.sc_intro',{
     y:'-100%'
@@ -72,27 +94,27 @@ intro_tl.to('.blackout',{
     opacity:'0'
 },'b')
 */
+/*
+1207
 
-intro_tl.to('.loreal_leader_img',{
-    y:'0%',
-    duration:3,
-    ease: "power1.in",
-},'b')
-
+*/
 const intro_text = document.querySelector('.intro_text');
 const toText = intro_text.innerText;
 let newText = '';
 toText.split('.').forEach(el=>{
-    newText += `<span aria-hidden='true'>${el+'.'}</span>`;
-    intro_text.innerHTML = newText;
+    newText += `<div class="span_text" aria-hidden='true'><span>${el+'.'}</span></div>`;
+    intro_text.innerHTML = `<div class="span_wrap">${newText}</div>`;
 })
-
-intro_tl.to('.intro_text span',{
+/*
+1207*/
+intro_tl.to('.span_wrap span',{
     opacity:1,
-    y:'25px',
+    y:'0%',
     stagger:1,
-    ease: "power1.out",
-    //duration:1.5
+    ease: "slow(0.7,0.7,false)",
+    //width:'100%',
+    //transformOrigin: "0% 50% -50",
+    duration:1.5,
     onComplete:()=>{
         document.querySelector('.blackout').style.position = 'absolute';
 
@@ -100,13 +122,11 @@ intro_tl.to('.intro_text span',{
 },'b+=.5')
 intro_tl.to('.sc_intro',{
     y:'-100%',
-    duration:5,
-    delay:1
+    duration:3,
 },'c')
 intro_tl.to('.blackout',{
     opacity:0,
-    duration:5,
-    delay:1
+    duration:3,
 },'c')
 
 const hori_slide = document.querySelectorAll('.pos_absolute');
@@ -118,13 +138,14 @@ const hori_slide_tl = gsap.timeline({
         start:'top top',
         end:'+=500%',
         pin:true,
-        scrub:1,
+        scrub:2,
+        //markers:true,
     },
 
 
 })
 
-hori_slide_tl.to({},{duration:0.15, delay:.5})
+hori_slide_tl.to({},{duration:0.15, delay:1.5})
 hori_slide.forEach((el,i)=>{
     hori_slide_tl.from(el,{
         xPercent:100,
@@ -235,7 +256,7 @@ document.querySelector('footer').addEventListener('mouseover',(e)=>{
         duration:1.5
     }).to('.horizontal_line',{
         width:`100%`,
-        duration:2
+        duration:1.5
     },'t').to('.footer_bottom',{
         backgroundColor:'#fff',
         duration:2,

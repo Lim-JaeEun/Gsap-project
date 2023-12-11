@@ -7,12 +7,13 @@
     <style>
         body {
             margin:0;
+            background: #002367;
         }
         p {
             margin:0;
         }
-        .business {
-            background: #2078cd;
+        .business1 {
+           
             width: 100%;
             height: 100vh;
             display: flex;
@@ -23,18 +24,159 @@
             color: #fff;
             letter-spacing: -5px;
         }
-
+        .business1 .tit {
+            align-self: flex-start;
+            font-size: 2rem;
+            width: 100%;
+            letter-spacing: .1rem;
+            flex: 1 1 367px;
+        }
+        .business1 .opacity {
+            transform: translateX(100%);
+        }
         .tit_text .tt {
             opacity: .3;
+        }
+        .business2 {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #fff;
+            box-sizing: border-box;
+            padding: 5rem;
+        }
+        .business2 .tit {
+            font-weight: bold;
+            font-size: 1.4rem;
+        }
+        .business2 .tit_text {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4rem;
+        }
+        .business2 .tit_text .left_txt{
+            font-size: 7rem;
+            display: block;
+            overflow: hidden;
+        }
+        .business2 .tit_text .left_txt p {
+            transform: translateY(100%);
+        }
+        .business2 .tit_text .left_txt span {
+            display: block;
+        }
+        .business2 .tit_text .right_txt {
+            width:250px;
+            overflow: hidden;
+        }
+        .business2 .tit_text .right_txt span {
+            transform: translateY(100%);
+            display: block;
+            
+        }
+
+        .business3 {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            color: #fff;
+            overflow: hidden;
+        }
+        .business3 .tit {
+            display: flex;
+            position: relative;
+        }
+        .business3 .tit .opacity {
+            font-size: 6rem;
+            font-weight: bold;
+            opacity: .3;
+            position: absolute;
+            left: -202%;
+            top: -51px;
+        }
+        .business3 .tit .number {
+            font-size: 7rem;
+            font-weight: bold;
+            overflow: hidden;
+        } 
+        .business3 .tit .number span {
+            display: block;
+            transform: translateY(100%);
+        }
+        .tit_text ul {
+            list-style: none;
+            display: flex;
+            height: 100%;
+            flex-direction: column;
+            gap: 8rem;
+        }    
+        .tit_text ul li {
+            transform: translateX(250%);
+        }
+        .tit_text ul li .li_tit{
+            font-size: 3rem;
+        }
+        .li_info {
+            font-size: 1.2rem;
+            font-weight: 100;
+            width: 500px;
         }
     </style>
 </head>
 <body>
-    <div class="business">
+    <div class="business1">
+        <div class="tit">WHAT WE WORK.</div>
         <h2 class="tit_text">
-            <p class="opacity">Business Area Business Busin</p>
-            <p class="move_left">_left_최고의 디지털 경험을 성공적으로</p> 
-            <p class="move_right">_right_취직하기싫어잉 ~~~~~ 로또당첨시켜줘잉~~~~~</p> 
+            <p class="opacity">Business Area Business Business Business</p>
+            <p class="move_left">최고의 디지털 경험을 성공적으로</p> 
+        </h2>
+    </div>
+    <div class="business2">
+        <div class="tit">WHAT WE WORK.</div>
+        <h2 class="tit_text">
+            <div class="left_txt">
+                <p>
+                    <span>Business</span>
+                    <span>Area</span>
+                </p>
+
+            </div>
+            <p class="right_txt">
+                <span>
+                    금융,교육,콘텐츠 등 각 분야에서의 전문가 집단이 모여 사용자 경험 및 채널 활성화를 극대화합니다.
+                </span>
+
+            </p> 
+        </h2>
+    </div>
+
+    <div class="business3">
+        <div class="tit">
+            <p class="opacity">Business Area</p>
+            <p class="number">
+                <span>01</span></p>
+        </div>
+        <h2 class="tit_text">
+            <div class="right_txt">
+                <ul>
+                    <li>
+                        <p class="li_tit">#금융 CX, UI/UX</p>
+                        <p class="li_info">쿄야술래는누구니 쿄야 어디로숨었니 쿄야 마을밖에있니 쿄야 학교는갔었니</p>
+                    </li>
+                    <li>
+                        <p class="li_tit">#금융 CX, UI/UX</p>
+                        <p class="li_info">쿄야술래는누구니 쿄야 어디로숨었니 쿄야 마을밖에있니 쿄야 학교는갔었니</p>
+                    </li>
+                    <li>
+                        <p class="li_tit">#금융 CX, UI/UX</p>
+                        <p class="li_info">쿄야술래는누구니 쿄야 어디로숨었니 쿄야 마을밖에있니 쿄야 학교는갔었니</p>
+                    </li>
+                </ul>
+            </div> 
         </h2>
     </div>
 </body>
@@ -54,21 +196,59 @@
 
     const tl = gsap.timeline({
         scrollTrigger:{
-            trigger:'.business',
+            trigger:'.business1',
             scrub:2,
             pin:true,
-            markers:true,
+            //markers:true,
             start:'top top',
             end: '+=3000'
         }
     })
-    tl.to('.tt',{
+    tl.to('.business1 .tt',{
         opacity:1,
         stagger:.5
+    },'same')
+    tl.to('.business1 .opacity',{
+        x:'0%',
+        duration:1
+    },'same')
+
+    const tl2 = gsap.timeline({
+        scrollTrigger:{
+            trigger:'.business2',
+            scrub:2,
+            pin:true,
+            markers:true,
+            start:'top top',
+            end: '+=2000'
+        }
     })
-    tl.to('.opacity',{
-        x:'100%'
+    tl2.to('.business2 .tit_text .left_txt p',{
+        opacity:1,
+        y:0
+    })
+    tl2.to('.business2 .tit_text .right_txt span',{
+        y:0,
+        duration:1
     })
 
+    const tl3 = gsap.timeline({
+        scrollTrigger:{
+            trigger:'.business3',
+            scrub:2,
+            pin:true,
+            markers:true,
+            start:'top top',
+            end: '+=2000'
+        }
+    })
+    tl3.to('.business3 .tit .number span',{
+        opacity:1,
+        y:0
+    })
+    tl3.to('.tit_text ul li',{
+        x:0,
+        stagger:.5
+    })
 </script>
 </html>
