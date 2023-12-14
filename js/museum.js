@@ -52,40 +52,86 @@ document.querySelector('.nav_close_btn').addEventListener('click',()=>{
 
 
 /*intro*/
-const intro_tl = gsap.timeline({
-    scrollTrigger: {
-        trigger:'.sc_intro',
-        start:'10% top',
-        //end:'bottom top',
-        end:'+=2000',
-        //pin:true,
-        //pinSpacing:true,
-        scrub:1,
-        markers:true
-        //toggleActions: "restart pause reverse pause"// 진입, 떠났을때, 다시돌아와서엔터에 들어왔을때, 떠났을때
-    }
+const intro_text = document.querySelector('.intro_text');
+const toText = intro_text.innerText;
+let newText = '';
+toText.split('.').forEach(el=>{
+    newText += `<div class="span_text" aria-hidden='true'><span>${el+'.'}</span></div>`;
+    intro_text.innerHTML = `<div class="span_wrap">${newText}</div>`;
 })
+const tablet_event1 = gsap.matchMedia();
+tablet_event1.add("(min-width:1023px)",()=>{
+    const intro_tl_pc = gsap.timeline({
+        scrollTrigger: {
+            trigger:'.sc_intro',
+            start:'10% top',
+            //end:'bottom top',
+            end:'+=2000',
+            //pin:true,
+            //pinSpacing:true,
+            scrub:1,
+            //markers:true
+            //toggleActions: "restart pause reverse pause"// 진입, 떠났을때, 다시돌아와서엔터에 들어왔을때, 떠났을때
+        }
+    })
+    
+    intro_tl_pc.to('.intro_text',{
+        x:'0%',
+        duration:3,
+        ease:'power1.in'
+    },'a')
+    intro_tl_pc.to('.height_img_wrap',{
+        x:'0%',
+        duration:3,
+        ease:"power1.in",
+    },'a')
+    intro_tl_pc.to('.intro_wrap .tit',{
+        scale:.5,
+        duration:3,
+        ease:"power1.out",
+    },'a')
+    intro_tl_pc.to('.loreal_leader_img',{
+        y:'0%',
+        duration:3,
+        ease: "power1.in",
+      
+    },'b')
 
-intro_tl.to('.intro_text',{
-    x:'0%',
-    duration:3,
-    ease:'power1.in'
-},'a')
-intro_tl.to('.height_img_wrap',{
-    x:'0%',
-    duration:3,
-    ease:"power1.in",
-},'a')
-intro_tl.to('.intro_wrap .tit',{
-    scale:.5,
-    duration:3,
-    ease:"power1.out",
-},'a')
-intro_tl.to('.loreal_leader_img',{
-    y:'0%',
-    duration:3,
-    ease: "power1.in",
-},'b')
+    intro_tl_pc.to('.span_wrap span',{
+        opacity:1,
+        y:'0%',
+        stagger:1,
+        ease: "slow(0.7,0.7,false)",
+        //width:'100%',
+        //transformOrigin: "0% 50% -50",
+        duration:1.5,
+        onComplete:()=>{
+            document.querySelector('.blackout').style.position = 'absolute';
+    
+        }
+    },'b+=.5')
+    intro_tl_pc.to('.sc_intro',{
+        y:'-100%',
+        duration:3,
+        delay:.3
+    },'c')
+    intro_tl_pc.to('.blackout',{
+        opacity:0,
+        duration:3,
+      
+    },'c')
+})
+tablet_event1.add("(min-width:767px)",()=>{
+    gsap.to('.span_text span',{
+        y:'0%',
+        stagger:.5,
+        duration:1,
+        scrollTrigger:{
+            trigger:'.intro_wrap',
+            //scrub:1
+        }
+    })
+})
 /*
 intro_tl.to('.sc_intro',{
     y:'-100%'
@@ -98,67 +144,64 @@ intro_tl.to('.blackout',{
 1207
 
 */
-const intro_text = document.querySelector('.intro_text');
-const toText = intro_text.innerText;
-let newText = '';
-toText.split('.').forEach(el=>{
-    newText += `<div class="span_text" aria-hidden='true'><span>${el+'.'}</span></div>`;
-    intro_text.innerHTML = `<div class="span_wrap">${newText}</div>`;
-})
+
 /*
 1207*/
-intro_tl.to('.span_wrap span',{
-    opacity:1,
-    y:'0%',
-    stagger:1,
-    ease: "slow(0.7,0.7,false)",
-    //width:'100%',
-    //transformOrigin: "0% 50% -50",
-    duration:1.5,
-    onComplete:()=>{
-        document.querySelector('.blackout').style.position = 'absolute';
 
-    }
-},'b+=.5')
-intro_tl.to('.sc_intro',{
-    y:'-100%',
-    duration:3,
-},'c')
-intro_tl.to('.blackout',{
-    opacity:0,
-    duration:3,
-},'c')
 
 const hori_slide = document.querySelectorAll('.pos_absolute');
+const hori_slide_tablet = document.querySelectorAll('.hori_zone');
 //const progress = document.querySelectorAll('.progress')
-
-const hori_slide_tl = gsap.timeline({
-    scrollTrigger:{
-        trigger:'.sc_story',
-        start:'top top',
-        end:'+=500%',
-        pin:true,
-        scrub:2,
-        //markers:true,
-    },
-
-
-})
-
-hori_slide_tl.to({},{duration:0.15, delay:1.5})
-hori_slide.forEach((el,i)=>{
-    hori_slide_tl.from(el,{
-        xPercent:100,
-        duration:1,
-        stagger:1.15,
-        ease:'power1.in'
-        /*onUpdate: function() {
-            progress[i].style.height = `${Math.round(this.progress()*100)}%`;
-            //document.querySelector('.test').style.width = `${Math.round(this.progress()*100)}%`;
-          }*/
+const tablet_event2 = gsap.matchMedia();
+tablet_event2.add("(min-width:1023px)",()=>{ 
+    const hori_slide_tl = gsap.timeline({
+        scrollTrigger:{
+            trigger:'.sc_story',
+            start:'top top',
+            end:'+=500%',
+            pin:true,
+            scrub:2,
+            //markers:true,
+        },
     })
-
+    hori_slide_tl.to({},{duration:0.15, delay:1.5})
+    hori_slide.forEach((el,i)=>{
+        hori_slide_tl.from(el,{
+            xPercent:100,
+            duration:1,
+            stagger:1.15,
+            ease:'power1.in'
+            /*onUpdate: function() {
+                progress[i].style.height = `${Math.round(this.progress()*100)}%`;
+                //document.querySelector('.test').style.width = `${Math.round(this.progress()*100)}%`;
+              }*/
+        })
+    
+    })
+    
 })
+tablet_event2.add("(min-width:767px)",()=>{
+    const hori_slide_tl_tablet = gsap.timeline({
+        scrollTrigger:{
+            trigger:'.sc_story',
+            start:'top top',
+            end:'+=500%',
+            pin:true,
+            scrub:2,
+            //markers:true,
+        },
+    })
+    hori_slide_tl_tablet.to({},{duration:0.15, delay:.5})
+    hori_slide.forEach((el,i)=>{
+        hori_slide_tl_tablet.from(el,{
+            xPercent:100,
+            duration:1,
+            stagger:1.15,
+            ease:'power1.in'
+        })
+    
+    })
+ })
 /*
 hori_slide_tl.from(serviceslide,{
     xPercent:100,
@@ -254,9 +297,9 @@ document.querySelector('footer').addEventListener('mouseover',(e)=>{
     footer_tl.to('.verticla_line',{
         height:'100%',
         duration:1.5
-    }).to('.horizontal_line',{
+    },'t').to('.horizontal_line',{
         width:`100%`,
-        duration:1.5
+        duration:2
     },'t').to('.footer_bottom',{
         backgroundColor:'#fff',
         duration:2,
@@ -265,3 +308,12 @@ document.querySelector('footer').addEventListener('mouseover',(e)=>{
 })
 
 
+const svg_wave = gsap.timeline()
+
+svg_wave.to('#wave',{
+    yoyo: true,
+    ease: "EaseInOut",
+    repeat:-1,
+    attr: { d: 'M 0 0 C -1 1 -2 3 -1 4 C 0 5 0 8 3 7 C 5 6 5 9 7 7 C 10 6 11 3 8 1 C 6 0 5 0 4 0 C 3 0 1 -1 0 0'},
+    duration:3
+})
