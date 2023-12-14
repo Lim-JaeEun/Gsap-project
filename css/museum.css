@@ -546,10 +546,21 @@ header .menu_wrap .nav_close_btn:hover .line {
   color: #3b3b3b;
   width: 50%;
 }
+@media (min-width: 768px) and (max-width: 1023px) {
+  .contents .sc_story .hori_wrap .hori_div .hori_zone .subject {
+    width: 80%;
+    font-size: 2.5em;
+  }
+}
 .contents .sc_story .hori_wrap .hori_div .hori_zone .img_height {
   position: relative;
   padding-top: 54%;
   width: 100%;
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .contents .sc_story .hori_wrap .hori_div .hori_zone .img_height {
+    padding-top: 65%;
+  }
 }
 .contents .sc_story .hori_wrap .hori_div .hori_zone .img_height img {
   position: absolute;
@@ -876,6 +887,12 @@ footer .animation_content_wrap {
   overflow-y: hidden;
   flex: 0.8;
 }
+@media (min-width: 768px) and (max-width: 1023px) {
+  footer .animation_content_wrap {
+    font-size: 6rem;
+    flex: 0.5;
+  }
+}
 footer .animation_content_wrap .track {
   display: flex;
   position: absolute;
@@ -993,6 +1010,11 @@ footer .footer_flex .middle_container .middle_right > ul {
 footer .footer_flex .middle_container a {
   font-size: 1.5em;
 }
+@media (min-width: 768px) and (max-width: 1023px) {
+  footer .footer_flex .middle_container a {
+    font-size: 2.3em;
+  }
+}
 footer .footer_flex .footer_bottom {
   position: relative;
   height: auto;
@@ -1004,6 +1026,11 @@ footer .footer_flex .footer_bottom > ul {
   display: flex;
   gap: 2.3rem;
   justify-content: center;
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  footer .footer_flex .footer_bottom > ul {
+    font-size: 1.7em;
+  }
 }
 footer .footer_flex .footer_bottom .horizontal_line {
   position: absolute;

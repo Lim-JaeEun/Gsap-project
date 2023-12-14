@@ -520,11 +520,18 @@ header {
                         text-align: left;
                         color: #3b3b3b;
                         width: 50%;
+                        @include tablet(){
+                            width:80%;
+                            font-size: 2.5em;
+                        }
                     }
                     .img_height {
                         position: relative;
                         padding-top: 54%;
                         width: 100%;
+                        @include tablet(){
+                            padding-top: 65%;
+                        }
                         img {
                             position: absolute;
                             top: 0;
@@ -887,6 +894,10 @@ footer {
         overflow-x: hidden; 
         overflow-y: hidden;
         flex: .8;
+        @include tablet(){
+            font-size: 6rem;
+            flex:.5;
+        }
         .track {
             display: flex;
             position: absolute; 
@@ -1016,6 +1027,9 @@ footer {
             }
             a {
                 font-size: 1.5em;
+                @include tablet(){
+                    font-size: 2.3em;
+                }
             }
         }
         .footer_bottom {
@@ -1028,6 +1042,9 @@ footer {
                 display: flex;
                 gap: 2.3rem;
                 justify-content: center;
+                @include tablet(){
+                    font-size: 1.7em;
+                } 
             }
             .horizontal_line {
                 position: absolute;

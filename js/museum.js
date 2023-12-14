@@ -154,6 +154,7 @@ const hori_slide_tablet = document.querySelectorAll('.hori_zone');
 //const progress = document.querySelectorAll('.progress')
 const tablet_event2 = gsap.matchMedia();
 tablet_event2.add("(min-width:1023px)",()=>{ 
+    console.log('pc')
     const hori_slide_tl = gsap.timeline({
         scrollTrigger:{
             trigger:'.sc_story',
@@ -180,7 +181,8 @@ tablet_event2.add("(min-width:1023px)",()=>{
     })
     
 })
-tablet_event2.add("(min-width:767px)",()=>{
+tablet_event2.add("(min-width:768px) and (max-width:1023px)",()=>{
+    console.log('mobile')
     const hori_slide_tl_tablet = gsap.timeline({
         scrollTrigger:{
             trigger:'.sc_story',
@@ -191,13 +193,27 @@ tablet_event2.add("(min-width:767px)",()=>{
             //markers:true,
         },
     })
-    hori_slide_tl_tablet.to({},{duration:0.15, delay:.5})
+    hori_slide_tl_tablet.to({},{duration:0.15})
     hori_slide.forEach((el,i)=>{
         hori_slide_tl_tablet.from(el,{
-            xPercent:100,
+            autoAlpha:0,
             duration:1,
             stagger:1.15,
             ease:'power1.in'
+        })
+        
+        hori_slide_tl_tablet.from(el.children[0],{
+            yPercent:20,
+            autoAlpha:0,
+            duration:0.5,
+            stagger:1.15
+        })
+                
+        hori_slide_tl_tablet.from(el.children[1],{
+            yPercent:20,
+            autoAlpha:0,
+            duration:0.5,
+            stagger:1.15
         })
     
     })
