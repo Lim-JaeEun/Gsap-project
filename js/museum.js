@@ -121,13 +121,14 @@ tablet_event1.add("(min-width:1023px)",()=>{
       
     },'c')
 })
-tablet_event1.add("(min-width:767px)",()=>{
+tablet_event1.add("(min-width:768px) and (max-width:1023px)",()=>{
     gsap.to('.span_text span',{
         y:'0%',
         stagger:.5,
         duration:1,
         scrollTrigger:{
             trigger:'.intro_wrap',
+            toggleActions: "play none play none",
             //scrub:1
         }
     })
@@ -150,7 +151,6 @@ intro_tl.to('.blackout',{
 
 
 const hori_slide = document.querySelectorAll('.pos_absolute');
-const hori_slide_tablet = document.querySelectorAll('.hori_zone');
 //const progress = document.querySelectorAll('.progress')
 const tablet_event2 = gsap.matchMedia();
 tablet_event2.add("(min-width:1023px)",()=>{ 
@@ -205,7 +205,7 @@ tablet_event2.add("(min-width:768px) and (max-width:1023px)",()=>{
         hori_slide_tl_tablet.from(el.children[0],{
             yPercent:20,
             autoAlpha:0,
-            duration:0.5,
+            duration:1,
             stagger:1.15
         })
                 
@@ -247,35 +247,40 @@ banner_tl.to('.listItem:nth-child(2n)',{
 },1)
 */
 const image_move01 = document.querySelectorAll('.listItem:nth-child(2n+1)');
-image_move01.forEach(el=>{
-  gsap.to(el,{
-    y:'-30%',
-    duration:1,
-    scrollTrigger:{
-      trigger:el,
-      scrub:2,
-      start:'top bottom',
-      end:'bottom top',
-    }
-  })
-})
 const image_move02 = document.querySelectorAll('.listItem:nth-child(2n)');
-image_move02.forEach(el=>{
-  gsap.to(el,{
-    y:'-50%', 
-    duration:1,
-    scrollTrigger:{
-      trigger:el,
-      scrub:2,
-      start:'top bottom',
-      end:'bottom top',
-    }
-  })
+const tablet_event3 = gsap.matchMedia();
+tablet_event3.add("(min-width:1023px)",()=>{ 
+    image_move01.forEach(el=>{
+        gsap.to(el,{
+          y:'-30%',
+          duration:1,
+          scrollTrigger:{
+            trigger:el,
+            scrub:2,
+            start:'top bottom',
+            end:'bottom top',
+          }
+        })
+      })
+      
+      image_move02.forEach(el=>{
+        gsap.to(el,{
+          y:'-50%', 
+          duration:1,
+          scrollTrigger:{
+            trigger:el,
+            scrub:2,
+            start:'top bottom',
+            end:'bottom top',
+          }
+        })
+      })
 })
 
 
 
-const tl01 = gsap.timeline({
+
+const video_tl = gsap.timeline({
     scrollTrigger:{
       trigger:'.sc_video',
       start:'-15% top',
@@ -284,7 +289,7 @@ const tl01 = gsap.timeline({
     }
   })
   
-  tl01.to('.sticky-rect_element',{
+  video_tl.to('.sticky-rect_element',{
       width:'100vw',
       height:'100vh',
       borderRadius:'0px',
