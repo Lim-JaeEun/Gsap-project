@@ -13,15 +13,27 @@ gsap.ticker.lagSmoothing(0)
 
 //메인
 const main_texts = document.querySelectorAll('.ani_text_svg');
-gsap.from(main_texts,{
-    y:function(i,target){
-        return target.dataset.transformy+'%'
-    },
-    duration:1.5,
-    ease: "power2.out",
-    stagger:.5
+const main_texts_svg = document.querySelectorAll('.ani_text_svg img');
+const responsive_event0 = gsap.matchMedia();
+responsive_event0.add("(min-width:768px)",()=>{
+    gsap.from(main_texts,{
+        y:function(i,target){
+            return target.dataset.transformy+'%'
+        },
+        duration:1.5,
+        ease: "power2.out",
+        stagger:.5
+    })
 })
 
+responsive_event0.add("(max-width:768px)",()=>{
+    gsap.to(main_texts_svg,{
+        y:'0%',
+        duration:1.5,
+        ease: "power2.out",
+        stagger:.5
+    })
+})
 /*nav_btn*/
 const nav_tl = gsap.timeline({
     paused:true,
@@ -59,8 +71,8 @@ toText.split('.').forEach(el=>{
     newText += `<div class="span_text" aria-hidden='true'><span>${el+'.'}</span></div>`;
     intro_text.innerHTML = `<div class="span_wrap">${newText}</div>`;
 })
-const tablet_event1 = gsap.matchMedia();
-tablet_event1.add("(min-width:1023px)",()=>{
+const responsive_event1 = gsap.matchMedia();
+responsive_event1.add("(min-width:1023px)",()=>{
     const intro_tl_pc = gsap.timeline({
         scrollTrigger: {
             trigger:'.sc_intro',
@@ -121,7 +133,19 @@ tablet_event1.add("(min-width:1023px)",()=>{
       
     },'c')
 })
-tablet_event1.add("(min-width:768px) and (max-width:1023px)",()=>{
+responsive_event1.add("(min-width:768px) and (max-width:1023px)",()=>{
+    gsap.to('.span_text span',{
+        y:'0%',
+        stagger:.5,
+        duration:1,
+        scrollTrigger:{
+            trigger:'.intro_wrap',
+            toggleActions: "play none play none",
+            //scrub:1
+        }
+    })
+})
+responsive_event1.add("(max-width:768px)",()=>{
     gsap.to('.span_text span',{
         y:'0%',
         stagger:.5,
@@ -152,8 +176,8 @@ intro_tl.to('.blackout',{
 
 const hori_slide = document.querySelectorAll('.pos_absolute');
 //const progress = document.querySelectorAll('.progress')
-const tablet_event2 = gsap.matchMedia();
-tablet_event2.add("(min-width:1023px)",()=>{ 
+const responsive_event2 = gsap.matchMedia();
+responsive_event2.add("(min-width:1023px)",()=>{ 
     console.log('pc')
     const hori_slide_tl = gsap.timeline({
         scrollTrigger:{
@@ -181,7 +205,7 @@ tablet_event2.add("(min-width:1023px)",()=>{
     })
     
 })
-tablet_event2.add("(min-width:768px) and (max-width:1023px)",()=>{
+responsive_event2.add("(min-width:768px) and (max-width:1023px)",()=>{
     console.log('mobile')
     const hori_slide_tl_tablet = gsap.timeline({
         scrollTrigger:{
@@ -248,8 +272,8 @@ banner_tl.to('.listItem:nth-child(2n)',{
 */
 const image_move01 = document.querySelectorAll('.listItem:nth-child(2n+1)');
 const image_move02 = document.querySelectorAll('.listItem:nth-child(2n)');
-const tablet_event3 = gsap.matchMedia();
-tablet_event3.add("(min-width:1023px)",()=>{ 
+const responsive_event3 = gsap.matchMedia();
+responsive_event3.add("(min-width:1023px)",()=>{ 
     image_move01.forEach(el=>{
         gsap.to(el,{
           y:'-30%',
@@ -276,10 +300,22 @@ tablet_event3.add("(min-width:1023px)",()=>{
         })
       })
 })
-
-
-
-
+responsive_event3.add("(min-width:768px) and (max-width:1023px)",()=>{
+    gsap.from('.sc_banner .listItem',{
+        scrollTrigger: {
+            trigger:".sc_banner",
+            start:"0 60%",
+            end:"60% 60%",
+            scrub:2,
+        },
+        once: true,
+        //도달했을때 한번만 실행하도록
+        duration:0.8,
+        opacity:0,
+        yPercent:100,
+        stagger:0.1,
+    }) 
+})
 const video_tl = gsap.timeline({
     scrollTrigger:{
       trigger:'.sc_video',
@@ -338,3 +374,4 @@ svg_wave.to('#wave',{
     attr: { d: 'M 0 0 C -1 1 -2 3 -1 4 C 0 5 0 8 3 7 C 5 6 5 9 7 7 C 10 6 11 3 8 1 C 6 0 5 0 4 0 C 3 0 1 -1 0 0'},
     duration:3
 })
+
