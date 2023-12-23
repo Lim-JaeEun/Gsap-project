@@ -525,6 +525,9 @@ header {
                 // flex-direction: column;
                 padding-top: 7em;
             }
+            @include mobile(){
+                padding-top: 3.5rem;
+            }
             .left_text_wrap {
                 display: flex;
                 align-items: center;
@@ -534,6 +537,15 @@ header {
                     justify-content: space-between;
                     padding: 0 1.5em;
                     align-items: flex-start;
+                    position: absolute;
+                    z-index: 3;
+                    width: 100%;
+                }
+                @include mobile(){
+                    justify-content: space-between;
+                    padding: 0 1.5em;
+                    align-items: flex-start;
+                    flex-direction: column;
                     position: absolute;
                     z-index: 3;
                     width: 100%;
@@ -552,6 +564,12 @@ header {
                         writing-mode: lr;
                         letter-spacing: 0;
                         transform: rotate(0deg);
+                        font-size: 8.5em;
+                    }
+                    @include mobile(){
+                        writing-mode: lr;
+                        letter-spacing: 0;
+                        transform: rotate(0deg);
                     }
                 }
                 .small_txt {
@@ -564,6 +582,11 @@ header {
                         width:20rem;
                         text-align: right;
                         align-self: flex-end;
+                    }
+                    @include mobile(){
+                        font-size: 2.95em;
+                        width: 100%;
+                        text-align: left;
                     }
                 }
 
@@ -601,6 +624,9 @@ header {
                         @include tablet(){
                             display: none;
                         }
+                        @include mobile(){
+                            display: none;
+                        }
                     }
                     .subject {
                         font-size: 1.5em;
@@ -611,6 +637,10 @@ header {
                             width:80%;
                             font-size: 2.5em;
                         }
+                        @include mobile(){
+                            width: 90%;
+                            font-size: 4em;
+                        }
                     }
                     .img_height {
                         position: relative;
@@ -618,6 +648,9 @@ header {
                         width: 100%;
                         @include tablet(){
                             padding-top: 65%;
+                        }
+                        @include mobile(){
+                            padding-top: 120%;
                         }
                         img {
                             position: absolute;
@@ -679,6 +712,14 @@ header {
                 margin-top: unset;
                 padding: 1em 0 18em 3em;
             }
+            @include mobile(){
+                position: relative;
+                margin-top: 0;
+                justify-content: unset;
+                height:100%;
+                margin-top: unset;
+                padding: 1em 0 18em 3em;
+            }
             p{
                 line-height: .8;
                 font-size: 9em;
@@ -699,6 +740,10 @@ header {
                     display: block;
                     padding-top: 0;
                 }
+                @include mobile(){
+                    display: block;
+                    padding-top: 0;
+                }
                 .listItem {
                     position: relative;
                     width:31%;
@@ -711,10 +756,22 @@ header {
                         border-top: 1px dotted;
                         padding: 1.8em 0;
                     }
+                    @include mobile(){
+                        width: 100%;
+                        display: flex;
+                        flex-direction: row-reverse;
+                        border-top: 1px dotted;
+                        padding: 1.8em 0;
+                    }
                     &:nth-child(2) {
                         width:32%;
                         margin-top: 17%;
                         @include tablet(){
+                            width: 100%;
+                            margin-top: unset;
+                            margin-left: unset;
+                        }
+                        @include mobile(){
                             width: 100%;
                             margin-top: unset;
                             margin-left: unset;
@@ -734,12 +791,22 @@ header {
                             margin-top: unset;
                             margin-left: unset;
                         }
+                        @include mobile(){
+                            width: 100%;
+                            margin-top: unset;
+                            margin-left: unset;
+                        }
                     }
                     &:nth-child(4) {
                         width:29%;
                         margin-top:-10%;
                         margin-left: 3%;
                         @include tablet(){
+                            width: 100%;
+                            margin-top: unset;
+                            margin-left: unset;
+                        }
+                        @include mobile(){
                             width: 100%;
                             margin-top: unset;
                             margin-left: unset;
@@ -760,9 +827,17 @@ header {
                             margin-top: unset;
                             margin-left: unset;
                         }
+                        @include mobile(){
+                            width: 100%;
+                            margin-top: unset;
+                            margin-left: unset;
+                        }
                         .img_height{
                             padding-top: 56%;
                             @include tablet(){
+                                padding-top: unset;
+                            }
+                            @include mobile(){
                                 padding-top: unset;
                             }
                             img{
@@ -786,9 +861,17 @@ header {
                             margin-top: unset;
                             margin-left: unset;
                         }
+                        @include mobile(){
+                            width: 100%;
+                            margin-top: unset;
+                            margin-left: unset;
+                        }
                         .img_height{
                             padding-top: 62%;
                             @include tablet(){
+                                padding-top: unset;
+                            }
+                            @include mobile(){
                                 padding-top: unset;
                             }
                             img{
@@ -811,8 +894,16 @@ header {
                             margin-top: unset;
                             margin-left: unset;
                         }
+                        @include mobile(){
+                            width: 100%;
+                            margin-top: unset;
+                            margin-left: unset;
+                        }
                         .img_height{
                             @include tablet(){
+                                padding-top: 27%;
+                            }
+                            @include mobile(){
                                 padding-top: 27%;
                             }
                             padding-top: 126%;
@@ -821,6 +912,10 @@ header {
                     .img_height {
                         @include img_height(100%,131%, 89% 50%);
                         @include tablet(){
+                            width: 51%;
+                            padding-top: unset;
+                        }
+                        @include mobile(){
                             width: 51%;
                             padding-top: unset;
                         }
@@ -843,9 +938,22 @@ header {
                             transform: translateY(0%);
 
                         }
+                        @include mobile(){
+                            position: relative;
+                            bottom: unset;
+                            background: transparent;
+                            padding-bottom: unset;
+                            transform: translateY(0%);
+
+                        }
                         .tit {
                             padding: 0 2em;
                             @include tablet(){
+                                width:230px !important;   
+                                margin:0 !important;
+                                padding-left: 1em;
+                            }
+                            @include mobile(){
                                 width:230px !important;   
                                 margin:0 !important;
                                 padding-left: 1em;
@@ -870,6 +978,11 @@ header {
                             opacity: 1;
                             transform: translateY(0);
                         }
+                        @include mobile(){
+                            position: relative;
+                            opacity: 1;
+                            transform: translateY(0);
+                        }
                     }
                     &:hover .list_info{
                         transform: translateY(0%);
@@ -885,7 +998,10 @@ header {
             justify-content: center;
             align-items: center;
             .img {
-                @include img_height(65%,13%)
+                @include img_height(65%,13%);
+                @include mobile(){
+                    @include img_height(95%, 19%)
+                }
             }
             .brands_identity {
                 width: 37%;
@@ -896,6 +1012,9 @@ header {
                 text-align: center;
                 @include tablet(){
                     width:55%;
+                }
+                @include mobile(){
+                    width:95%;
                 }
             }
         }
@@ -958,16 +1077,25 @@ header {
                 line-height: 1;
                 font-size: 9em;
                 font-weight: bold;
+                @include mobile(){
+                    font-size: 9em;
+                }
             }
             .sub_tit {
                 font-size: 3em;
                 font-weight: 300;
+                @include mobile(){
+                    font-size: 5.3em;
+                }
             }
             .explain {
                 line-height: 1.5;
                 font-size: 2em;
                 padding-top: 0.5rem;
                 font-weight: 300;
+                @include mobile(){
+                    font-size: 3em;
+                }
             }
         }
         .legend_wrap {
@@ -980,7 +1108,9 @@ header {
                 justify-content: center;
                 align-items: center;
                 gap: 0.3rem;
-
+                @include mobile(){
+                    font-size: 3.5em;
+                }
                 &::before {
                     content: '';
                     width:1rem;
@@ -988,6 +1118,10 @@ header {
                     background-color: #898fcb;
                     display: inline-block;
                     vertical-align: middle;
+                    @include mobile(){
+                        width: .75rem;
+                        height: .75rem;
+                    }
                 }
             }
         }
@@ -1003,7 +1137,9 @@ header {
             @include tablet(){
                 width:750px;
             }
-
+            @include mobile(){
+                width: 80vw;
+            }
             .tooltip {
                 color: #000;
                 background: #ffffff81;
@@ -1055,6 +1191,11 @@ footer {
         @include tablet(){
             font-size: 6rem;
             flex:.5;
+        }
+        @include mobile(){
+            font-size: 5rem;
+            padding-top: 2.5rem;
+            flex: .45;
         }
         .track {
             display: flex;
@@ -1181,12 +1322,19 @@ footer {
                 >ul {
                     display: flex;
                     gap: 1.5rem;
+                    @include mobile(){
+                        flex-direction: column;
+                        align-items: flex-end;
+                    }
                 }
             }
             a {
                 font-size: 1.5em;
                 @include tablet(){
                     font-size: 2.3em;
+                }
+                @include mobile(){
+                    font-size: 4em;
                 }
             }
         }
@@ -1203,6 +1351,11 @@ footer {
                 @include tablet(){
                     font-size: 1.7em;
                 } 
+                @include mobile(){
+                    gap: unset;
+                    font-size: 3em;
+                    text-align: center;
+                }
             }
             .horizontal_line {
                 position: absolute;

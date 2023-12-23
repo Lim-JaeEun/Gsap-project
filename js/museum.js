@@ -31,7 +31,8 @@ responsive_event0.add("(max-width:768px)",()=>{
         y:'0%',
         duration:1.5,
         ease: "power2.out",
-        stagger:.5
+        stagger:.5,
+        delay:.5
     })
 })
 /*nav_btn*/
@@ -206,7 +207,6 @@ responsive_event2.add("(min-width:1023px)",()=>{
     
 })
 responsive_event2.add("(min-width:768px) and (max-width:1023px)",()=>{
-    console.log('mobile')
     const hori_slide_tl_tablet = gsap.timeline({
         scrollTrigger:{
             trigger:'.sc_story',
@@ -239,6 +239,41 @@ responsive_event2.add("(min-width:768px) and (max-width:1023px)",()=>{
             duration:0.5,
             stagger:1.15
         })
+    
+    })
+ })
+ responsive_event2.add("(max-width:768px)",()=>{
+    const hori_slide_tl_mobile = gsap.timeline({
+        scrollTrigger:{
+            trigger:'.sc_story',
+            start:'top top',
+            end:'+=500%',
+            pin:true,
+            scrub:1.5,
+            //markers:true,
+        },
+    })
+    hori_slide_tl_mobile.to({},{duration:0.15})
+    hori_slide.forEach((el,i)=>{
+        hori_slide_tl_mobile.from(el,{
+            autoAlpha:0,
+            duration:1.5,
+            stagger:1.3,
+            ease:'power1.out'
+        })
+        
+        hori_slide_tl_mobile.from(el.children[0],{
+            yPercent:20,
+            autoAlpha:0,
+            duration:1,
+            stagger:1.15
+        })
+                
+        hori_slide_tl_mobile.from(el.children[1],{
+            yPercent:10,
+            autoAlpha:0,
+            duration:1,
+        },'-=.1')
     
     })
  })
@@ -310,6 +345,21 @@ responsive_event3.add("(min-width:768px) and (max-width:1023px)",()=>{
         },
         once: true,
         //도달했을때 한번만 실행하도록
+        duration:0.8,
+        opacity:0,
+        yPercent:100,
+        stagger:0.1,
+    }) 
+})
+responsive_event3.add("(max-width:768px)",()=>{
+    gsap.from('.sc_banner .listItem',{
+        scrollTrigger: {
+            trigger:".sc_banner",
+            start:"0 60%",
+            end:"60% 60%",
+            scrub:2,
+        },
+        once: true,
         duration:0.8,
         opacity:0,
         yPercent:100,
