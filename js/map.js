@@ -140,9 +140,11 @@ function map(){
     }
     
     function redraw() {
+        const new_svg = d3.select('#d3_chart').select('svg');
+        new_svg.remove();
         width = document.getElementById('d3_chart').offsetWidth;
         height = width / 2;
-        d3.select('svg').remove();
+        
         setup(width, height);
         draw(topo);
     }

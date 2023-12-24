@@ -12,29 +12,32 @@ gsap.ticker.add((time)=>{
 gsap.ticker.lagSmoothing(0)
 
 //메인
-const main_texts = document.querySelectorAll('.ani_text_svg');
-const main_texts_svg = document.querySelectorAll('.ani_text_svg img');
-const responsive_event0 = gsap.matchMedia();
-responsive_event0.add("(min-width:768px)",()=>{
-    gsap.from(main_texts,{
-        y:function(i,target){
-            return target.dataset.transformy+'%'
-        },
-        duration:1.5,
-        ease: "power2.out",
-        stagger:.5
+window.onload = ()=>{
+    const main_texts = document.querySelectorAll('.ani_text_svg');
+    const main_texts_svg = document.querySelectorAll('.ani_text_svg img');
+    const responsive_event0 = gsap.matchMedia();
+    responsive_event0.add("(min-width:768px)",()=>{
+        gsap.from(main_texts,{
+            y:function(i,target){
+                return target.dataset.transformy+'%'
+            },
+            duration:1.5,
+            ease: "power2.out",
+            stagger:.5
+        })
     })
-})
+    
+    responsive_event0.add("(max-width:768px)",()=>{
+        gsap.to(main_texts_svg,{
+            y:'0%',
+            duration:1.5,
+            ease: "power2.out",
+            stagger:.5,
+            delay:.5
+        })
+    })
+}
 
-responsive_event0.add("(max-width:768px)",()=>{
-    gsap.to(main_texts_svg,{
-        y:'0%',
-        duration:1.5,
-        ease: "power2.out",
-        stagger:.5,
-        delay:.5
-    })
-})
 /*nav_btn*/
 const nav_tl = gsap.timeline({
     paused:true,
@@ -132,7 +135,17 @@ responsive_event1.add("(min-width:1023px)",()=>{
         opacity:0,
         duration:3,
       
-    },'c')
+    },'c');
+
+    //svg 움직임
+    gsap.to('#wave',{
+        yoyo: true,
+        ease: "EaseInOut",
+        repeat:-1,
+        attr: { d: 'M 0 0 C -1 1 -2 3 -1 4 C 0 5 0 8 3 7 C 5 6 5 9 7 7 C 10 6 11 3 8 1 C 6 0 5 0 4 0 C 3 0 1 -1 0 0'},
+        duration:3
+    })
+
 })
 responsive_event1.add("(min-width:768px) and (max-width:1023px)",()=>{
     gsap.to('.span_text span',{
@@ -179,7 +192,6 @@ const hori_slide = document.querySelectorAll('.pos_absolute');
 //const progress = document.querySelectorAll('.progress')
 const responsive_event2 = gsap.matchMedia();
 responsive_event2.add("(min-width:1023px)",()=>{ 
-    console.log('pc')
     const hori_slide_tl = gsap.timeline({
         scrollTrigger:{
             trigger:'.sc_story',
@@ -257,7 +269,7 @@ responsive_event2.add("(min-width:768px) and (max-width:1023px)",()=>{
     hori_slide.forEach((el,i)=>{
         hori_slide_tl_mobile.from(el,{
             autoAlpha:0,
-            duration:1.5,
+            duration:2,
             stagger:1.3,
             ease:'power1.out'
         })
@@ -343,7 +355,7 @@ responsive_event3.add("(min-width:768px) and (max-width:1023px)",()=>{
             end:"60% 60%",
             scrub:2,
         },
-        once: true,
+        //once: true,
         //도달했을때 한번만 실행하도록
         duration:0.8,
         opacity:0,
@@ -359,7 +371,7 @@ responsive_event3.add("(max-width:768px)",()=>{
             end:"60% 60%",
             scrub:2,
         },
-        once: true,
+        //once: true,
         duration:0.8,
         opacity:0,
         yPercent:100,
@@ -414,14 +426,33 @@ document.querySelector('footer').addEventListener('mouseover',(e)=>{
     },'t')
 })
 
+const responsive_event4 = gsap.matchMedia();
+responsive_event4.add("(max-width:768px)",()=>{ 
 
-const svg_wave = gsap.timeline()
-
-svg_wave.to('#wave',{
-    yoyo: true,
-    ease: "EaseInOut",
-    repeat:-1,
-    attr: { d: 'M 0 0 C -1 1 -2 3 -1 4 C 0 5 0 8 3 7 C 5 6 5 9 7 7 C 10 6 11 3 8 1 C 6 0 5 0 4 0 C 3 0 1 -1 0 0'},
-    duration:3
+    document.querySelector('footer').addEventListener('touchstart',(e)=>{
+        console.log('터치')
+        const footer_tl = gsap.timeline({
+            scrollTrigger:{
+                trigger:'footer',
+                start:'top top',
+                end:'bottom top'
+            }
+        })
+    
+        footer_tl.to('.verticla_line',{
+            height:'100%',
+            duration:1.5
+        },'t').to('.horizontal_line',{
+            width:`100%`,
+            duration:2
+        },'t').to('.footer_bottom',{
+            backgroundColor:'#fff',
+            duration:2,
+            ease: "power1.in",
+        },'t')
+    })
+    
 })
+
+
 
