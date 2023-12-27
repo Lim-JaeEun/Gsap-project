@@ -454,5 +454,3 @@ responsive_event4.add("(max-width:768px)",()=>{
     
 })
 
-
-

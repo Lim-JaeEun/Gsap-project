@@ -326,7 +326,7 @@ header .menu_wrap .nav_close_btn:hover .line {
 }
 @media (max-width: 768px) {
   .contents .sc_visual .visual_wrap .visual_text .ani_text_svg img {
-    transform: translateY(120%);
+    transform: translateY(100%);
   }
 }
 .contents .sc_visual .video_wrap {
@@ -1223,6 +1223,12 @@ header .menu_wrap .nav_close_btn:hover .line {
   justify-content: center;
   align-items: center;
   border-radius: 35vw;
+}
+@media (max-width: 768px) {
+  .contents .sc_video .video_wrap .video_sticky .sticky-rect_element {
+    width: 85em;
+    height: 85em;
+  }
 }
 .contents .sc_video .video_wrap .video_sticky .sticky-rect_element video {
   width: 100%;
