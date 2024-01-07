@@ -18,7 +18,7 @@
     max-width(최대 width)가 767px 이하인 경우에 적용되는 코드이다. 
 */
 @mixin mobile{
-    @media (max-width:768px){
+    @media (max-width:479px){
         @content;
     }
 }
@@ -27,7 +27,7 @@
     max-width(최대 width)가 1023px 이하인 경우에 적용되는 코드이다. 
 */
 @mixin tablet {
-    @media(min-width:768px) and (max-width:1023px){
+    @media(min-width:480px) and (max-width:767px){
         @content;
     }
 }
@@ -1149,10 +1149,10 @@ header {
             background: #ebecf4;
             margin: 0 auto;
             @include tablet(){
-                width:750px;
+                width: 80%;
             }
             @include mobile(){
-                width: 80vw;
+                width: 80%;
             }
             .tooltip {
                 color: #000;

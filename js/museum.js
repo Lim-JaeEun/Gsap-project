@@ -16,7 +16,7 @@ window.onload = ()=>{
     const main_texts = document.querySelectorAll('.ani_text_svg');
     const main_texts_svg = document.querySelectorAll('.ani_text_svg img');
     const responsive_event0 = gsap.matchMedia();
-    responsive_event0.add("(min-width:768px)",()=>{
+    responsive_event0.add("(min-width:480px) and (max-width:1024px)",()=>{
         gsap.from(main_texts,{
             y:function(i,target){
                 return target.dataset.transformy+'%'
@@ -27,7 +27,7 @@ window.onload = ()=>{
         })
     })
     
-    responsive_event0.add("(max-width:768px)",()=>{
+    responsive_event0.add("(max-width:479px)",()=>{
         gsap.to(main_texts_svg,{
             y:'0%',
             duration:1.5,
@@ -76,7 +76,7 @@ toText.split('.').forEach(el=>{
     intro_text.innerHTML = `<div class="span_wrap">${newText}</div>`;
 })
 const responsive_event1 = gsap.matchMedia();
-responsive_event1.add("(min-width:1023px)",()=>{
+responsive_event1.add("(min-width:768px)",()=>{
     const intro_tl_pc = gsap.timeline({
         scrollTrigger: {
             trigger:'.sc_intro',
@@ -145,9 +145,8 @@ responsive_event1.add("(min-width:1023px)",()=>{
         attr: { d: 'M 0 0 C -1 1 -2 3 -1 4 C 0 5 0 8 3 7 C 5 6 5 9 7 7 C 10 6 11 3 8 1 C 6 0 5 0 4 0 C 3 0 1 -1 0 0'},
         duration:3
     })
-
 })
-responsive_event1.add("(min-width:768px) and (max-width:1023px)",()=>{
+responsive_event1.add("(min-width:480px) and (max-width:767px)",()=>{
     gsap.to('.span_text span',{
         y:'0%',
         stagger:.5,
@@ -159,7 +158,7 @@ responsive_event1.add("(min-width:768px) and (max-width:1023px)",()=>{
         }
     })
 })
-responsive_event1.add("(max-width:768px)",()=>{
+responsive_event1.add("(max-width:479px)",()=>{
     gsap.to('.span_text span',{
         y:'0%',
         stagger:.5,
@@ -191,7 +190,8 @@ intro_tl.to('.blackout',{
 const hori_slide = document.querySelectorAll('.pos_absolute');
 //const progress = document.querySelectorAll('.progress')
 const responsive_event2 = gsap.matchMedia();
-responsive_event2.add("(min-width:1023px)",()=>{ 
+responsive_event2.add("(min-width:768px)",()=>{ 
+  
     const hori_slide_tl = gsap.timeline({
         scrollTrigger:{
             trigger:'.sc_story',
@@ -218,7 +218,7 @@ responsive_event2.add("(min-width:1023px)",()=>{
     })
     
 })
-responsive_event2.add("(min-width:768px) and (max-width:1023px)",()=>{
+responsive_event2.add("(min-width:480px) and (max-width:767px)",()=>{
     const hori_slide_tl_tablet = gsap.timeline({
         scrollTrigger:{
             trigger:'.sc_story',
@@ -254,7 +254,7 @@ responsive_event2.add("(min-width:768px) and (max-width:1023px)",()=>{
     
     })
  })
- responsive_event2.add("(max-width:768px)",()=>{
+ responsive_event2.add("(max-width:479px)",()=>{
     const hori_slide_tl_mobile = gsap.timeline({
         scrollTrigger:{
             trigger:'.sc_story',
@@ -321,6 +321,7 @@ const image_move01 = document.querySelectorAll('.listItem:nth-child(2n+1)');
 const image_move02 = document.querySelectorAll('.listItem:nth-child(2n)');
 const responsive_event3 = gsap.matchMedia();
 responsive_event3.add("(min-width:1023px)",()=>{ 
+  
     image_move01.forEach(el=>{
         gsap.to(el,{
           y:'-30%',
@@ -347,7 +348,8 @@ responsive_event3.add("(min-width:1023px)",()=>{
         })
       })
 })
-responsive_event3.add("(min-width:768px) and (max-width:1023px)",()=>{
+responsive_event3.add("(min-width:480px) and (max-width:767px)",()=>{
+  
     gsap.from('.sc_banner .listItem',{
         scrollTrigger: {
             trigger:".sc_banner",
@@ -363,7 +365,7 @@ responsive_event3.add("(min-width:768px) and (max-width:1023px)",()=>{
         stagger:0.1,
     }) 
 })
-responsive_event3.add("(max-width:768px)",()=>{
+responsive_event3.add("(max-width:479px)",()=>{
     gsap.from('.sc_banner .listItem',{
         scrollTrigger: {
             trigger:".sc_banner",
@@ -378,6 +380,11 @@ responsive_event3.add("(max-width:768px)",()=>{
         stagger:0.1,
     }) 
 })
+
+
+
+
+
 const video_tl = gsap.timeline({
     scrollTrigger:{
       trigger:'.sc_video',
@@ -427,10 +434,9 @@ document.querySelector('footer').addEventListener('mouseover',(e)=>{
 })
 
 const responsive_event4 = gsap.matchMedia();
-responsive_event4.add("(max-width:768px)",()=>{ 
+responsive_event4.add("(max-width:479px)",()=>{ 
 
     document.querySelector('footer').addEventListener('touchstart',(e)=>{
-        console.log('터치')
         const footer_tl = gsap.timeline({
             scrollTrigger:{
                 trigger:'footer',
