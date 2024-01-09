@@ -221,6 +221,9 @@
                         onUpdate:()=>{
                             otherEl.classList.remove('is-open');
                         },
+                        onComplete:()=>{
+                            otherEl.classList.add('closed')
+                        }
                     },)
                     gsap.to(outherSubject,{
                         duration:.5,
